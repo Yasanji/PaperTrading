@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paper Book</title>
+<style>
+  :root {
+    --bg:#f3f4f2; --surface:#fff; --surface2:#ebedea; --ink:#1b1e1c;
+    --soft:#4c524e; --faint:#7b817d; --line:#d8dbd6; --accent:#1f6f6b;
+    --ok:#2f7d4f; --ok-bg:#dcece2; --crit:#a23b32; --crit-bg:#f1dcd9;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#14170f; --surface:#1c201a; --surface2:#242821; --ink:#e9ece6;
+      --soft:#b3b8b0; --faint:#838a80; --line:#333831; --accent:#62b8b0;
+      --ok:#7bc493; --ok-bg:#1e3327; --crit:#e08b81; --crit-bg:#3a2320; }
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);}
+  .wrap{max-width:1000px;margin:0 auto;padding:24px 18px 60px;}
+  header{display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:14px;}
+  h1{font-size:20px;margin:0;font-weight:600;}
+  .sub{font-family:var(--mono);font-size:12px;color:var(--faint);}
+  .pill{font-family:var(--mono);font-size:11px;padding:3px 9px;border-radius:20px;border:1px solid var(--line);}
+  .pill.on{background:var(--ok-bg);color:var(--ok);}
+  .pill.off{background:var(--crit-bg);color:var(--crit);}
+  .banner{margin-top:16px;padding:12px 14px;border-radius:8px;background:var(--crit-bg);color:var(--crit);font-family:var(--mono);font-size:13px;}
+  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px;}
+  @media (max-width:720px){.tiles{grid-template-columns:repeat(2,1fr);}}
+  .tile{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;}
+  .tile .k{font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--faint);}
+  .tile .v{font-size:22px;font-weight:600;margin-top:6px;font-variant-numeric:tabular-nums;}
+  .tile.breach{border-color:var(--crit);}
+  .tile.breach .v{color:var(--crit);}
+  h2{font-size:12px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--faint);margin:28px 0 12px;}
+  .breaches{display:flex;flex-direction:column;gap:8px;}
+  .b{padding:10px 12px;border-radius:8px;background:var(--crit-bg);color:var(--crit);font-family:var(--mono);font-size:13px;}
+  .clean{padding:10px 12px;border-radius:8px;background:var(--ok-bg);color:var(--ok);font-family:var(--mono);font-size:13px;}
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;}
+  table{border-collapse:collapse;width:100%;min-width:640px;background:var(--surface);font-size:13px;}
+  th,td{text-align:right;padding:9px 12px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums;}
+  th:first-child,td:first-child{text-align:left;}
+  th{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--faint);font-weight:600;}
+  tr:last-child td{border-bottom:none;}
+  td.neg{color:var(--crit);} td.pos{color:var(--ok);}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.26.4/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+function fmt(v, dp=0) {
+  if (v === null || v === undefined) return "—";
+  return Number(v).toLocaleString(undefined, {minimumFractionDigits:dp, maximumFractionDigits:dp});
+}
+
+function Tile({label, value, breach}) {
+  return (
+    <div className={"tile" + (breach ? " breach" : "")}>
+      <div className="k">{label}</div>
+      <div className="v">{value}</div>
+    </div>
+  );
+}
+
+function App() {
+  const [d, setD] = useState(null);
+  const [err, setErr] = useState(null);
+
+  async function load() {
+    try {
+      const r = await fetch("/api/state");
+      const j = await r.json();
+      if (!j.ok) { setErr(j.error || "gateway not reachable"); }
+      else { setErr(null); setD(j); }
+    } catch (e) { setErr(String(e)); }
+  }
+
+  useEffect(() => {
+    load();
+    const t = setInterval(load, 5000);
+    return () => clearInterval(t);
+  }, []);
+
+  const breaches = d ? d.breaches : [];
+  const has = (name) => breaches.some(b => b.toLowerCase().includes(name));
+
+  return (
+    <div className="wrap">
+      <header>
+        <div>
+          <h1>Paper Book</h1>
+          <div className="sub">{d ? `account ${d.account} · ${d.base_ccy} · ${d.ts}` : "connecting"}</div>
+        </div>
+        {d && (
+          <span className={"pill " + (d.authenticated === false ? "off" : "on")}>
+            {d.authenticated === false ? "session not authenticated" : "connected"}
+          </span>
+        )}
+      </header>
+
+      {err && <div className="banner">Gateway not reachable: {err}. Start the Client Portal gateway and log in at https://localhost:5000, then this refreshes on its own.</div>}
+
+      {d && (
+        <React.Fragment>
+          <div className="tiles">
+            <Tile label="Equity (net liq)" value={fmt(d.equity)} />
+            <Tile label="Peak" value={fmt(d.peak)} />
+            <Tile label="Drawdown %" value={d.drawdown_pct===null? "—" : fmt(d.drawdown_pct,2)} breach={has("drawdown")} />
+            <Tile label="Open orders" value={fmt(d.open_orders)} breach={has("open orders")} />
+            <Tile label="Gross exposure" value={fmt(d.gross)} breach={has("gross")} />
+            <Tile label="Net exposure" value={fmt(d.net)} breach={has("net exposure")} />
+            <Tile label="Concentration %" value={d.concentration_pct===null? "—" : fmt(d.concentration_pct,1)} breach={has("concentration")} />
+            <Tile label="Cash" value={fmt(d.cash)} breach={has("cash")} />
+          </div>
+
+          <h2>Rule status</h2>
+          <div className="breaches">
+            {breaches.length === 0
+              ? <div className="clean">No breaches. Rules with a limit set are within bounds.</div>
+              : breaches.map((b,i) => <div className="b" key={i}>{b}</div>)}
+          </div>
+
+          <h2>Positions ({d.positions.length})</h2>
+          <div className="tablewrap">
+            <table>
+              <thead><tr>
+                <th>Contract</th><th>Class</th><th>Ccy</th><th>Position</th>
+                <th>Price</th><th>Mkt value</th><th>Unrealized</th>
+              </tr></thead>
+              <tbody>
+                {d.positions.length === 0
+                  ? <tr><td colSpan="7" style={{textAlign:"center",color:"var(--faint)"}}>No positions held.</td></tr>
+                  : d.positions.map((p,i) => (
+                    <tr key={i}>
+                      <td>{p.desc || p.conid}</td>
+                      <td>{p.assetClass || "—"}</td>
+                      <td>{p.currency || "—"}</td>
+                      <td>{fmt(p.position)}</td>
+                      <td>{fmt(p.mktPrice,2)}</td>
+                      <td>{fmt(p.mktValue)}</td>
+                      <td className={p.unrealizedPnl>0?"pos":(p.unrealizedPnl<0?"neg":"")}>{fmt(p.unrealizedPnl)}</td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
+        </React.Fragment>
+      )}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

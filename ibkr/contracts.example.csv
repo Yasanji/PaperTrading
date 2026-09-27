@@ -1,0 +1,4 @@
+event_id,category,yes_price,p_hat
+EXAMPLE_cpi_above,economic_indicator,0.40,0.55
+EXAMPLE_fed_hold,fed_funds,0.70,0.50
+EXAMPLE_gdp_beat,economic_indicator,0.30,0.45
