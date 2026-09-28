@@ -1,7 +1,7 @@
 """Minimal Client Portal Web API client for an IBKR paper account.
 
 One method per HTTP call, nothing clever. The gateway runs on your Mac and
-serves the API at https://localhost:5000/v1/api with a self-signed
+serves the API at https://localhost:5001/v1/api with a self-signed
 certificate, so requests are made with verify=False.
 
 Endpoints used here are the documented Client Portal paths (see README).
@@ -12,7 +12,7 @@ import urllib3
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-BASE = "https://localhost:5000/v1/api"
+BASE = "https://localhost:5001/v1/api"
 
 
 class IBKR:
@@ -73,7 +73,7 @@ class IBKR:
 
     # data
     def search(self, symbol):
-        return self._get("/iserver/secdef/search", symbol=symbol)
+        return self._post("/iserver/secdef/search", {"symbol": symbol, "name": False, "secType": "STK"})
 
     def market_snapshot(self, conids, fields):
         return self._get(

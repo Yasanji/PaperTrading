@@ -15,14 +15,14 @@ from ibkr import IBKR
 # ---------------------------------------------------------------------------
 # CONFIG. Fill these in. A limit of None means "do not check this".
 # ---------------------------------------------------------------------------
-ACCOUNT = None            # your paper account id, e.g. "DU1234567"
-BASE_CCY = "USD"          # currency for the exposure and cash checks
+ACCOUNT = "DUT139070"            # your paper account id, e.g. "DU1234567"
+BASE_CCY = "EUR"   # the pair trades in EUR          # currency for the exposure and cash checks
 INTERVAL = 60             # seconds between checks
 
-MAX_DRAWDOWN_PCT = None   # percent off the equity high-water mark, e.g. 5
-MAX_GROSS_EXPOSURE = None # sum of |market value| in BASE_CCY
+MAX_DRAWDOWN_PCT = 15   # percent off the equity high-water mark, e.g. 5
+MAX_GROSS_EXPOSURE = 40000 # sum of |market value| in BASE_CCY
 MAX_NET_EXPOSURE = None   # |sum of market value| in BASE_CCY
-MAX_CONCENTRATION = None  # largest position as percent of gross, 0-100
+MAX_CONCENTRATION = 70  # largest position as percent of gross, 0-100
 MIN_CASH = None           # cash floor in BASE_CCY
 MAX_OPEN_ORDERS = None    # number of live orders
 

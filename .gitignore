@@ -1,0 +1,16 @@
+# OS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Gateway and downloads (not part of the repo)
+clientportal.gw/
+*.zip
+
+# Runtime files
+*.log
+ibkr/live_state.json
+ibkr/peak.json
