@@ -1,0 +1,468 @@
+Ticker,Company,ICB Sector,Country,Headquarters
+ZURN,Zurich Insurance Group,Insurance,Switzerland,Zurich
+GSK,GSK plc,Health Care,United Kingdom,London
+RIO,Rio Tinto Group,Basic Resources,United Kingdom,London
+INGA,ING Group,Banks,Netherlands,Amsterdam
+UBSG,UBS Group,Banks,Switzerland,Zurich
+SAF,Safran,Industrial Goods and Services,France,Paris
+DG,Vinci,Construction and Materials,France,Rueil-Malmaison
+PRU,Prudential plc,Insurance,United Kingdom,London
+BATS,British American Tobacco,"Food, Beverage and Tobacco",United Kingdom,London
+MBG,Mercedes-Benz Group,Automobiles and Parts,Germany,Stuttgart
+HLI,Haleon,Consumer Products and Services,United Kingdom,Weybridge
+FERR,Ferrari,Automobiles and Parts,Italy,Maranello
+RMS,Hermès,Consumer Products and Services,France,Paris
+ISP,Intesa Sanpaolo,Banks,Italy,Turin
+HMB,H&M,Retail,Sweden,Stockholm
+PERP,Pernod Ricard,"Food, Beverage and Tobacco",France,Paris
+MICP,Michelin,Automobiles and Parts,France,Clermont-Ferrand
+BKT,Bankinter,Banks,Spain,Madrid
+CABK,CaixaBank,Banks,Spain,Valencia
+ENG,Enagás,Utilities,Spain,Madrid
+NTGY,Naturgy,Utilities,Spain,Madrid
+FER,Ferrovial,Construction and Materials,Netherlands,Amsterdam
+RED,Redeia,Utilities,Spain,Alcobendas
+ITX,Inditex,Retail,Spain,Arteixo
+REP,Repsol,Energy,Spain,Madrid
+SAB,Banco Sabadell,Banks,Spain,Alicante
+ATCOa,Atlas Copco,Industrial Goods and Services,Sweden,Nacka
+ERICb,Ericsson,Telecommunications,Sweden,Stockholm
+ALFA,Alfa Laval,Industrial Goods and Services,Sweden,Lund
+SAND,Sandvik AB,Industrial Goods and Services,Sweden,Stockholm
+FORTUM,Fortum,Utilities,Finland,Espoo
+GLEN,Glencore,Basic Resources,United Kingdom,Baar
+NG,National Grid,Utilities,United Kingdom,London
+LLOY,Lloyds Banking Group,Banks,United Kingdom,London
+CPG,Compass Group,Travel and Leisure,United Kingdom,Chertsey
+RKT,Reckitt,"Personal Care, Drug and Grocery Stores",United Kingdom,Slough
+EXPN,Experian,Industrial Goods and Services,United Kingdom,Dublin
+IMB,Imperial Brands,"Food, Beverage and Tobacco",United Kingdom,Bristol
+RR,Rolls-Royce Holdings,Industrial Goods and Services,United Kingdom,London
+LSEG,London Stock Exchange Group,Financial Services,United Kingdom,London
+IAG,International Airlines Group,Travel and Leisure,United Kingdom,London
+III,3i,Financial Services,United Kingdom,London
+HLMA,Halma plc,Industrial Goods and Services,United Kingdom,Amersham
+SMT,Scottish Mortgage Investment Trust,Financial Services,United Kingdom,Edinburgh
+MNG,M&G,Financial Services,United Kingdom,London
+SMIN,Smiths Group,Industrial Goods and Services,United Kingdom,London
+CRDA,Croda International,Chemicals,United Kingdom,Snaith
+SDLF,Standard Life plc,Insurance,United Kingdom,London
+UTG,Unite Group,Real Estate,United Kingdom,London
+SGRO,Segro,Real Estate,United Kingdom,London
+BTRW,Barratt Redrow,Consumer Products and Services,United Kingdom,Coalville
+PSN,Persimmon plc,Consumer Products and Services,United Kingdom,York
+NXT,Next plc,Retail,United Kingdom,Leicester
+KGF,Kingfisher plc,Retail,United Kingdom,London
+HOLN,Holcim,Construction and Materials,Switzerland,Zug
+SRENH,Swiss Re,Insurance,Switzerland,Zurich
+LONN,Lonza Group,Health Care,Switzerland,Basel
+GIVN,Givaudan,Chemicals,Switzerland,Vernier
+SIKA,Sika,Construction and Materials,Switzerland,Baar
+STMN,Straumann,Health Care,Switzerland,Basel
+PGHN,Partners Group,Financial Services,Switzerland,Baar
+SOON,Sonova,Health Care,Switzerland,Stäfa
+LISN,Lindt & Sprüngli,"Food, Beverage and Tobacco",Switzerland,Kilchberg
+SCHP,Schindler Group,Industrial Goods and Services,Switzerland,Ebikon
+UHR,Swatch Group,Consumer Products and Services,Switzerland,Biel/Bienne
+LOGN,Logitech,Technology,Switzerland,Lausanne
+HELN,Helvetia Insurance,Insurance,Switzerland,St. Gallen
+BALN,Baloise,Insurance,Switzerland,Basel
+GALE,Galenica,Health Care,Switzerland,Bern
+EMSN,Ems-Chemie,Chemicals,Switzerland,Domat/Ems
+ABBN,ABB Ltd,Industrial Goods and Services,Switzerland,Zurich
+ABN,ABN AMRO,Banks,Netherlands,Amsterdam
+AC,Accor,Travel and Leisure,France,Issy-les-Moulineaux
+ACS,ACS Group,Construction and Materials,Spain,Madrid
+ADEN,Adecco,Industrial Goods and Services,Switzerland,Zurich
+ADS,Adidas,Consumer Products and Services,Germany,Herzogenaurach
+ADM,Admiral Group,Insurance,United Kingdom,Cardiff
+ADYEN,Adyen,Industrial Goods and Services,Netherlands,Amsterdam
+AENA,Aena,Travel and Leisure,Spain,Madrid
+AGS,Ageas,Insurance,Belgium,Brussels
+AIRP,Air Liquide,Chemicals,France,Paris
+AIR,Airbus,Industrial Goods and Services,France,Blagnac
+AKERBP,Aker BP,Energy,Norway,Lysaker
+ALV,Allianz,Insurance,Germany,Munich
+ALO,Alstom,Industrial Goods and Services,France,Saint-Ouen-sur-Seine
+AIXA,AIXTRON,Technology,Germany,Herzogenrath
+ALC,Alcon,Health Care,Switzerland,Fribourg
+AMBU B,Ambu,Health Care,Denmark,Ballerup
+AAL,Anglo American plc,Basic Resources,United Kingdom,London
+ABI,Anheuser-Busch InBev,"Food, Beverage and Tobacco",Belgium,Leuven
+ANTO,Antofagasta plc,Basic Resources,United Kingdom,London
+AKE,Arkema,Chemicals,France,Colombes
+SUNB,Sunbelt Rentals,Industrial Goods and Services,United Kingdom,London
+ASMI,ASM International,Technology,Netherlands,Almere
+ASML,ASML Holding,Technology,Netherlands,Veldhoven
+ASSA B,Assa Abloy,Construction and Materials,Sweden,Stockholm
+ABF,Associated British Foods,"Food, Beverage and Tobacco",United Kingdom,London
+AZN,AstraZeneca,Health Care,United Kingdom,Cambridge
+AUTO,Auto Trader Group,Media,United Kingdom,Manchester
+AV,Aviva,Insurance,United Kingdom,London
+CS,AXA,Insurance,France,Paris
+AZE,Azelis Group,Industrial Goods and Services,Belgium,Antwerp
+BME,B&M European Value Retail,Retail,United Kingdom,Luxembourg City
+BA,BAE Systems,Industrial Goods and Services,United Kingdom,London
+BALD B,Balder,Real Estate,Sweden,Gothenburg
+BBY,Balfour Beatty,Construction and Materials,United Kingdom,London
+BARC,Barclays,Banks,United Kingdom,London
+BOL,Boliden AB,Basic Resources,Sweden,Stockholm
+BBVA,Banco Bilbao Vizcaya Argentaria,Banks,Spain,Bilbao
+SAN,Banco Santander,Banks,Spain,Madrid
+BARN,Barry Callebaut,"Food, Beverage and Tobacco",Switzerland,Zurich
+BAS,BASF,Chemicals,Germany,Ludwigshafen
+BAYN,Bayer,Health Care,Germany,Leverkusen
+BEZ,Beazley,Insurance,United Kingdom,London
+BEI,Beiersdorf,Consumer Products and Services,Germany,Hamburg
+BEB,Belimo,Construction and Materials,Switzerland,Hinwil
+BKG,Berkeley Group Holdings,Consumer Products and Services,United Kingdom,Cobham
+BMW,BMW,Automobiles and Parts,Germany,Munich
+BNPP,BNP Paribas,Banks,France,Paris
+BOL,Bolloré,Industrial Goods and Services,France,Puteaux
+BP,BP,Energy,United Kingdom,London
+BNR,Brenntag,Chemicals,Germany,Essen
+BT.A,BT Group,Telecommunications,United Kingdom,London
+BNZL,Bunzl,Industrial Goods and Services,United Kingdom,London
+BRBY,Burberry,Consumer Products and Services,United Kingdom,London
+BVI,Bureau Veritas,Industrial Goods and Services,France,Neuilly-sur-Seine
+AFX,Carl Zeiss Meditec,Health Care,Germany,Jena
+CAPP,Capgemini,Technology,France,Paris
+CARR,Carrefour,Retail,France,Massy
+CAST,Castellum,Real Estate,Sweden,Gothenburg
+CNA,Centrica,Utilities,United Kingdom,Windsor
+CCH,Coca-Cola HBC,"Food, Beverage and Tobacco",Switzerland,Steinhausen
+COLR,Colruyt,"Personal Care, Drug and Grocery Stores",Belgium,Halle
+CBK,Commerzbank,Banks,Germany,Frankfurt
+CON,Continental,Automobiles and Parts,Germany,Hanover
+CTEC,ConvaTec,Health Care,United Kingdom,Reading
+1COV,Covestro,Chemicals,Germany,Leverkusen
+CAGR,Crédit Agricole,Banks,France,Montrouge
+CPR,Davide Campari-Milano,"Food, Beverage and Tobacco",Italy,Sesto San Giovanni
+DANO,Danone,"Food, Beverage and Tobacco",France,Paris
+DHER,Delivery Hero,Retail,Germany,Berlin
+DEMANT,Demant,Health Care,Denmark,Smørum
+DLN,Derwent London,Real Estate,United Kingdom,London
+DB1,Deutsche Börse,Financial Services,Germany,Frankfurt
+DTE,Deutsche Telekom,Telecommunications,Germany,Bonn
+DHL,DHL Group,Industrial Goods and Services,Germany,Bonn
+DGE,Diageo,"Food, Beverage and Tobacco",United Kingdom,London
+DPLM,Diploma,Industrial Goods and Services,United Kingdom,London
+DLG,Direct Line,Insurance,United Kingdom,Bromley
+DOCM,DocMorris,Health Care,Switzerland,Frauenfeld
+SMDS,DS Smith,Industrial Goods and Services,United Kingdom,London
+EZJ,EasyJet,Travel and Leisure,United Kingdom,Luton
+EDEN,Edenred,Industrial Goods and Services,France,Issy-les-Moulineaux
+EDP,EDP - Energias de Portugal,Utilities,Portugal,Lisbon
+EDPR,EDP Renováveis,Utilities,Portugal,Madrid
+EFGI,Eiffage,Construction and Materials,France,Asnières-sur-Seine
+ELUX-B,Electrolux,Consumer Products and Services,Sweden,Stockholm
+ELISA,Elisa,Telecommunications,Finland,Helsinki
+EDV,Endeavour Mining,Basic Resources,United Kingdom,London
+ENI,Eni,Energy,Italy,Rome
+ENEL,Enel,Utilities,Italy,Rome
+ENT,Entain,Travel and Leisure,United Kingdom,London
+EOAN,E.ON,Utilities,Germany,Essen
+EPI A,Epiroc,Industrial Goods and Services,Sweden,Nacka
+EBS,Erste Group,Banks,Austria,Vienna
+ESLX,EssilorLuxottica,Health Care,France,Charenton-le-Pont
+ENX,Euronext,Financial Services,Netherlands,Amsterdam
+EVK,Evonik Industries,Chemicals,Germany,Essen
+EVT,Evotec,Health Care,Germany,Hamburg
+EXO,Exor,Financial Services,Netherlands,Amsterdam
+FRVIA,Forvia,Automobiles and Parts,France,Nanterre
+FNTN,Freenet,Telecommunications,Germany,Büdelsdorf
+FME,Fresenius Medical Care,Health Care,Germany,Bad Homburg
+GALP,Galp Energia,Energy,Portugal,Lisbon
+GAW,Games Workshop,Consumer Products and Services,United Kingdom,Nottingham
+G1A,GEA Group,Industrial Goods and Services,Germany,Düsseldorf
+GEBN,Geberit,Construction and Materials,Switzerland,Rapperswil-Jona
+GFC,Gecina,Real Estate,France,Paris
+GF,Georg Fischer,Industrial Goods and Services,Switzerland,Schaffhausen
+GET,Getlink,Industrial Goods and Services,France,Paris
+GLB,Glanbia,"Food, Beverage and Tobacco",Ireland,Kilkenny
+GN,GN Store Nord,Health Care,Denmark,Ballerup
+GFT,Grafton Group,Industrial Goods and Services,Ireland,Dublin
+GRF,Grifols,Health Care,Spain,Barcelona
+HNR,Hannover Re,Insurance,Germany,Hanover
+HAS,Hays,Industrial Goods and Services,United Kingdom,London
+HEI,Heidelberg Materials,Construction and Materials,Germany,Heidelberg
+HELN,Helvetia,Insurance,Switzerland,St. Gallen
+HEN3,Henkel,Consumer Products and Services,Germany,Düsseldorf
+HIK,Hikma Pharmaceuticals,Health Care,United Kingdom,London
+HSX,Hiscox,Insurance,Bermuda,Hamilton
+HWDN,Howden Joinery,Retail,United Kingdom,London
+HSBA,HSBC,Banks,United Kingdom,London
+BOSS,Hugo Boss,Consumer Products and Services,Germany,Metzingen
+HUSQ B,Husqvarna,Consumer Products and Services,Sweden,Stockholm
+IBE,Iberdrola,Utilities,Spain,Bilbao
+INCH,Inchcape,Retail,United Kingdom,London
+INDT,Indutrade,Industrial Goods and Services,Sweden,Kista
+IFX,Infineon Technologies,Technology,Germany,Neubiberg
+INPST,InPost,Industrial Goods and Services,Luxembourg,Luxembourg City
+IHG,InterContinental Hotels Group,Travel and Leisure,United Kingdom,Windsor
+ICP,Intermediate Capital Group,Financial Services,United Kingdom,London
+ITRK,Intertek,Industrial Goods and Services,United Kingdom,London
+IPN,Ipsen,Health Care,France,Boulogne-Billancourt
+ITV,ITV,Media,United Kingdom,London
+SBRY,Sainsbury's,"Personal Care, Drug and Grocery Stores",United Kingdom,London
+JD,JD Sports,Retail,United Kingdom,Bury
+JMT,Jerónimo Martins,Retail,Portugal,Lisbon
+BAER,Julius Baer,Banks,Switzerland,Zurich
+KBC,KBC Group,Banks,Belgium,Brussels
+KER,Kering,Consumer Products and Services,France,Paris
+KNEBV,Kone,Industrial Goods and Services,Finland,Espoo
+KPN,KPN,Telecommunications,Netherlands,Rotterdam
+LAND,Land Securities,Real Estate,United Kingdom,London
+LXS,Lanxess,Chemicals,Germany,Essen
+LEG,LEG Immobilien,Real Estate,Germany,Düsseldorf
+LDO,Leonardo,Industrial Goods and Services,Italy,Rome
+LSG,Lerøy Seafood,"Food, Beverage and Tobacco",Norway,Bergen
+LII,Liberty Global,Telecommunications,United Kingdom,London
+LIF,LifeCo,Insurance,Ireland,Dublin
+LIN,Linde plc,Chemicals,United Kingdom,Guildford
+OR,L'Oréal,"Personal Care, Drug and Grocery Stores",France,Clichy
+LPP,LPP,Consumer Products and Services,Poland,Gdańsk
+LHA,Lufthansa,Travel and Leisure,Germany,Cologne
+LUMI,Lumibird,Technology,France,Lannion
+MC,LVMH,Consumer Products and Services,France,Paris
+MAERSK B,Maersk,Industrial Goods and Services,Denmark,Copenhagen
+MAN,MAN SE,Industrial Goods and Services,Germany,Munich
+MB,Mediobanca,Financial Services,Italy,Milan
+MELE,Melexis,Technology,Belgium,Ypres
+MEL,Meliá Hotels,Travel and Leisure,Spain,Palma
+MRL,Merlin Properties,Real Estate,Spain,Madrid
+METSO,Metso,Industrial Goods and Services,Finland,Helsinki
+TIGO,Millicom,Telecommunications,Sweden,Luxembourg City
+MCG,Mobico Group,Travel and Leisure,United Kingdom,Birmingham
+MONC,Moncler,Consumer Products and Services,Italy,Milan
+MNDI,Mondi,Industrial Goods and Services,United Kingdom,Weybridge
+MOR,MorphoSys,Health Care,Germany,Planegg
+MUV2,Munich Re,Insurance,Germany,Munich
+MT,ArcelorMittal,Basic Resources,Luxembourg,Luxembourg City
+MTX,MTU Aero Engines,Industrial Goods and Services,Germany,Munich
+NAB,National Bank of Greece,Banks,Greece,Athens
+NWG,NatWest Group,Banks,United Kingdom,Edinburgh
+NEM,Nemetschek,Technology,Germany,Munich
+NEOEN,Neoen,Utilities,France,Paris
+NSN,Neste,Energy,Finland,Espoo
+NESN,Nestlé,"Food, Beverage and Tobacco",Switzerland,Vevey
+NEX,Nexans,Industrial Goods and Services,France,Courbevoie
+NEXI,Nexi,Industrial Goods and Services,Italy,Milan
+NIBE B,Nibe Industrier,Construction and Materials,Sweden,Markaryd
+NN,NN Group,Insurance,Netherlands,The Hague
+NOKIA,Nokia,Technology,Finland,Espoo
+NDA FI,Nordea,Banks,Finland,Helsinki
+NHY,Norsk Hydro,Basic Resources,Norway,Oslo
+NOV N,Novartis,Health Care,Switzerland,Basel
+NOVO B,Novo Nordisk,Health Care,Denmark,Bagsværd
+OCDO,Ocado,Retail,United Kingdom,Hatfield
+OCI,OCI,Chemicals,Netherlands,Amsterdam
+OERL,Oerlikon,Industrial Goods and Services,Switzerland,Pfäffikon
+OMV,OMV,Energy,Austria,Vienna
+ONT,Ontex,"Personal Care, Drug and Grocery Stores",Belgium,Aalst
+ORA,Orange S.A.,Telecommunications,France,Issy-les-Moulineaux
+ORK,Orkla ASA,"Food, Beverage and Tobacco",Norway,Oslo
+ORSTED,Ørsted,Utilities,Denmark,Fredericia
+PANDORA,Pandora,Consumer Products and Services,Denmark,Copenhagen
+PBB,Deutsche Pfandbriefbank,Banks,Germany,Garching
+P911,Porsche,Automobiles and Parts,Germany,Stuttgart
+PNL,PostNL,Industrial Goods and Services,Netherlands,The Hague
+PSN,Publicis,Media,France,Paris
+PUM,Puma,Consumer Products and Services,Germany,Herzogenaurach
+QIA,Qiagen,Health Care,Netherlands,Venlo
+RBI,Raiffeisen Bank International,Banks,Austria,Vienna
+REC,Recordati,Health Care,Italy,Milan
+RHM,Rheinmetall,Industrial Goods and Services,Germany,Düsseldorf
+RIGN,Transocean,Energy,Switzerland,Steinhausen
+CFR,Richemont,Consumer Products and Services,Switzerland,Bellevue
+ROG,Roche Holding,Health Care,Switzerland,Basel
+ROL,Royal Mail,Industrial Goods and Services,United Kingdom,London
+RWE,RWE,Utilities,Germany,Essen
+SGE,Sage Group,Technology,United Kingdom,Newcastle upon Tyne
+SGO,Saint-Gobain,Construction and Materials,France,Courbevoie
+SALM,SalMar,"Food, Beverage and Tobacco",Norway,Frøya
+SAMPO,Sampo Group,Insurance,Finland,Helsinki
+SAN,Sanofi,Health Care,France,Paris
+SANO,Sanoma,Media,Finland,Helsinki
+SAP,SAP,Technology,Germany,Walldorf
+SECU B,Securitas AB,Industrial Goods and Services,Sweden,Stockholm
+SU,Schneider Electric,Industrial Goods and Services,France,Rueil-Malmaison
+SCR,SCOR SE,Insurance,France,Paris
+SGSN,SGS S.A.,Industrial Goods and Services,Switzerland,Geneva
+SHEL,Shell plc,Energy,United Kingdom,London
+SIE,Siemens,Industrial Goods and Services,Germany,Munich
+SIG,SIG Group,Industrial Goods and Services,Switzerland,Neuhausen am Rheinfall
+SEB,Skandinaviska Enskilda Banken,Banks,Sweden,Stockholm
+SKA B,Skanska,Construction and Materials,Sweden,Stockholm
+SKF-B,SKF,Industrial Goods and Services,Sweden,Gothenburg
+SKY,Sky Group,Media,United Kingdom,London
+SN,Smith & Nephew,Health Care,United Kingdom,London
+SOLB,Solvay,Chemicals,Belgium,Brussels
+SSE,SSE plc,Utilities,United Kingdom,Perth
+SRB,Storebrand,Insurance,Norway,Oslo
+STER,Stora Enso,Basic Resources,Finland,Helsinki
+STMPA,STMicroelectronics,Technology,Switzerland,Geneva
+SWED A,Swedbank,Banks,Sweden,Stockholm
+SWMA,Swedish Match,"Food, Beverage and Tobacco",Sweden,Stockholm
+SCMN,Swisscom,Telecommunications,Switzerland,Ittigen
+SHB B,Svenska Handelsbanken,Banks,Sweden,Stockholm
+SY1,Symrise,Chemicals,Germany,Holzminden
+TATE,Tate & Lyle,"Food, Beverage and Tobacco",United Kingdom,London
+TJW,Taylor Wimpey,Consumer Products and Services,United Kingdom,High Wycombe
+TELIA,Telia Company,Telecommunications,Sweden,Solna
+TIT,Telecom Italia,Telecommunications,Italy,Milan
+TEL2-B,Tele2,Telecommunications,Sweden,Stockholm
+TEL,Telenor,Telecommunications,Norway,Fornebu
+TEMN,Temenos Group,Technology,Switzerland,Geneva
+TEN,Tenaris,Energy,Luxembourg,Luxembourg City
+TRN,Terna,Utilities,Italy,Rome
+TSCO,Tesco,Retail,United Kingdom,Welwyn Garden City
+TEV,Teva Pharmaceutical Industries,Health Care,Israel,Tel Aviv
+TKA,ThyssenKrupp,Industrial Goods and Services,Germany,Essen
+TOM,TomTom,Technology,Netherlands,Amsterdam
+TTE,TotalEnergies,Energy,France,Courbevoie
+TRYG,Tryg,Insurance,Denmark,Ballerup
+TUI,TUI Group,Travel and Leisure,Germany,Hanover
+UMI,Umicore,Chemicals,Belgium,Brussels
+UC,UniCredit,Banks,Italy,Milan
+ULVR,Unilever,"Personal Care, Drug and Grocery Stores",United Kingdom,London
+UPW,United Utilities,Utilities,United Kingdom,Warrington
+UMG,Universal Music Group,Media,Netherlands,Hilversum
+VALMT,Valmet,Industrial Goods and Services,Finland,Espoo
+VACN,VAT Group,Industrial Goods and Services,Switzerland,Haag
+VESTAS,Vestas,Energy,Denmark,Aarhus
+VIV,Vivendi,Media,France,Paris
+VOD,Vodafone,Telecommunications,United Kingdom,Newbury
+VOLV B,Volvo Group,Industrial Goods and Services,Sweden,Gothenburg
+VNA,Vonovia,Real Estate,Germany,Bochum
+WTB,Whitbread,Travel and Leisure,United Kingdom,Dunstable
+WKL,Wolters Kluwer,Media,Netherlands,Alphen aan den Rijn
+WPP,WPP,Media,United Kingdom,London
+PSON,Pearson,Media,United Kingdom,London
+PNN,Pennon Group,Utilities,United Kingdom,Exeter
+PIRC,Pirelli,Automobiles and Parts,Italy,Milan
+PLPH,PolyPeptide,Health Care,Switzerland,Zug
+PAH3,Porsche SE,Automobiles and Parts,Germany,Stuttgart
+PST,Poste Italiane,Insurance,Italy,Rome
+PROX,Proximus,Telecommunications,Belgium,Brussels
+PRY,Prysmian,Industrial Goods and Services,Italy,Milan
+QLT,Quilter,Financial Services,United Kingdom,London
+FRA,Rational,Industrial Goods and Services,Germany,Landsberg am Lech
+REL,RELX,Media,United Kingdom,London
+RCO,Rémy Cointreau,"Food, Beverage and Tobacco",France,Paris
+RNO,Renault,Automobiles and Parts,France,Boulogne-Billancourt
+RTO,Rentokil Initial,Industrial Goods and Services,United Kingdom,Crawley
+RXL,Rexel,Industrial Goods and Services,France,Paris
+RMV,Rightmove,Real Estate,United Kingdom,London
+S4,S4 Capital,Media,United Kingdom,London
+SDZ,Sandoz,Health Care,Switzerland,Basel
+SRT3,Sartorius,Health Care,Germany,Göttingen
+SCHA,Schibsted,Media,Norway,Oslo
+SDR,Schroders,Financial Services,United Kingdom,London
+G24,Scout24,Technology,Germany,Munich
+SVT,Severn Trent,Utilities,United Kingdom,Coventry
+SHEL,Shell,Energy,United Kingdom,London
+LIGHT,Signify,Construction and Materials,Netherlands,Eindhoven
+SIX2,Sixt,Consumer Products and Services,Germany,Pullach
+SKG,Smurfit Kappa,Industrial Goods and Services,Ireland,Dublin
+SRG,Snam,Energy,Italy,San Donato Milanese
+GLE,Société Générale,Banks,France,Paris
+SW,Sodexo,Travel and Leisure,France,Issy-les-Moulineaux
+SCT,Softcat,Technology,United Kingdom,Marlow
+SOW,Software,Technology,Germany,Darmstadt
+SXS,Spectris,Industrial Goods and Services,United Kingdom,London
+SPX,Spirax-Sarco Engineering,Industrial Goods and Services,United Kingdom,Cheltenham
+STJ,St. James's Place,Financial Services,United Kingdom,Cirencester
+STAN,Standard Chartered,Banks,United Kingdom,London
+STLAM,Stellantis,Automobiles and Parts,Netherlands,Hoofddorp
+SWECO B,Sweco,Construction and Materials,Sweden,Stockholm
+SLHN,Swiss Life,Insurance,Switzerland,Zurich
+SPSN,Swiss Prime Site,Real Estate,Switzerland,Olten
+TLX,Talanx,Insurance,Germany,Hanover
+TMV,TeamViewer,Technology,Germany,Göppingen
+FTI,TechnipFMC,Energy,United Kingdom,London
+TEF,Telefónica,Telecommunications,Spain,Madrid
+TEP,Teleperformance,Industrial Goods and Services,France,Paris
+TPG,Telecom Plus,Telecommunications,United Kingdom,London
+TGS,TGS,Energy,Norway,Oslo
+THL,Thales,Industrial Goods and Services,France,Paris
+TOM,Tomra,Industrial Goods and Services,Norway,Asker
+TPK,Travis Perkins,Retail,United Kingdom,Northampton
+TREL B,Trelleborg,Industrial Goods and Services,Sweden,Trelleborg
+8TRA,Traton,Industrial Goods and Services,Germany,Munich
+UBI,Ubisoft,Consumer Products and Services,France,Montreuil
+URW,Unibail-Rodamco-Westfield,Real Estate,France,Paris
+UN01,Uniper,Utilities,Germany,Düsseldorf
+UPM,UPM-Kymmene,Basic Resources,Finland,Helsinki
+FR,Valeo,Automobiles and Parts,France,Paris
+VK,Vallourec,Basic Resources,France,Meudon
+VAR1,Varta,Industrial Goods and Services,Germany,Ellwangen
+VIE,Veolia,Utilities,France,Aubervilliers
+VER,Verbund,Utilities,Austria,Vienna
+VPLAY B,Viaplay,Media,Sweden,Stockholm
+VCT,Vicat,Construction and Materials,France,L'Isle-d'Abeau
+VIG,Vienna Insurance Group,Insurance,Austria,Vienna
+VITR,Vitrolife,Health Care,Sweden,Gothenburg
+VOE,Voestalpine,Basic Resources,Austria,Linz
+VPK,Vopak,Industrial Goods and Services,Netherlands,Rotterdam
+WDP,Warehouses De Pauw,Real Estate,Belgium,Wolvertem
+WEIR,Weir Group,Industrial Goods and Services,United Kingdom,Glasgow
+WEND,Wendel,Financial Services,France,Paris
+WIE,Wienerberger,Construction and Materials,Austria,Vienna
+WIHL,Wihlborgs Fastigheter,Real Estate,Sweden,Malmö
+WISE,Wise,Financial Services,United Kingdom,London
+WLN,Worldline,Industrial Goods and Services,France,Bezons
+YAR,Yara International,Chemicals,Norway,Oslo
+ZAL,Zalando,Retail,Germany,Berlin
+ANA,Acciona,Construction and Materials,Spain,Alcobendas
+ANE,Acciona Energía,Utilities,Spain,Madrid
+ACX,Acerinox,Basic Resources,Spain,Madrid
+ADH,Adevinta,Consumer Products and Services,Norway,Oslo
+AF,Air France-KLM,Travel and Leisure,France,Tremblay-en-France
+AKZA,AkzoNobel,Chemicals,Netherlands,Amsterdam
+ALLFG,Allfunds Group,Financial Services,Spain,Madrid
+AML,Aston Martin,Automobiles and Parts,United Kingdom,Gaydon
+AMS,ams OSRAM,Technology,Austria,Premstätten
+ARGX,Argenx,Health Care,Netherlands,Breda
+ARND,Aroundtown,Real Estate,Germany,Luxembourg City
+ATOS,Atos,Technology,France,Bezons
+BPOST,Bpost,Industrial Goods and Services,Belgium,Brussels
+BRNW,Brunello Cucinelli,Consumer Products and Services,Italy,Solomeo
+BYG,Big Yellow Group,Real Estate,United Kingdom,Bagshot
+CASP,Castellum,Real Estate,Sweden,Gothenburg
+CDR,CD Projekt,Consumer Products and Services,Poland,Warsaw
+CLN,Clariant,Chemicals,Switzerland,Muttenz
+CTG,Computer Center,Technology,United Kingdom,Hatfield
+CTS,CTS Eventim,Media,Germany,Munich
+DIA,Dia,"Personal Care, Drug and Grocery Stores",Spain,Las Rozas
+DIE,DIETEREN Group,Automobiles and Parts,Belgium,Brussels
+DSM,DSM-Firmenich,Chemicals,Switzerland,Kaiseraugst
+DTG,Daimler Truck,Industrial Goods and Services,Germany,Leinfelden-Echterdingen
+EN,Bouygues,Construction and Materials,France,Paris
+ENGI,Engie,Utilities,France,Courbevoie
+EVR,Evraz,Basic Resources,United Kingdom,London
+FALK,Falck,Health Care,Denmark,Copenhagen
+FLOW,Flow Traders,Financial Services,Netherlands,Amsterdam
+FLTR,Flutter Entertainment,Travel and Leisure,Ireland,Dublin
+FOR,FCC,Construction and Materials,Spain,Barcelona
+GREG,Greggs,Retail,United Kingdom,Newcastle upon Tyne
+GWI,Gruppo Campari,"Food, Beverage and Tobacco",Italy,Sesto San Giovanni
+IDP,Interpump Group,Industrial Goods and Services,Italy,Sant'Ilario d'Enza
+IGGI,IG Group,Financial Services,United Kingdom,London
+IMI,IMI,Industrial Goods and Services,United Kingdom,Birmingham
+INDV,Indivior,Health Care,United Kingdom,Slough
+INF,Informa,Media,United Kingdom,London
+INP,Investec,Financial Services,United Kingdom,London
+IPX,Ipsos,Media,France,Paris
+JMAT,Johnson Matthey,Chemicals,United Kingdom,London
+JUST,Just Eat Takeaway,Retail,Netherlands,Amsterdam
+KBC,KBC Group,Banks,Belgium,Brussels
+KGF,Kingfisher,Retail,United Kingdom,London
+KNIN,Kuehne + Nagel,Industrial Goods and Services,Switzerland,Schindellegi
+LANV,Lanvin Group,Consumer Products and Services,France,Paris
+LGEN,Legal & General,Insurance,United Kingdom,London
+LUN,Lundin Energy,Energy,Sweden,Stockholm
+MKS,Marks & Spencer,Retail,United Kingdom,London
+MONY,Moneysupermarket.com,Media,United Kingdom,Ewloe
+MRW,Morrisons,Retail,United Kingdom,Bradford
+NGG,National Grid,Utilities,United Kingdom,London
