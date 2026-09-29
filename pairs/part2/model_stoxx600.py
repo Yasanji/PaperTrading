@@ -78,10 +78,17 @@ def formation_pass(f, a, b, beta):
     live = (pos[z.notna()] != 0).mean()
     return unit_pnl(a, b, pd.Series(beta, index=h.index), pos, h.index).sum() > 0, live
 
-def erc(cov, iters=2000):
-    w = np.ones(len(cov)) / len(cov)
+def erc(cov, iters=5000, tol=1e-10):
+    """Equal risk contribution, long-only: multiplicative update keeps every weight positive."""
+    n = len(cov)
+    ev = np.linalg.eigvalsh(cov)
+    if ev.min() <= 0: cov = cov + (abs(ev.min()) + 1e-10) * np.eye(n)
+    w = 1.0 / np.sqrt(np.diag(cov)); w /= w.sum()
     for _ in range(iters):
-        w = 1.0 / (cov @ w); w /= w.sum()
+        rc = w * (cov @ w); share = rc / rc.sum()
+        w_new = w * np.sqrt((1.0 / n) / share); w_new /= w_new.sum()
+        if np.abs(w_new - w).max() < tol: w = w_new; break
+        w = w_new
     return w
 
 def sizes(picks, f):
