@@ -1,0 +1,338 @@
+ISIN,SEDOL,Security Name,Currency,Number of Shares,Percent of Fund,Trade Country Name,Local Price,Sector Classification,Industry Classification,Base Market Value
+FR0011726835,BJYRDP5,Gaztransport & Technigaz SA,EUR,6903.0,0.08562,France,216.0,Energy,Oil Gas & Consumable Fuels,1690848.6
+DE0007500001,5636927,thyssenkrupp AG,EUR,100721.0,0.084355,Germany,14.585,Materials,Metals & Mining,1665863.9
+BE0003851681,B1G5XP1,Aedifica SA,EUR,21454.0,0.079275,Belgium,64.35,Real Estate,Health Care Reits,1565560.6
+BE0003764785,5715774,Ackermans & van Haaren NV,EUR,5012.0,0.077073,Belgium,267.8,Industrials,Construction & Engineering,1522070.3
+FI0009005870,B11WFP1,Konecranes Oyj,EUR,40555.0,0.072658,Finland,31.2,Industrials,Machinery,1434868.4
+IT0005541336,BMXPBZ7,Lottomatica Group S.P.A.,EUR,48338.0,0.071307,Italy,25.69,Consumer Discretionary,Hotels Restaurants & Leisure,1408205.0
+FR0012757854,BYZFYS3,SPIE SA,EUR,28575.0,0.069539,France,42.38,Industrials,Commercial Services & Supplies,1373283.8
+FR0010908533,B62G1B5,Edenred SA,EUR,42615.0,0.069056,France,28.22,Financials,Financial Services,1363743.1
+IT0005495657,BMY36H7,Saipem S.p.A.,EUR,274868.0,0.068722,Italy,4.354,Energy,Energy Equipment & Services,1357143.4
+AT0000730007,B1WVF68,ANDRITZ AG,EUR,13697.0,0.066225,Austria,84.2,Industrials,Machinery,1307827.9
+NL0000852564,B1W8P14,Aalberts N.V.,EUR,24648.0,0.061454,Netherlands,43.42,Industrials,Machinery,1213625.1
+FR0010411983,B1LB9P6,SCOR SE,EUR,32023.0,0.060535,France,32.92,Financials,Insurance,1195459.6
+ES0180907000,BH4H4H0,Unicaja Banco S.A.,EUR,282165.0,0.057487,Spain,3.548,Financials,Banks,1135271.8
+ES0105025003,BNGNB77,MERLIN Properties SOCIMI S.A.,EUR,78247.0,0.054996,Spain,12.24,Real Estate,Diversified Reits,1086080.9
+BE0974320526,BF44466,Umicore SA,EUR,45190.0,0.054753,Belgium,21.1,Materials,Chemicals,1081279.3
+IE0000669501,4058629,Glanbia Plc,EUR,48423.0,0.054749,Ireland,19.69,Consumer Staples,Food Products,1081211.1
+AT0000969985,B2RK5K1,AT & S Austria Technologie & Systemtechnik Aktiengesellschaft,EUR,4401.0,0.054587,Austria,216.0,Information Technology,Electronic Equipment Instruments & Components,1077998.6
+FR0000044448,7130836,Nexans SA,EUR,7118.0,0.054443,France,133.2,Industrials,Electrical Equipment,1075165.4
+NL0010801007,BNCBD46,IMCD N.V.,EUR,9769.0,0.053953,Netherlands,96.18,Industrials,Trading Companies & Distributors,1065486.5
+BE0003867844,B1YWXY3,KBC Ancora SCA,EUR,9345.0,0.053339,Belgium,99.4,Financials,Banks,1053364.8
+DE000A0D6554,B06CF71,Nordex SE,EUR,23871.0,0.052883,Germany,38.58,Industrials,Electrical Equipment,1044349.7
+IT0003261697,B019M65,Azimut Holding Spa,EUR,22752.0,0.051514,Italy,39.43,Financials,Capital Markets,1017324.4
+DE0006766504,5485527,Aurubis AG,EUR,5435.0,0.05059,Germany,162.1,Materials,Metals & Mining,999069.4
+BE0974349814,BK8VQD9,Warehouses De Pauw SA,EUR,43265.0,0.050582,Belgium,20.36,Real Estate,Industrial Reits,998912.8
+FI4000074984,BH6XZT5,Valmet Corp,EUR,30552.0,0.050035,Finland,28.52,Industrials,Machinery,988103.06
+AT0000937503,4943402,voestalpine AG,EUR,19338.0,0.049592,Austria,44.66,Materials,Metals & Mining,979362.25
+NL0000337319,B12W5Y9,Koninklijke BAM Groep NV,EUR,65002.0,0.048113,Netherlands,12.89,Industrials,Construction & Engineering,950151.2
+DE000A12DM80,BYT9340,Scout24 SE,EUR,11913.0,0.045901,Germany,67.1,Communication Services,Interactive Media & Services,906476.9
+NL0014559478,BNC0116,Technip Energies NV,EUR,27593.0,0.045727,France,28.86,Energy,Energy Equipment & Services,903042.75
+FR0012435121,BVSS790,Elis SA,EUR,36492.0,0.045388,France,21.66,Industrials,Commercial Services & Supplies,896332.56
+FR0013227113,BZ6T5C2,Soitec SA,EUR,5066.0,0.045235,France,155.5,Information Technology,Semiconductors & Semiconductor Equipment,893323.25
+ES0130960018,7383072,Enagas SA,EUR,46866.0,0.044835,Spain,16.66,Utilities,Gas Utilities,885413.06
+GB00BTQGS779,BTQGS77,Metlen Energy & Metals PLC,EUR,15859.0,0.04475,United Kingdom,49.14,Industrials,Industrial Conglomerates,883739.0
+IT0001233417,5499131,A2A S.p.A.,EUR,344235.0,0.044515,Italy,2.252,Utilities,Multi-Utilities,879096.4
+FR0013506730,BLGWF90,Vallourec SA,EUR,41276.0,0.043623,France,18.405,Energy,Energy Equipment & Services,861482.56
+IT0001250932,7598003,Hera S.p.A.,EUR,211666.0,0.042783,Italy,3.52,Utilities,Multi-Utilities,844902.94
+DE000A0WMPJ6,5468346,AIXTRON SE,EUR,20346.0,0.042597,Germany,36.46,Information Technology,Semiconductors & Semiconductor Equipment,841218.44
+ES0132105018,B01ZVZ5,Acerinox SA,EUR,43022.0,0.042467,Spain,17.19,Materials,Metals & Mining,838647.75
+DE000A0Z2ZZ5,B1SK0S6,freenet AG,EUR,32100.0,0.042358,Germany,22.98,Communication Services,Wireless Telecommunication Services,836504.2
+IT0005278236,BZ5ZHK3,Pirelli & C. S.p.A.,EUR,107271.0,0.040624,Italy,6.595,Consumer Discretionary,Automobile Components,802250.94
+IT0001078911,5161407,Interpump Group S.p.A.,EUR,19482.0,0.040273,Italy,36.0,Industrials,Machinery,795333.2
+DE000A3E5D64,BNHRG84,FUCHS SE Pref Registered Shs,EUR,16067.0,0.039617,Germany,42.94,Materials,Chemicals,782365.9
+NL0000360618,B156T57,SBM Offshore NV,EUR,18916.0,0.03893,Netherlands,35.84,Energy,Energy Equipment & Services,768794.75
+FR0013176526,BDC5ST8,Valeo SE,EUR,46051.0,0.038542,France,14.575,Consumer Discretionary,Automobile Components,761133.25
+IT0001031084,B1HKSV6,Banca Generali S.p.A.,EUR,10481.0,0.038488,Italy,63.95,Financials,Capital Markets,760074.8
+IT0003115950,7169517,De'Longhi S.p.A.,EUR,16538.0,0.038138,Italy,40.16,Consumer Discretionary,Household Durables,753164.4
+IT0004764699,B7K6D18,Brunello Cucinelli S.p.A.,EUR,7954.0,0.037854,Italy,82.88,Consumer Discretionary,Textiles Apparel & Luxury Goods,747564.0
+DE000TUAG505,BNC3GJ8,TUI AG,EUR,94730.0,0.037218,Germany,6.842,Consumer Discretionary,Hotels Restaurants & Leisure,734993.8
+FR0000071946,5608915,Alten SA,EUR,7977.0,0.037194,France,81.2,Information Technology,It Services,734528.56
+NL0006237562,5769209,Arcadis NV,EUR,15489.0,0.036804,Netherlands,41.38,Industrials,Professional Services,726820.1
+IT0005282865,BZ1DZ96,Reply S.p.A.,EUR,5420.0,0.03657,Italy,117.5,Information Technology,It Services,722187.94
+DE000KGX8881,BB22L96,KION GROUP AG,EUR,15612.0,0.035832,Germany,39.97,Industrials,Machinery,707629.25
+FR0010313833,B0Z5YZ2,Arkema SA,EUR,10945.0,0.035038,France,55.75,Materials,Chemicals,691948.44
+FR0000051807,5999330,Teleperformance SE,EUR,8502.0,0.034877,France,71.44,Industrials,Professional Services,688772.25
+DE000RENK730,BMD6RR4,RENK Group AG,EUR,15562.0,0.034337,Germany,38.425,Industrials,Machinery,678097.8
+DE000FTG1111,BYVQYG8,flatexDEGIRO SE,EUR,19738.0,0.033435,Germany,29.5,Financials,Capital Markets,660295.4
+ES0183746314,5466726,Vidrala SA,EUR,6540.0,0.033198,Spain,88.4,Materials,Containers & Packaging,655606.25
+FR0000050809,5633616,Sopra Steria Group SA,EUR,3535.0,0.032762,France,161.4,Information Technology,It Services,647002.56
+FR0000121204,7390113,Wendel SE,EUR,6932.0,0.032561,France,81.8,Financials,Financial Services,643020.7
+DE0005470306,5881857,CTS Eventim AG & Co. KGaA,EUR,9977.0,0.03234,Germany,56.45,Communication Services,Entertainment,638670.75
+FI0009002422,4665148,Outokumpu Oyj,EUR,104660.0,0.031732,Finland,5.28,Materials,Metals & Mining,626653.94
+FI0009000277,5479702,Tieto Corporation,EUR,30109.0,0.031605,Finland,18.28,Information Technology,It Services,624145.2
+FI0009000459,4447476,Huhtamaki Oyj,EUR,18614.0,0.031531,Finland,29.5,Materials,Containers & Packaging,622694.2
+AT0000821103,4422332,UNIQA Insurance Group AG,EUR,30501.0,0.031491,Austria,17.98,Financials,Insurance,621894.6
+FI0009005318,B07G378,Nokian Renkaat Oyj,EUR,33497.0,0.030564,Finland,15.89,Consumer Discretionary,Automobile Components,603591.25
+DE000A2NB601,BGJVB13,Jenoptik AG,EUR,12735.0,0.030304,Germany,41.44,Information Technology,Electronic Equipment Instruments & Components,598455.4
+DE0008303504,5735631,TAG Immobilien AG,EUR,46059.0,0.029992,Germany,11.34,Real Estate,Real Estate Management & Development,592298.5
+FR0013451333,BG0SC10,FDJ United,EUR,25073.0,0.029932,France,20.79,Consumer Discretionary,Hotels Restaurants & Leisure,591117.6
+DE000LEG1110,B9G6L89,LEG Immobilien SE,EUR,11212.0,0.029783,Germany,46.26,Real Estate,Real Estate Management & Development,588168.5
+ES0139140174,BD0PJ08,Colonial SFL SOCIMI SA,EUR,101649.0,0.029214,Spain,5.005,Real Estate,Office Reits,576926.25
+BE0974400328,BMHT025,Azelis Group N.V.,EUR,42107.0,0.029087,Belgium,12.03,Industrials,Trading Companies & Distributors,574424.56
+FI4000571013,BT195Y7,Hiab Oyj Class B,EUR,8496.0,0.028637,Finland,58.7,Industrials,Machinery,565543.06
+FR0000121121,7042395,Eurazeo SE,EUR,10892.0,0.028495,France,45.56,Financials,Financial Services,562735.6
+DE000A2LQ884,BL5C4C7,AUTO1 Group SE,EUR,27607.0,0.028424,Germany,17.93,Consumer Discretionary,Specialty Retail,561322.6
+DE0005158703,5932409,Bechtle AG,EUR,14000.0,0.027815,Germany,34.6,Information Technology,It Services,549309.6
+DE0005909006,5117381,Bilfinger SE,EUR,8599.0,0.02775,Germany,56.2,Industrials,Commercial Services & Supplies,548021.2
+FR0013269123,BDT88L2,Rubis SCA,EUR,13662.0,0.027458,France,35.0,Utilities,Gas Utilities,542244.8
+DE0006969603,5064722,PUMA SE,EUR,21096.0,0.027292,Germany,22.53,Consumer Discretionary,Textiles Apparel & Luxury Goods,538982.2
+DE000KSAG888,B54C017,K+S AG,EUR,31271.0,0.027258,Germany,15.18,Materials,Chemicals,538302.75
+NL0011821392,BYY7VY5,Signify NV,EUR,30314.0,0.027242,Netherlands,15.65,Industrials,Electrical Equipment,537985.56
+PTZON0AM0006,B0B9GS5,NOS SGPS SA,EUR,85765.0,0.026422,Portugal,5.365,Communication Services,Diversified Telecommunication Services,521786.53
+IT0005366767,BJ1F880,Nexi S.p.A.,EUR,111210.0,0.0264,Italy,4.134,Financials,Financial Services,521347.6
+AT0000831706,5699373,Wienerberger AG,EUR,26311.0,0.026077,Austria,17.26,Materials,Construction Materials,514981.03
+NL0000379121,5228658,Randstad NV,EUR,12468.0,0.025352,Netherlands,35.41,Industrials,Professional Services,500651.78
+NL0015000LU4,BKPGF52,Iveco Group NV,EUR,30834.0,0.025266,Italy,14.27,Industrials,Machinery,498961.4
+FR0000073298,B188NJ2,Ipsos SA,EUR,12200.0,0.024982,France,35.66,Communication Services,Media,493349.0
+BE0003470755,4821100,Solvay SA,EUR,16855.0,0.023732,Belgium,24.52,Materials,Chemicals,468664.75
+NL0009432491,5809428,Royal Vopak NV,EUR,8530.0,0.023472,Netherlands,47.92,Energy,Oil Gas & Consumable Fuels,463531.13
+NL0009269109,5075036,Koninklijke Heijmans N.V.,EUR,4464.0,0.02298,Netherlands,89.65,Industrials,Construction & Engineering,453824.13
+FR0010241638,B0LMF87,Mercialys SA,EUR,40078.0,0.022669,France,9.85,Real Estate,Retail Reits,447667.28
+PTSON0AM0001,5973992,Sonae SGPS SA,EUR,182955.0,0.022115,Portugal,2.105,Consumer Staples,Consumer Staples Distribution & Retail,436726.44
+IT0001206769,5490684,SOL S.p.A.,EUR,6732.0,0.021648,Italy,56.0,Materials,Chemicals,427508.97
+DE000TKMS001,BS801X7,TKMS AG & Co. KGaA,EUR,4535.0,0.020937,Germany,80.4,Industrials,Aerospace & Defense,413472.3
+DE0006083405,BZBWTJ1,HORNBACH Holding AG & Co. KGaA,EUR,4196.0,0.020914,Germany,86.8,Consumer Discretionary,Specialty Retail,413017.34
+ES0171996087,BYY3DX6,Grifols S.A. Class A,EUR,37875.0,0.02064,Spain,9.49,Health Care,Biotechnology,407597.9
+AT0000908504,B0BKSS2,Vienna Insurance Group AG,EUR,5367.0,0.020618,Austria,66.9,Financials,Insurance,407165.38
+GB00BNTJ3546,BNTJ354,Allfunds Group plc,EUR,38391.0,0.020502,Netherlands,9.3,Financials,Capital Markets,404879.2
+IT0003027817,4783211,Iren S.p.A.,EUR,145628.0,0.020404,Italy,2.44,Utilities,Multi-Utilities,402946.88
+DE000A1PHFF7,B88MHC4,HUGO BOSS AG,EUR,9129.0,0.019999,Germany,38.15,Consumer Discretionary,Textiles Apparel & Luxury Goods,394939.75
+DE000AUM0V10,BMYPLM3,Aumovio SE,EUR,9646.0,0.019996,Germany,36.1,Consumer Discretionary,Automobile Components,394882.16
+ES0157097017,B1YY662,Almirall SA,EUR,33715.0,0.01998,Spain,10.32,Health Care,Pharmaceuticals,394562.6
+BE0003818359,B07Q2V5,Lakefront Biotherapeutics,EUR,13346.0,0.019956,Belgium,26.04,Health Care,Biotechnology,394098.88
+DE0005773303,7107551,Fraport AG,EUR,5569.0,0.019827,Germany,62.0,Industrials,Transportation Infrastructure,391545.3
+NL0015001KT6,BSMM753,Brembo N.V.,EUR,33220.0,0.019114,Italy,10.02,Consumer Discretionary,Automobile Components,377468.25
+NL0010583399,BFRSRR7,Corbion NV,EUR,14731.0,0.018846,Netherlands,22.28,Materials,Chemicals,372186.4
+IT0003153621,B0NN179,Tamburi Investment Partners S.p.A.,EUR,36715.0,0.018553,Italy,8.8,Financials,Capital Markets,366386.3
+DE0005089031,4354134,United Internet AG,EUR,12820.0,0.018316,Germany,24.88,Communication Services,Diversified Telecommunication Services,361702.47
+ES0182870214,5504789,Sacyr SA,EUR,79486.0,0.018285,Spain,4.006,Industrials,Construction & Engineering,361089.34
+BE0003816338,B04M8J6,CMB.TECH NV,EUR,18760.0,0.018033,Belgium,16.74,Energy,Oil Gas & Consumable Fuels,356124.1
+IT0003492391,B234WN9,DiaSorin S.p.A.,EUR,3968.0,0.017886,Italy,78.5,Health Care,Health Care Equipment & Supplies,353227.4
+NL0000289213,4948623,Wereldhave N.V.,EUR,17692.0,0.017799,Netherlands,17.52,Real Estate,Retail Reits,351499.03
+DE0007493991,B3S3S52,Stroeer SE & Co. KGaA,EUR,8521.0,0.017693,Germany,36.16,Communication Services,Media,349407.38
+FR001400Q9V2,BQKMP24,Exosens SA,EUR,5046.0,0.017429,France,60.15,Industrials,Aerospace & Defense,344188.2
+FI4000552526,BRX9C06,Mandatum Oyj,EUR,48482.0,0.017038,Finland,6.12,Financials,Insurance,336468.97
+DE0006305006,4557847,DEUTZ AG,EUR,26137.0,0.01687,Germany,11.24,Industrials,Machinery,333146.4
+FR0000062671,B06BGH5,Exail Technologies SA,EUR,2320.0,0.016692,France,125.3,Industrials,Aerospace & Defense,329649.28
+NL0015001W49,BPK85C5,PLUXEE N.V.,EUR,20018.0,0.016622,France,14.46,Financials,Financial Services,328247.97
+FR0000121709,4792132,SEB SA,EUR,4913.0,0.016165,France,57.3,Consumer Discretionary,Household Durables,319237.9
+DE0006202005,5465358,Salzgitter AG,EUR,5544.0,0.016061,Germany,50.45,Materials,Metals & Mining,317173.94
+DE000A1K0235,B6YT190,SUSS MicroTec SE,EUR,3880.0,0.015863,Germany,71.2,Information Technology,Semiconductors & Semiconductor Equipment,313274.3
+LU0569974404,B58C6H1,Aperam S.A.,EUR,6173.0,0.015689,France,44.26,Materials,Metals & Mining,309828.06
+LU0088087324,B00ZQQ2,SES SA FDR (Class A),EUR,60610.0,0.015355,France,4.412,Communication Services,Media,303244.47
+IE00BWY4ZF18,BF2NP06,Cairn Homes PLC,EUR,95737.0,0.015228,Ireland,2.77,Consumer Discretionary,Household Durables,300727.16
+IT0004056880,B14NJ71,Amplifon SpA,EUR,22155.0,0.015215,Italy,11.96,Health Care,Health Care Providers & Services,300480.3
+DE000WCH8881,B11Y568,Wacker Chemie AG,EUR,2981.0,0.015072,Germany,88.05,Materials,Chemicals,297649.0
+ES0169501022,BMW2GT8,Pharma Mar SA,EUR,3582.0,0.014892,Spain,72.4,Health Care,Biotechnology,294087.97
+NL0000852523,B1WFDQ6,TKH Group N.V. Cert,EUR,4766.0,0.014874,Netherlands,54.35,Industrials,Electrical Equipment,293742.4
+ES0157261019,B29F9S0,Laboratorios Farmaceuticos Rovi S.A.,EUR,4338.0,0.014784,Spain,59.35,Health Care,Pharmaceuticals,291959.97
+NL0000302636,5716302,Van Lanschot Kempen NV cert. of shs,EUR,3710.0,0.014636,Netherlands,68.7,Financials,Capital Markets,289030.53
+LU1673108939,BF0CK44,Aroundtown SA,EUR,150626.0,0.014496,Germany,1.676,Real Estate,Real Estate Management & Development,286277.38
+IT0004931058,BBGTNT7,MAIRE S.p.A.,EUR,19756.0,0.014294,Italy,12.6,Industrials,Construction & Engineering,282281.66
+IT0001157020,5337093,ERG S.p.A.,EUR,10983.0,0.014203,Italy,22.52,Utilities,Independent Power And Renewable Electricity Producers,280480.38
+FR0000031577,7399369,Virbac SA,EUR,792.0,0.014121,France,310.5,Health Care,Pharmaceuticals,278868.78
+IT0005599938,BT19SD7,Fincantieri S.p.A.,EUR,19554.0,0.013654,Italy,12.16,Industrials,Machinery,269638.72
+ES0105027009,BP3QYZ2,Logista Integral S.A.,EUR,6785.0,0.013636,Spain,35.0,Industrials,Air Freight & Logistics,269296.66
+DE000A2YN900,BJ7WGS1,TeamViewer SE,EUR,38959.0,0.013602,Germany,6.08,Information Technology,Software,268611.4
+ES0178165017,B16FTB9,Tecnicas Reunidas SA,EUR,8749.0,0.013404,Spain,26.68,Energy,Energy Equipment & Services,264702.06
+FI0009004824,4513612,Kemira Oyj,EUR,13404.0,0.013293,Finland,17.27,Materials,Chemicals,262506.34
+BE0165385973,7370063,Melexis NV,EUR,3326.0,0.013283,Belgium,69.55,Information Technology,Semiconductors & Semiconductor Equipment,262320.63
+FR001400J770,BMV2C79,Air France-KLM SA,EUR,19051.0,0.012914,France,11.805,Industrials,Passenger Airlines,255033.28
+AT0000818802,5492345,DO & CO Aktiengesellschaft,EUR,1189.0,0.012822,Austria,187.8,Industrials,Commercial Services & Supplies,253215.64
+NL0015000K93,BMZ4R21,Eurocommercial Properties NV,EUR,8393.0,0.012747,Netherlands,26.45,Real Estate,Retail Reits,251742.19
+DE000SHA0100,BV5F6V9,Schaeffler AG,EUR,34254.0,0.012588,Germany,6.4,Consumer Discretionary,Automobile Components,248601.84
+ES0176252718,5738298,Melia Hotels International S.A.,EUR,21653.0,0.012583,Spain,10.12,Consumer Discretionary,Hotels Restaurants & Leisure,248491.58
+IT0001207098,5728125,Acea S.p.A.,EUR,10987.0,0.01258,Italy,19.94,Utilities,Multi-Utilities,248437.61
+ES0184262212,5638280,Viscofan S.A.,EUR,4044.0,0.012493,Spain,53.8,Consumer Staples,Food Products,246721.2
+FR0000039620,5481202,Mersen SA,EUR,5166.0,0.012471,France,42.04,Industrials,Electrical Equipment,246280.6
+DE000A41YHG1,BVPXRV0,Alzchem Group AG,EUR,1336.0,0.012459,Germany,162.4,Materials,Chemicals,246039.89
+BE0003720340,5438361,Retail Estates SA,EUR,3411.0,0.012457,Belgium,63.6,Real Estate,Retail Reits,246009.53
+DE000WAF3001,BYY5978,Siltronic AG,EUR,2803.0,0.012394,Germany,77.0,Information Technology,Semiconductors & Semiconductor Equipment,244752.38
+NL0012044747,BYYH7G9,Redcare Pharmacy N.V.,EUR,2995.0,0.012228,Germany,71.1,Consumer Staples,Consumer Staples Distribution & Retail,241479.06
+DE0005565204,5119901,Durr AG,EUR,12341.0,0.012175,Germany,17.18,Industrials,Machinery,240428.84
+BMG3602E1084,BQJXXT1,Flow Traders Ltd,EUR,8037.0,0.012174,Netherlands,26.38,Financials,Capital Markets,240426.22
+FR0000077919,7136663,JCDecaux SE,EUR,8432.0,0.012105,France,25.0,Communication Services,Media,239047.22
+NL0011872650,BD9Y9B7,Basic-Fit NV,EUR,7172.0,0.0121,Netherlands,29.38,Consumer Discretionary,Hotels Restaurants & Leisure,238948.95
+DE0005470405,B05M8B7,LANXESS AG,EUR,16775.0,0.012041,Germany,12.5,Materials,Chemicals,237785.64
+DE0005419105,5772627,CANCOM SE,EUR,9234.0,0.01193,Germany,22.5,Information Technology,It Services,235605.52
+FI4000507124,BL979V2,Puuilo Oyj,EUR,12000.0,0.011893,Finland,17.26,Consumer Discretionary,Broadline Retail,234874.11
+FR0000121147,4400446,Forvia SE,EUR,23925.0,0.011851,France,8.626,Consumer Discretionary,Automobile Components,234031.6
+DE000A3E00M1,BPRD664,IONOS Group SE,EUR,6017.0,0.011554,Germany,33.44,Information Technology,It Services,228170.42
+DE0005677108,5695423,Elmos Semiconductor SE,EUR,1318.0,0.011534,Germany,152.4,Information Technology,Semiconductors & Semiconductor Equipment,227778.88
+FR0000050353,5489916,LISI SA,EUR,3210.0,0.011502,France,62.4,Industrials,Aerospace & Defense,227144.75
+FI4000571054,BT19600,Kalmar Corporation Class B,EUR,5252.0,0.01146,Finland,38.0,Industrials,Machinery,226319.2
+FR0000120966,5298781,Societe BIC SA,EUR,2994.0,0.011381,France,66.2,Industrials,Commercial Services & Supplies,224761.97
+DE0005403901,5740806,CEWE Stiftung & Co. KGaA,EUR,1781.0,0.010943,Germany,107.0,Industrials,Commercial Services & Supplies,216102.98
+FR0010929125,B4RFDT5,ID Logistics Group,EUR,594.0,0.010898,France,319.5,Industrials,Air Freight & Logistics,215213.94
+IT0005331019,BG1VQ16,Carel Industries SpA,EUR,6637.0,0.010862,Italy,28.5,Industrials,Building Products,214501.2
+IE00BD6JX574,BD6JX57,Glenveagh Properties Plc,EUR,76605.0,0.010755,Ireland,2.445,Consumer Discretionary,Household Durables,212397.33
+ES0105079000,BZ2JBQ2,Grenergy Renovables S.A,EUR,2491.0,0.010714,Spain,74.9,Utilities,Independent Power And Renewable Electricity Producers,211577.1
+DE0005313704,5922961,Carl Zeiss Meditec AG,EUR,5842.0,0.010601,Germany,31.6,Health Care,Health Care Equipment & Supplies,209344.6
+ES0165386014,B1YVKJ4,Solaria Energia y Medio Ambiente S.A.,EUR,11414.0,0.010552,Spain,16.1,Utilities,Independent Power And Renewable Electricity Producers,208389.97
+BE0974413453,BMYKVN9,DEME Group NV,EUR,1043.0,0.010505,Belgium,175.4,Industrials,Construction & Engineering,207456.47
+DE0007297004,5784462,Suedzucker AG,EUR,13751.0,0.010423,Germany,13.2,Consumer Staples,Food Products,205835.98
+FR0010828137,B4Y0230,Carmila SA,EUR,12186.0,0.010328,France,14.76,Real Estate,Retail Reits,203967.31
+IT0005455875,BNT8D28,Intercos S.p.A.,EUR,13700.0,0.010274,Italy,13.06,Consumer Staples,Personal Care Products,202897.56
+IT0005119810,BYWZZF0,Avio SpA,EUR,6029.0,0.010234,Italy,29.56,Industrials,Aerospace & Defense,202098.34
+DE000A0LD6E6,B1Y47Y7,Gerresheimer AG,EUR,6493.0,0.010231,Germany,27.44,Health Care,Life Sciences Tools & Services,202042.44
+DE0005550636,5169218,Draegerwerk AG & Co. KGaA Pref,EUR,1419.0,0.009762,Germany,119.8,Health Care,Health Care Equipment & Supplies,192775.7
+DE0007231334,5271276,Sixt SE Pref,EUR,3005.0,0.009732,Germany,56.4,Industrials,Ground Transportation,192192.6
+FR0000053381,4457088,Derichebourg SA,EUR,20067.0,0.009599,France,8.33,Industrials,Commercial Services & Supplies,189557.3
+FR0000127771,4834777,Vivendi SE,EUR,113013.0,0.009416,France,1.451,Communication Services,Entertainment,185955.44
+FI0009007264,5792982,Bittium Corporation,EUR,4456.0,0.009378,Finland,36.65,Information Technology,Software,185196.28
+LU0775917882,B8K9X70,Grand City Properties SA,EUR,21952.0,0.009265,Germany,7.35,Real Estate,Real Estate Management & Development,182967.72
+FR0010282822,B0XMRC3,VusionGroup S.A.,EUR,1231.0,0.009225,France,130.5,Information Technology,Electronic Equipment Instruments & Components,182172.02
+IE00BJ5FQX74,BJ5FQX7,Uniphar PLC,EUR,39595.0,0.009208,Ireland,4.05,Health Care,Health Care Providers & Services,181847.97
+DE000JST4000,BDC3R17,JOST Werke SE,EUR,2577.0,0.00916,Germany,61.9,Industrials,Machinery,180891.48
+ES0137650018,B28V440,Fluidra S.A.,EUR,8728.0,0.009001,Spain,17.96,Industrials,Machinery,177760.03
+FR00140182K6,BQS7SF5,Worldline SA,EUR,14311.0,0.008974,France,10.92,Financials,Financial Services,177217.14
+BE0974256852,5806225,Colruyt Group N.V.,EUR,4000.0,0.008935,Belgium,38.9,Consumer Staples,Consumer Staples Distribution & Retail,176450.42
+NL0000888691,B1Z95S1,AMG Critical Materials N.V.,EUR,5333.0,0.00893,Netherlands,29.16,Materials,Metals & Mining,176348.66
+FR0000031775,5763201,Vicat SA,EUR,2568.0,0.008877,France,60.2,Materials,Construction Materials,175309.17
+AT0000641352,5681046,CA Immobilien Anlagen AG,EUR,6909.0,0.008867,Austria,22.35,Real Estate,Real Estate Management & Development,175107.92
+DE000A0DJ6J9,B3B20H2,SMA Solar Technology AG,EUR,2653.0,0.008805,Germany,57.8,Industrials,Electrical Equipment,173891.42
+NL0015001OI1,BLC8J12,MFE-MediaForEurope NV Class A,EUR,66505.0,0.008783,Italy,2.3,Communication Services,Media,173458.34
+ES0105546008,BNC0LH2,Linea Directa Aseguradora SA,EUR,122153.0,0.008768,Spain,1.25,Financials,Insurance,173151.88
+LU1704650164,BDZRDG3,Befesa SA,EUR,4419.0,0.008767,Germany,34.55,Industrials,Commercial Services & Supplies,173135.11
+NL0010391025,B8RC747,Pharming Group NV,EUR,170176.0,0.00866,Netherlands,0.886,Health Care,Biotechnology,171018.53
+DE000A40ZVV0,BT7MHJ9,CECONOMY AG TEMP,EUR,34995.0,0.00856,Germany,4.26,Consumer Discretionary,Specialty Retail,169055.27
+IT0005162406,BD9Y5C0,Technogym S.p.A,EUR,11267.0,0.008553,Italy,13.22,Consumer Discretionary,Leisure Products,168909.02
+NL0015002K83,BVD9FN8,Havas NV,EUR,8331.0,0.008539,Netherlands,17.85,Communication Services,Media,168635.28
+FR001400TL40,BM8X1W3,Louis Hachette Group SA,EUR,84383.0,0.008528,France,1.76,Communication Services,Media,168414.97
+AT0000A21KS2,BFZ5BQ7,CPI Europe AG,EUR,9584.0,0.008288,Austria,15.06,Real Estate,Real Estate Management & Development,163675.94
+NL0010558797,BD4TZK8,OCI NV,EUR,35348.0,0.008281,Netherlands,4.08,Materials,Chemicals,163545.3
+DE000WACK012,B17R248,Wacker Neuson SE,EUR,5963.0,0.008235,Germany,24.05,Industrials,Machinery,162627.11
+IT0000076486,4253372,Danieli & C.Officine Meccaniche SPA Az. di risp. Non Conv.,EUR,4138.0,0.008003,Italy,33.68,Industrials,Machinery,158043.14
+FR0011341205,B8X9FN7,Nanobiotix SA,EUR,5045.0,0.007996,France,27.6,Health Care,Biotechnology,157900.44
+IT0005453250,BMVFDR5,El.En. S.p.A.,EUR,8551.0,0.007915,Italy,16.12,Health Care,Health Care Equipment & Supplies,156312.98
+FR0010667147,BNFWV75,Coface SA,EUR,8290.0,0.007807,France,16.4,Financials,Insurance,154174.11
+ES0126775008,BTG0DY1,Distribuidora Internacional de Alimentacion SA,EUR,2844.0,0.007684,Spain,47.05,Consumer Staples,Consumer Staples Distribution & Retail,151740.77
+DE0007231326,5260768,Sixt SE,EUR,1919.0,0.007664,Germany,69.55,Industrials,Ground Transportation,151350.97
+FR0004065605,B048Z71,MedinCell SA,EUR,5578.0,0.007623,France,23.8,Health Care,Pharmaceuticals,150545.75
+NL00150003E1,BN0TYP0,Fugro NV,EUR,16021.0,0.007553,Netherlands,8.21,Industrials,Construction & Engineering,149157.77
+FR0000120859,B011GL4,Imerys SA,EUR,5552.0,0.007224,France,22.66,Materials,Construction Materials,142666.64
+DE0005936124,7058228,OHB SE,EUR,697.0,0.007164,Germany,179.0,Industrials,Aerospace & Defense,141481.25
+BE0003853703,B1FWD64,MONTEA NV,EUR,1997.0,0.007156,Belgium,62.4,Real Estate,Industrial Reits,141310.92
+ES0105630315,B15CL93,CIE Automotive S.A.,EUR,4840.0,0.007143,Spain,25.7,Consumer Discretionary,Automobile Components,141056.0
+ES0129743318,B3CTJS6,Elecnor S.A.,EUR,4044.0,0.007106,Spain,30.6,Industrials,Construction & Engineering,140328.42
+DE000A0HL8N9,B23PWM1,2G Energy AG,EUR,2026.0,0.007085,Germany,60.9,Industrials,Electrical Equipment,139916.8
+FR0000130395,4741714,Remy Cointreau SA,EUR,2833.0,0.006979,France,42.9,Consumer Staples,Beverages,137821.5
+DE0006292030,4498065,KSB SE & Co. KGaA Vorz.Akt. ohne Stimmrecht,EUR,148.0,0.006977,Germany,821.0,Industrials,Machinery,137790.08
+IT0001469383,4084895,Arnoldo Mondadori Editore S.p.A.,EUR,58436.0,0.006946,Italy,2.07,Communication Services,Media,137171.52
+DE0005104400,5927353,ATOSS Software SE,EUR,1464.0,0.006868,Germany,81.7,Information Technology,Software,135636.39
+AT0000APOST4,B1577G7,Osterreichische Post AG,EUR,3837.0,0.006863,Austria,31.15,Industrials,Air Freight & Logistics,135538.58
+GB00BN44P254,BN44P25,Baltic Classifieds Group Plc,EUR,57509.0,0.006737,United Kingdom,2.04,Communication Services,Interactive Media & Services,133039.02
+FR0000035081,4554406,Icade SA,EUR,7242.0,0.006733,France,16.19,Real Estate,Diversified Reits,132959.2
+PTREL0AM0008,B233HR5,Redes Energeticas Nacionais SA,EUR,32474.0,0.006638,Portugal,3.56,Utilities,Multi-Utilities,131098.84
+DE000A255F11,BNTJ0F3,Friedrich Vorwerk Group SE,EUR,1814.0,0.00663,Germany,63.65,Energy,Oil Gas & Consumable Fuels,130932.91
+BE0003810273,B00D9P6,Proximus SA,EUR,19210.0,0.006607,Belgium,5.99,Communication Services,Diversified Telecommunication Services,130487.0
+DE0005800601,5709948,GFT Technologies SE,EUR,4439.0,0.0065,Germany,25.5,Information Technology,It Services,128362.57
+PTPTI0AM0006,7018556,Navigator Company SA,EUR,34847.0,0.006439,Portugal,3.218,Materials,Paper & Forest Products,127164.09
+BE0974258874,5827431,Bekaert SA,EUR,2896.0,0.006427,Belgium,38.65,Materials,Metals & Mining,126929.086
+DE000SAFH001,BL5BYR9,SAF-HOLLAND SE,EUR,5043.0,0.006385,Germany,22.05,Consumer Discretionary,Automobile Components,126098.7
+BE0003555639,4884006,Tessenderlo Group N.V.,EUR,5582.0,0.006366,Belgium,19.86,Materials,Chemicals,125713.57
+FI4000312251,BFYR8L8,Lumo Homes Plc,EUR,15199.0,0.006258,Finland,7.17,Real Estate,Real Estate Management & Development,123579.73
+IT0005176406,BD0CRV6,ENAV S.p.A.,EUR,22044.0,0.006256,Italy,4.942,Industrials,Transportation Infrastructure,123539.6
+FR001400NLM4,BR1WF20,Emeis,EUR,10000.0,0.006225,France,10.84,Health Care,Health Care Providers & Services,122925.61
+AT0000A0E9W5,4665933,Kontron AG,EUR,5304.0,0.006164,Germany,20.24,Information Technology,It Services,121738.266
+BE0003878957,B29L881,VGP NV,EUR,1558.0,0.006164,Belgium,68.9,Real Estate,Real Estate Management & Development,121730.61
+IT0005572778,BPLDLK9,Juventus Football Club S.p.A.,EUR,57491.0,0.006157,Italy,1.865,Communication Services,Entertainment,121588.3
+FR0014005AL0,BNZJDK3,Antin Infrastructure Partners,EUR,14537.0,0.00606,France,7.26,Financials,Capital Markets,119680.81
+IT0003865570,B09MRX8,Webuild SpA,EUR,53753.0,0.006013,Italy,1.948,Industrials,Construction & Engineering,118742.09
+BE0003754687,5847086,Vastned,EUR,3740.0,0.005992,Belgium,27.9,Real Estate,Retail Reits,118328.37
+ES0109427734,B07VZ99,Atresmedia Corporacion de Medios de Comunicacion SA,EUR,18051.0,0.005981,Spain,5.77,Communication Services,Media,118110.95
+DE000A0JL9W6,B1FQQK1,Verbio SE,EUR,3592.0,0.005858,Germany,28.4,Energy,Oil Gas & Consumable Fuels,115682.516
+DE000A3ENQ51,BRJ9MM2,SCHOTT Pharma AG & Co. KGaA,EUR,4106.0,0.005824,Germany,24.7,Health Care,Life Sciences Tools & Services,115008.25
+IT0004729759,B56RD66,SeSa S.p.A.,EUR,1063.0,0.005738,Italy,94.0,Information Technology,Electronic Equipment Instruments & Components,113311.56
+FR0000063737,5997323,Aubay SA,EUR,1955.0,0.005669,France,50.5,Information Technology,It Services,111956.99
+IT0005107492,BYQR392,LU-VE S.p.A.,EUR,1428.0,0.005642,Italy,68.8,Industrials,Building Products,111411.43
+BE0003656676,4363497,Recticel SA,EUR,7260.0,0.005553,Belgium,13.32,Industrials,Building Products,109661.43
+FR0000124570,B08V9H4,OPmobility,EUR,8034.0,0.00543,France,11.77,Consumer Discretionary,Automobile Components,107231.25
+DE0006200108,4943510,INDUS Holding AG,EUR,2269.0,0.005394,Germany,41.4,Industrials,Industrial Conglomerates,106524.12
+SGXC11267561,BVMDVL1,Stoneweg Europe Stapled Trust,EUR,61215.0,0.005238,Singapore,1.49,Real Estate,Diversified Reits,103432.55
+BE0974288202,BZ1NNF8,Xior Student Housing N.V.,EUR,3780.0,0.00522,Belgium,24.05,Real Estate,Residential Reits,103090.81
+FI4000306873,BFMNCT4,Harvia Oyj,EUR,2096.0,0.005199,Finland,43.2,Consumer Discretionary,Leisure Products,102680.53
+FR0005691656,4457624,Trigano SA,EUR,692.0,0.005142,France,129.4,Consumer Discretionary,Automobiles,101543.81
+DE0006335003,5523881,Krones AG,EUR,830.0,0.005138,Germany,107.8,Industrials,Machinery,101463.52
+FR001400PVN6,BR3YYH2,Viridien,EUR,971.0,0.00513,France,92.0,Energy,Energy Equipment & Services,101302.484
+ES0121975009,BYX98X0,Construcciones y Auxiliar de Ferrocarriles S.A.,EUR,1148.0,0.005089,Spain,77.2,Industrials,Machinery,100501.43
+NL0000313286,4031459,Acomo N.V.,EUR,3777.0,0.004956,Netherlands,22.85,Consumer Staples,Consumer Staples Distribution & Retail,97869.25
+BE0003874915,B281L72,Fagron SA,EUR,3769.0,0.004945,Belgium,22.85,Health Care,Health Care Providers & Services,97661.95
+AT100ASTA001,BV6PMD2,Asta Energy Solutions AG,EUR,1328.0,0.004896,Germany,64.2,Industrials,Electrical Equipment,96682.12
+DE0006618309,B09YC39,CHAPTERS Group AG,EUR,2144.0,0.004888,Germany,39.7,Information Technology,Software,96522.45
+DE000A41YFS0,BV99383,Nagarro SE,EUR,1076.0,0.004881,Germany,79.0,Information Technology,It Services,96394.54
+FR0000064784,4344072,Peugeot Invest SA,EUR,1586.0,0.004872,France,53.5,Financials,Financial Services,96221.04
+FR001400PFU4,BQLSWP3,Planisware Societe anonyme,EUR,3537.0,0.004864,France,23.95,Information Technology,Software,96062.45
+DE0006219934,5545670,Jungheinrich AG Pref,EUR,3549.0,0.004862,Germany,23.86,Industrials,Machinery,96026.15
+LU2592315662,BPXYP75,d'Amico International Shipping S.A.,EUR,10576.0,0.004825,Italy,7.945,Energy,Oil Gas & Consumable Fuels,95285.86
+FR0010221234,B0M7KJ7,Eutelsat Communications SA,EUR,51523.0,0.004734,France,1.6,Communication Services,Media,93483.336
+FR0014005HJ9,BLPLBD4,OVH Groupe S.A.,EUR,4873.0,0.004729,France,16.9,Information Technology,It Services,93389.09
+DE0005102008,5644588,Basler AG,EUR,3431.0,0.004728,Germany,24.0,Information Technology,Electronic Equipment Instruments & Components,93378.1
+IT0004093263,B1JMNT3,Ascopiave S.p.A.,EUR,31298.0,0.004727,Italy,2.63,Utilities,Gas Utilities,93343.79
+FI4000567029,BQ9D7Q6,Finnair Oyj,EUR,17944.0,0.004697,Finland,4.558,Industrials,Passenger Airlines,92748.445
+DE0007461006,5699287,PVA TePla AG,EUR,2524.0,0.004589,Germany,31.66,Information Technology,Semiconductors & Semiconductor Equipment,90617.766
+GG00BQZCBZ44,BQZCBZ4,Shurgard Self Storage Limited,EUR,3486.0,0.004534,Belgium,22.65,Real Estate,Specialized Reits,89538.26
+FR0010386334,B1HKRM0,Clariane SE,EUR,20704.0,0.004518,France,3.8,Health Care,Health Care Providers & Services,89217.68
+IT0000076502,4253350,Danieli & C. Officine Meccaniche S.p.A.,EUR,1559.0,0.004512,Italy,50.4,Industrials,Machinery,89102.47
+FR0004024222,4433839,Interparfums,EUR,2586.0,0.00449,France,30.24,Consumer Staples,Personal Care Products,88679.52
+DE0005772206,4409205,Fielmann Group AG,EUR,2041.0,0.004489,Germany,38.3,Consumer Discretionary,Specialty Retail,88645.12
+FR0000033219,4821638,Altarea SCA,EUR,943.0,0.004462,France,82.4,Real Estate,Residential Reits,88115.43
+DE000A2NB650,BFYG8K4,Mutares SE & Co. KGaA,EUR,3193.0,0.004419,Germany,24.1,Financials,Capital Markets,87262.78
+IT0005411209,BMVB793,GVS S.p.A,EUR,14542.0,0.004334,Italy,5.19,Health Care,Health Care Equipment & Supplies,85586.37
+FR0000054470,B1L3CS6,UBISOFT Entertainment,EUR,13934.0,0.004277,France,5.346,Communication Services,Entertainment,84472.99
+DE0005659700,5689857,Eckert & Ziegler SE,EUR,6000.0,0.004272,Germany,12.4,Health Care,Health Care Equipment & Supplies,84369.61
+BE0974310428,BD97P41,X-FAB Silicon Foundries SE,EUR,10698.0,0.004223,France,6.875,Information Technology,Semiconductors & Semiconductor Equipment,83404.29
+AT0000938204,4563640,Mayr-Melnhof Karton AG,EUR,1007.0,0.004082,Austria,70.6,Materials,Containers & Packaging,80620.82
+ES0130625512,B1W7BK2,ENCE Energia y Celulosa SA,EUR,30613.0,0.004078,Spain,2.32,Materials,Paper & Forest Products,80539.13
+DE000A161408,BYWH8S0,HelloFresh SE,EUR,30097.0,0.003973,Germany,2.299,Consumer Staples,Consumer Staples Distribution & Retail,78464.875
+FR0000051070,B05DY78,Etablissements Maurel & Prom SA,EUR,8129.0,0.003711,France,7.95,Energy,Oil Gas & Consumable Fuels,73285.38
+FR0010481960,B1YKDN6,Argan,EUR,921.0,0.003676,France,69.5,Real Estate,Industrial Reits,72586.77
+FR0011476928,B7VQL46,Fnac Darty SA,EUR,1840.0,0.003645,France,34.5,Consumer Discretionary,Specialty Retail,71986.32
+IT0003073266,B15CPD5,Piaggio & C. S.p.a.,EUR,33113.0,0.003611,Italy,1.899,Consumer Discretionary,Automobiles,71307.72
+DE000A1H8BV3,B4RLNR1,NORMA Group SE,EUR,3633.0,0.003597,Germany,17.24,Industrials,Machinery,71025.734
+DE0007276503,5808845,secunet Security Networks AG,EUR,255.0,0.003573,Germany,244.0,Information Technology,It Services,70557.48
+DE000VNC0014,BW5VWD8,VINCORION SE,EUR,3507.0,0.003551,Germany,17.635,Industrials,Aerospace & Defense,70133.305
+DE000PAT1AG3,B11Y3K8,PATRIZIA SE,EUR,8952.0,0.003547,Germany,6.9,Real Estate,Real Estate Management & Development,70045.83
+FI4000198031,BYZQHX2,Qt Group Plc,EUR,1841.0,0.003491,Finland,33.02,Information Technology,Software,68935.664
+GB00BNXJB679,BNXJB67,Hbx Group International Plc,EUR,8094.0,0.003456,Spain,7.435,Consumer Discretionary,Hotels Restaurants & Leisure,68242.87
+IT0004195308,B1Y6V63,Moltiply Group S.p.A.,EUR,2054.0,0.00345,Italy,29.25,Financials,Consumer Finance,68130.16
+FR0010417345,B59DTF2,DBV Technologies SA,EUR,28854.0,0.003344,France,2.018,Health Care,Biotechnology,66029.84
+DE0005664809,5811917,Evotec SE,EUR,19715.0,0.00334,Germany,2.95,Health Care,Life Sciences Tools & Services,65952.59
+IT0004712375,B5VZ053,Salvatore Ferragamo S.p.A.,EUR,7610.0,0.003266,Italy,7.475,Consumer Discretionary,Textiles Apparel & Luxury Goods,64507.305
+DE000PFSE212,BQ81M33,PFISTERER Holding SE,EUR,855.0,0.003162,Germany,64.4,Industrials,Electrical Equipment,62440.31
+PTCTT0AM0001,BGQYC45,CTT - Correios de Portugal SA,EUR,8834.0,0.00315,Portugal,6.21,Industrials,Air Freight & Logistics,62210.27
+DE0007074007,4495044,KWS SAAT SE & Co KGaA,EUR,775.0,0.003124,Germany,70.2,Consumer Staples,Food Products,61695.273
+IT0005385213,BJVNQF7,NewPrinces S.p.A.,EUR,2902.0,0.00308,Italy,18.48,Consumer Staples,Food Products,60815.242
+IT0003121677,7135251,Credito Emiliano S.p.A.,EUR,2487.0,0.00305,Italy,21.36,Financials,Banks,60240.715
+AT0000609607,4019950,PORR AG,EUR,1630.0,0.003023,Austria,32.3,Industrials,Construction & Engineering,59703.965
+IE00BJ34P519,BJ34P51,Irish Residential Properties REIT PLC,EUR,39063.0,0.002916,Ireland,1.3,Real Estate,Residential Reits,57586.676
+AT0000644505,4512330,Lenzing AG,EUR,2474.0,0.002905,Austria,20.45,Materials,Chemicals,57372.81
+FR0013341781,BF2DSF2,2CRSI SA,EUR,1768.0,0.002867,France,28.24,Information Technology,Technology Hardware Storage & Peripherals,56618.72
+FI0009000665,5071432,Metsa Board Oyj Class B,EUR,15010.0,0.002822,Finland,3.274,Materials,Containers & Packaging,55727.867
+PTMEN0AE0005,7025471,Mota-Engil SGPS SA,EUR,9317.0,0.002758,Portugal,5.155,Industrials,Construction & Engineering,54465.043
+LU0061462528,B1BK209,RTL Group S.A.,EUR,1644.0,0.002757,Germany,29.2,Communication Services,Media,54437.45
+BE0974362940,BMB3BN1,Barco NV,EUR,6583.0,0.002742,Belgium,7.255,Information Technology,Electronic Equipment Instruments & Components,54159.465
+NL0000817179,B1VV9V2,Sligro Food Group N.V.,EUR,4797.0,0.002697,Netherlands,9.79,Consumer Staples,Consumer Staples Distribution & Retail,53255.63
+FI0009800643,B11BQV1,YIT Oyj,EUR,10381.0,0.002602,Finland,4.365,Consumer Discretionary,Household Durables,51385.016
+DE0007667107,5092336,Vossloh Aktiengesellschaft,EUR,830.0,0.002547,Germany,53.45,Industrials,Machinery,50308.215
+AT0000758305,5700350,PALFINGER AG,EUR,1454.0,0.002538,Austria,30.4,Industrials,Machinery,50124.617
+NL0013332471,BFY1TC8,TomTom NV,EUR,11697.0,0.002496,Netherlands,3.716,Information Technology,Software,49290.508
+ES0105251005,BD9BPN2,Neinor Homes SA,EUR,2737.0,0.002463,Spain,15.67,Consumer Discretionary,Household Durables,48635.89
+PTALT0AE0002,B13ZSL5,Altri SGPS S.A.,EUR,8910.0,0.002394,Portugal,4.68,Materials,Paper & Forest Products,47286.44
+ATFREQUENT09,BJRF8X9,Frequentis AG,EUR,641.0,0.002378,Austria,64.6,Industrials,Aerospace & Defense,46957.35
+PTSEM0AM0004,5962934,Semapa Sociedade de Investimento e Gestao SGPS SA,EUR,1982.0,0.002322,Portugal,20.4,Materials,Paper & Forest Products,45850.797
+DE0005493365,B28XLF6,Hypoport SE,EUR,528.0,0.002231,Germany,73.6,Financials,Financial Services,44068.15
+DE000A0ETBQ4,B13G625,MBB SE,EUR,206.0,0.002058,Germany,174.0,Industrials,Industrial Conglomerates,40647.098
+NL0013995087,BKRWS93,Cementir Holding N.V.,EUR,2610.0,0.002023,Italy,13.5,Materials,Construction Materials,39956.492
+FR0000131757,4017017,Eramet SA,EUR,789.0,0.002016,France,44.5,Materials,Metals & Mining,39815.31
+DE000A161N30,BYR4KP7,GRENKE AG,EUR,3133.0,0.001947,Germany,10.82,Financials,Financial Services,38441.535
+IT0005054967,BSM8WL2,Rai Way SpA,EUR,7182.0,0.001786,Italy,4.33,Communication Services,Diversified Telecommunication Services,35265.2
+FR0013233012,BD3DW55,Inventiva SA,EUR,9843.0,0.001622,France,2.87,Health Care,Biotechnology,32034.83
+FI4000513593,BP6VMQ1,Kempower Oy,EUR,2281.0,0.001212,Finland,9.25,Industrials,Electrical Equipment,23926.553
+AT0000741053,4295374,EVN AG,EUR,737.0,0.00121,Austria,28.6,Utilities,Electric Utilities,23902.682
+FR0011950732,BN40H61,Elior Group SA,EUR,10935.0,0.001152,France,1.835,Consumer Discretionary,Hotels Restaurants & Leisure,22754.535
+DE000BEAU1Y4,BRWD2Z4,Douglas AG,EUR,2537.0,0.001071,Germany,7.35,Consumer Discretionary,Specialty Retail,21145.64
+Unassigned,Unassigned,Euro,EUR,318333.0,-,European Union,1.0,Unassigned,Unassigned,360989.6
+IT0005424962,BN7J6S0,Amco - Asset Management Company S.p.A. Class B,EUR,620.0,0,Italy,0.0,Unassigned,Unassigned,0.00062
+Unassigned,Unassigned,WEBUILD SPA-CW30,EUR,1622.0,0,Italy,0.0,Unassigned,Unassigned,0.001622
