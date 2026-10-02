@@ -29,16 +29,20 @@ print(pd.DataFrame(rows).T.sort_values('sharpe', ascending=False).round(2).to_st
 print('\nSection 6.2: power of a t > 1.96 test'); print(pd.DataFrame({f'{y} years': {s: norm.cdf(s * np.sqrt(y) - 1.96) for s in (0.3, 0.5, 0.8, 1.0)} for y in (5, 8, 10)}).T.round(2).to_string())
 # Section 4: Newey-West check
 print('\nSection 4: plain vs Newey-West t'); [print(f'  {k:15s} {D[k].mean() / D[k].std() * np.sqrt(len(D[k])):.2f}  {nw_t(D[k].values):.2f}') for k in ('Futures trend', 'Low volatility', 'Momentum')]
-# Section 6.3: White's Reality Check and Hansen's SPA, stationary bootstrap, nine long-short signals over 2013-2022
-rng = np.random.default_rng(11)                                         # seed used for the paper's run
+# Section 6.3: White's Reality Check and Hansen's SPA, stationary bootstrap (average block 21 days),
+# nine long-short signals over 2013-2022, run five times with 10,000 resamples each
 X = pd.DataFrame({k: v for k, v in D.items() if k != 'Value proxy (equities)'}).fillna(0.0).values; n, m = X.shape; mu = X.mean(0)
-def sb():
-    idx = np.empty(n, int); i = rng.integers(n)
-    for t in range(n): idx[t] = i; i = rng.integers(n) if rng.random() < 1 / 21 else (i + 1) % n
-    return idx
-boot = np.array([X[sb()].mean(0) for _ in range(2000)]); om = np.sqrt(n) * boot.std(0); T0 = max((np.sqrt(n) * mu / om).max(), 0); thr = np.sqrt(2 * np.log(np.log(n)))
-for name, c in [('Reality Check', mu), ('SPA (consistent)', mu * (np.sqrt(n) * mu / om >= -thr))]:
-    print(f'Section 6.3: {name} p = {(np.maximum((np.sqrt(n) * (boot - c) / om).max(1), 0) >= T0).mean():.3f}')
+def snoop(seed, B=10000, p=1 / 21):
+    g = np.random.default_rng(seed); boot = np.empty((B, m))
+    for b in range(B):
+        new = g.random(n) < p; new[0] = True; first = np.flatnonzero(new); grp = np.cumsum(new) - 1
+        idx = (g.integers(0, n, n)[first][grp] + np.arange(n) - first[grp]) % n; boot[b] = X[idx].mean(0)
+    om = np.sqrt(n) * boot.std(0); z = np.sqrt(n) * mu / om; T0 = max(z.max(), 0); thr = np.sqrt(2 * np.log(np.log(n)))
+    rc = (np.maximum((np.sqrt(n) * (boot - mu) / om).max(1), 0) >= T0).mean()
+    spa = (np.maximum((np.sqrt(n) * (boot - mu * (z >= -thr)) / om).max(1), 0) >= T0).mean()
+    return rc, spa
+runs = np.array([snoop(s) for s in (1, 2, 3, 4, 5)])
+print(f'\nSection 6.3: Reality Check p {runs[:, 0].min():.3f}-{runs[:, 0].max():.3f}, SPA p {runs[:, 1].min():.3f}-{runs[:, 1].max():.3f} across five runs of 10,000')
 # Section 5.4: European Fama-French five factors plus momentum
 def ff(name):
     z = zipfile.ZipFile(io.BytesIO(requests.get(f'https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/{name}_CSV.zip', headers={'User-Agent': 'Mozilla/5.0'}, timeout=60).content))
