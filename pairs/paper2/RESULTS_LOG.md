@@ -64,3 +64,13 @@ The UK month-end results in the main sample are supported under the pre-register
 ## Code change
 
 step2_main.py now runs its tests only when executed directly, so that later scripts can import its functions. No calculation changed.
+
+## 6. Numbers added to the paper (step7_paper_numbers.py)
+
+Run on 5 October 2026 after the corrected analysis, for the paper draft.
+
+- Exploratory, not pre-registered: UK month-end coefficient with the full equation, -0.299 (t -3.30) over 1999-2008, -0.156 (t -2.06) over 2009-2016 and +0.088 (t +0.75) over 2017 to March 2023. This replaces the breakdown in section 3, which used the pre-registered equation.
+- Power to detect the UK main-sample effect (0.179) at 5%: UK hold-out 48%, Germany main sample 58% and Germany hold-out 53%.
+- UK month-end strategy, net of 1 basis point a trade on each leg: Sharpe ratio 0.57 (t 2.78) over the main sample and 0.19 (t 0.35) over the hold-out.
+
+The paper is in paper/, as the PDF posted to SSRN.
