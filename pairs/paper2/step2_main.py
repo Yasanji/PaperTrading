@@ -36,40 +36,42 @@ def hodrick(df, x, cols, h):
     eps = (d.y_next - d.y_next.mean()).values; W = pd.DataFrame(X).rolling(h, min_periods=1).sum().values
     Zi = np.linalg.inv(X.T @ X / T); Sm = (W.T * eps ** 2) @ W / T; V = Zi @ Sm @ Zi / T
     j = 1 + cols.index(x); return b[j], b[j] / np.sqrt(V[j, j])
-R, P = {}, {}
-for mkt in ('DE', 'UK'):
-    d = S[mkt].copy(); d = d.join(us_lagged(d.index)); d = d.loc[START:END].dropna()
-    d['thr_o'] = sm.OLS(d.thr, sm.add_constant(d.us_thr)).fit().resid; d['calw4_o'] = sm.OLS(d.calw4, sm.add_constant(d.us_calw4)).fit().resid
-    A, B = BASE, BASE + ['us_thr', 'us_calw4']; Bo = ['thr_o', 'calw4_o'] + BASE[2:] + ['us_thr', 'us_calw4']
-    out = {}
-    for lab, cols, xs in (('A local', A, ('thr', 'calw4')), ('B with US', B, ('thr', 'calw4')), ('B orthogonal', Bo, ('thr_o', 'calw4_o'))):
-        m, mh = fit(d, cols), fit(d, cols, 'hc')
-        for x in xs:
-            ib, ip = ivx_p(d, x, cols); bp = boot_p(d, x, cols)
-            ok = m.params[x] < 0 and m.tvalues[x] < -2 and ip < 0.05
-            out[(lab, x)] = dict(coef=m.params[x], t_hc=mh.tvalues[x], t_nw=m.tvalues[x], ivx_p=ip, boot_p=bp, supported=ok)
-            P[f'{mkt} {lab} {x}'] = 2 * (1 - stats.norm.cdf(abs(m.tvalues[x])))
-        out[(lab, 'R2')] = m.rsquared_adj; out[(lab, 'N')] = int(m.nobs)
-    for x in ('thr', 'calw4'):
-        b1, t1 = hodrick(d, x, A, 1); b5, t5 = hodrick(d, x, A, 5); b10, t10 = hodrick(d, x, A, 10)
-        rev = abs(b10) < 0.5 * abs(b1) and abs(t10) < 2
-        out[('LP', x)] = dict(day1=b1, t1=t1, day5=b5, t5=t5, day10=b10, t10=t10, reverses=rev)
-        P[f'{mkt} LP5 {x}'] = 2 * (1 - stats.norm.cdf(abs(t5))); P[f'{mkt} LP10 {x}'] = 2 * (1 - stats.norm.cdf(abs(t10)))
-    a = fit(d, A); out['half_life_days'] = np.log(0.5) / np.log(1 + a.params['thr']) if -1 < a.params['thr'] < 0 else np.nan
-    R[mkt] = out; R[mkt + '_data'] = d
-st = []
-for mkt in ('DE', 'UK'):
-    d = R[mkt + '_data'][BASE + ['y_next']].copy(); d['uk'] = float(mkt == 'UK')
-    for c in BASE: d[c + '_uk'] = d[c] * d.uk
-    st.append(d)
-st = pd.concat(st); cols = BASE + ['uk'] + [c + '_uk' for c in BASE]
-h4 = sm.OLS(st.y_next, sm.add_constant(st[cols])).fit(cov_type='cluster', cov_kwds={'groups': pd.factorize(st.index)[0]})
-P['H4 UK minus DE thr'] = 2 * (1 - stats.norm.cdf(abs(h4.tvalues['thr_uk'])))
-pv = pd.Series(P).sort_values(); m_ = len(pv); holm = np.minimum(1, np.maximum.accumulate([(m_ - i) * p for i, p in enumerate(pv.values)]))
-pd.to_pickle(dict(R={k: v for k, v in R.items() if not k.endswith('_data')}, h4=(h4.params['thr_uk'], h4.tvalues['thr_uk']), holm=pd.Series(holm, index=pv.index), raw=pv), 'step2_main_results.pkl')
-for mkt in ('DE', 'UK'):
-    o = R[mkt]; print(f'\n=== {mkt}  (N {o[("A local","N")]}, adj R2 {o[("A local","R2")]:.4f}, half-life {o["half_life_days"]:.1f} days)')
-    for k, v in o.items():
-        if isinstance(v, dict): print(f'{k[0]:14s} {k[1]:8s} ' + '  '.join(f'{a}={b:.4f}' if isinstance(b, float) else f'{a}={b}' for a, b in v.items()))
-print(f'\nH4 stacked: UK minus DE adjustment coefficient = {h4.params["thr_uk"]:.4f} (t {h4.tvalues["thr_uk"]:.2f})')
-print('\nHolm-adjusted p-values:'); print(pd.DataFrame(dict(raw=pv.round(4), holm=np.round(holm, 4))).to_string())
+if __name__ == "__main__":
+    R, P = {}, {}
+    for mkt in ('DE', 'UK'):
+        d = S[mkt].copy(); d = d.join(us_lagged(d.index)); d = d.loc[START:END].dropna()
+        d['thr_o'] = sm.OLS(d.thr, sm.add_constant(d.us_thr)).fit().resid; d['calw4_o'] = sm.OLS(d.calw4, sm.add_constant(d.us_calw4)).fit().resid
+        A, B = BASE, BASE + ['us_thr', 'us_calw4']; Bo = ['thr_o', 'calw4_o'] + BASE[2:] + ['us_thr', 'us_calw4']
+        out = {}
+        for lab, cols, xs in (('A local', A, ('thr', 'calw4')), ('B with US', B, ('thr', 'calw4')), ('B orthogonal', Bo, ('thr_o', 'calw4_o'))):
+            m, mh = fit(d, cols), fit(d, cols, 'hc')
+            for x in xs:
+                ib, ip = ivx_p(d, x, cols); bp = boot_p(d, x, cols)
+                ok = m.params[x] < 0 and m.tvalues[x] < -2 and ip < 0.05
+                out[(lab, x)] = dict(coef=m.params[x], t_hc=mh.tvalues[x], t_nw=m.tvalues[x], ivx_p=ip, boot_p=bp, supported=ok)
+                P[f'{mkt} {lab} {x}'] = 2 * (1 - stats.norm.cdf(abs(m.tvalues[x])))
+            out[(lab, 'R2')] = m.rsquared_adj; out[(lab, 'N')] = int(m.nobs)
+        for x in ('thr', 'calw4'):
+            b1, t1 = hodrick(d, x, A, 1); b5, t5 = hodrick(d, x, A, 5); b10, t10 = hodrick(d, x, A, 10)
+            rev = abs(b10) < 0.5 * abs(b1) and abs(t10) < 2
+            out[('LP', x)] = dict(day1=b1, t1=t1, day5=b5, t5=t5, day10=b10, t10=t10, reverses=rev)
+            P[f'{mkt} LP5 {x}'] = 2 * (1 - stats.norm.cdf(abs(t5))); P[f'{mkt} LP10 {x}'] = 2 * (1 - stats.norm.cdf(abs(t10)))
+        a = fit(d, A); out['half_life_days'] = np.log(0.5) / np.log(1 + a.params['thr']) if -1 < a.params['thr'] < 0 else np.nan
+        R[mkt] = out; R[mkt + '_data'] = d
+    # H4: stacked regression, UK adjustment coefficient minus German one
+    st = []
+    for mkt in ('DE', 'UK'):
+        d = R[mkt + '_data'][BASE + ['y_next']].copy(); d['uk'] = float(mkt == 'UK')
+        for c in BASE: d[c + '_uk'] = d[c] * d.uk
+        st.append(d)
+    st = pd.concat(st); cols = BASE + ['uk'] + [c + '_uk' for c in BASE]
+    h4 = sm.OLS(st.y_next, sm.add_constant(st[cols])).fit(cov_type='cluster', cov_kwds={'groups': pd.factorize(st.index)[0]})
+    P['H4 UK minus DE thr'] = 2 * (1 - stats.norm.cdf(abs(h4.tvalues['thr_uk'])))
+    pv = pd.Series(P).sort_values(); m_ = len(pv); holm = np.minimum(1, np.maximum.accumulate([(m_ - i) * p for i, p in enumerate(pv.values)]))
+    pd.to_pickle(dict(R={k: v for k, v in R.items() if not k.endswith('_data')}, h4=(h4.params['thr_uk'], h4.tvalues['thr_uk']), holm=pd.Series(holm, index=pv.index), raw=pv), 'step2_main_results.pkl')
+    for mkt in ('DE', 'UK'):
+        o = R[mkt]; print(f'\n=== {mkt}  (N {o[("A local","N")]}, adj R2 {o[("A local","R2")]:.4f}, half-life {o["half_life_days"]:.1f} days)')
+        for k, v in o.items():
+            if isinstance(v, dict): print(f'{k[0]:14s} {k[1]:8s} ' + '  '.join(f'{a}={b:.4f}' if isinstance(b, float) else f'{a}={b}' for a, b in v.items()))
+    print(f'\nH4 stacked: UK minus DE adjustment coefficient = {h4.params["thr_uk"]:.4f} (t {h4.tvalues["thr_uk"]:.2f})')
+    print('\nHolm-adjusted p-values:'); print(pd.DataFrame(dict(raw=pv.round(4), holm=np.round(holm, 4))).to_string())
