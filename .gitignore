@@ -16,3 +16,5 @@ ibkr/live_state.json
 ibkr/peak.json
 *.pkl
 delta1/delta1.db
+delta1/.venv/
+delta1/collect.log
