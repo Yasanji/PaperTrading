@@ -12,47 +12,15 @@ Do stocks with high dividend yields outperform stocks with low dividend yields i
 
 ## 2. Universe
 
-1. **Stocks.** Current constituents of the STOXX Europe 600 (the list in pairs/part2/stoxx600_constituents.csv, mapped to Yahoo tickers by the country suffixes in pairs/part2/get600.py), the S&P 500 (from the Wikipedia constituents list on 5 October 2026) and the Hang Seng Index (from the Wikipedia constituents list on 5 October 2026). Japan is excluded, given that no reliable constituent list was available.
+1. **Stocks.** Current constituents of the STOXX Europe 600 (the list in pairs/part2/stoxx600\_constituents.csv, mapped to Yahoo tickers by the country suffixes in pairs/part2/get600.py), the S&P 500 (from the Wikipedia constituents list on 5 October 2026) and the Hang Seng Index (from the Wikipedia constituents list on 5 October 2026). Japan is excluded, given that no reliable constituent list was available.
 2. **Survivorship.** Using current constituents introduces survivorship bias, which grows the further back the test goes, and is reported as a limitation.
 3. **Sector.** Each stock's sector is Yahoo Finance's sector field, read once on the date of the data download and held fixed for the whole test. It is not point in time, which is reported as a limitation.
-4. **Changes to the universe.** The lists are frozen as of 5 October 2026 for the development and hold-out tests. In the forward test, the lists stay frozen unless revised by a dated amendment, and any revision applies only from the next monthly rebalance after it is committed.
+
+4) **Changes to the universe.** The lists are frozen as of 5 October 2026 for the development and hold-out tests. In the forward test, the lists stay frozen unless revised by a dated amendment, and any revision applies only from the next monthly rebalance after it is committed.
 
 ## 3. Data
 
-1. **Prices.** Yahoo Finance daily data from 1 January 2004: the split-adjusted close (Close, with auto_adjust off) for yields, and the adjusted close (Adj Close), which includes dividends, for returns.
-2. **Dividends.** Yahoo Finance dividend history, by ex-dividend date, split-adjusted as Yahoo supplies it.
-3. **Volume.** Yahoo Finance daily share volume.
-4. **Downloads.** All data is downloaded once and saved with the download date. Before the development run, a manifest listing each data file's name, row count and SHA-256 checksum is committed to the repository. The data itself is not redistributed, in line with Yahoo Finance's terms of use.
-
-## 4. Eligibility at each month-end
-
-A stock is eligible at a month-end only if all of the following hold.
-
-1. It has a price on at least 240 of the previous 252 trading days.
-2. Its first recorded
-mkdir -p carry/sleeveB && cat > carry/sleeveB/PREREGISTRATION.md <<'EOF'
-# Sleeve B: equity carry (dividend yield)
-
-Pre-registration, drafted 5 October 2026, before any returns are computed. Yasanji Ratnaike.
-
-Every rule below is fixed before any return is computed. Where a rule leaves a case undecided, the case is resolved in the more conservative direction and recorded as a dated amendment before the result it affects is seen.
-
-## 1. The question
-
-Do stocks with high dividend yields outperform stocks with low dividend yields in the same sector, after costs, in Europe, the US and Hong Kong, and does the strategy add to a book holding trend and currency carry? Koijen, Moskowitz, Pedersen and Vrugt (2018) define the carry of an equity as its expected dividend yield, and this sleeve tests the cross-sectional version within each region. The sleeve uses the trailing dividend yield, from dividends already paid, as a proxy for the expected yield. No news, announcements or dividend forecasts are used.
-
-**Disclosure.** Dividend yield has not been tested in the earlier work. The equity value proxy of Ratnaike (2026), which failed, is related, and the sleeve is counted as a further strategy tried.
-
-## 2. Universe
-
-1. **Stocks.** Current constituents of the STOXX Europe 600 (the list in pairs/part2/stoxx600_constituents.csv, mapped to Yahoo tickers by the country suffixes in pairs/part2/get600.py), the S&P 500 (from the Wikipedia constituents list on 5 October 2026) and the Hang Seng Index (from the Wikipedia constituents list on 5 October 2026). Japan is excluded, given that no reliable constituent list was available.
-2. **Survivorship.** Using current constituents introduces survivorship bias, which grows the further back the test goes, and is reported as a limitation.
-3. **Sector.** Each stock's sector is Yahoo Finance's sector field, read once on the date of the data download and held fixed for the whole test. It is not point in time, which is reported as a limitation.
-4. **Changes to the universe.** The lists are frozen as of 5 October 2026 for the development and hold-out tests. In the forward test, the lists stay frozen unless revised by a dated amendment, and any revision applies only from the next monthly rebalance after it is committed.
-
-## 3. Data
-
-1. **Prices.** Yahoo Finance daily data from 1 January 2004: the split-adjusted close (Close, with auto_adjust off) for yields, and the adjusted close (Adj Close), which includes dividends, for returns.
+1. **Prices.** Yahoo Finance daily data from 1 January 2004: the split-adjusted close (Close, with auto\_adjust off) for yields, and the adjusted close (Adj Close), which includes dividends, for returns.
 2. **Dividends.** Yahoo Finance dividend history, by ex-dividend date, split-adjusted as Yahoo supplies it.
 3. **Volume.** Yahoo Finance daily share volume.
 4. **Downloads.** All data is downloaded once and saved with the download date. Before the development run, a manifest listing each data file's name, row count and SHA-256 checksum is committed to the repository. The data itself is not redistributed, in line with Yahoo Finance's terms of use.
@@ -83,7 +51,8 @@ Stocks that pay no dividend are not eligible, so the sleeve ranks payers against
 5. **Combining regions.** Each traded region receives equal risk, with risk measured as the realised volatility of its hedged portfolio over the previous 126 trading days. In the first 126 days, regions receive equal weight.
 6. **Timing.** Signals use data up to the close of the last trading day of each month, and positions are taken at the close of the next trading day and held until the next rebalance.
 7. **Currency.** Each region's returns are in local currency. The portfolio is long–short within each region, so currency exposure is small, and it is not hedged separately.
-8. **Stocks that stop trading between rebalances.** If a stock held by the sleeve has no price for five consecutive trading days, because of a delisting, takeover or suspension, its position is closed at its last available price on the first of those days, the proceeds earn nothing until the next rebalance, and no replacement is bought before then.
+
+8) **Stocks that stop trading between rebalances.** If a stock held by the sleeve has no price for five consecutive trading days, because of a delisting, takeover or suspension, its position is closed at its last available price on the first of those days, the proceeds earn nothing until the next rebalance, and no replacement is bought before then.
 
 ## 7. Costs, borrowing and scaling
 
@@ -130,3 +99,12 @@ The stress tests describe how the sleeve behaves in macro shocks. They are repor
 1. Every test result is committed to the repository before the next test is run, whatever it shows.
 2. A change to the code is allowed only to make it match these rules, and each is recorded as a dated amendment stating whether any result had been seen.
 3. No rule, threshold, period or universe is changed after a result is seen.
+
+## 12. Amendments
+
+**Amendment 1.** Made on 6 October 2026, after the pre-registration was committed and before any data was downloaded or any result seen.
+
+1. **Holding buffer.** A stock enters when it is in the top or bottom fifth of its sector, as in Section 6.1, and stays until it leaves the top or bottom 30%, to cut turnover.
+2. **Minimum holding and no-trade band.** Every position is held for at least 15 trading days, unless a risk limit or an error forces it closed. A position is adjusted only when its target changes by more than 25% of its current size.
+3. **Tradable hedge.** Section 6.4 is replaced: each region is hedged with its index future (the STOXX Europe 600, the S&P 500 and the Hang Seng), with the index levels from Yahoo Finance as a proxy in the backtest.
+4. **Dividends.** Returns are computed from the split-adjusted close plus dividends. Dividends on long positions are credited net of 15% withholding tax, and dividends on short positions are charged in full.
