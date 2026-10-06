@@ -30,7 +30,7 @@ All six pods launch together. Each must have written, pre-registered rules commi
 5) **Allocated capital.** Each pod's allocated capital is NAV times its risk share. Drawdown limits and gross caps are measured against it.
 6) **Minimum holding.** Every position is held for at least 15 trading days, unless a risk limit or an error forces it closed.
 7) **No-trade band.** A position is adjusted only when its target changes by more than 25% of its current size.
-8) **Contract sizes.** Before launch, each futures market's smallest contract is checked against its target position. A market that cannot be sized within 25% of its target is left out and reported.
+8) **Contract sizes.** Before launch, each futures market's smallest contract is checked against its target risk, using Interactive Brokers' contract details. A market is traded if its target is at least half a contract, rounded to whole contracts; below half a contract it is left out and reported. Each sleeve's total risk must then be within 25% of its target.
 
 ## 4. Capital charges and liquidity
 
@@ -79,3 +79,4 @@ Made on 6 October 2026, after the results of trend (Ratnaike, 2026) and Sleeve A
 1. **Trend.** A position changes direction only when the 12-month return, divided by its 12-month volatility, moves beyond ±0.25. Inside that band the existing position is kept. The minimum holding period and no-trade band apply.
 2. **Currency carry.** Traded through CME currency futures, which price in the interest-rate gap. The Swedish krona and Norwegian krone are left out live, given thin futures markets, and this is reported.
 3. **Currency carry timing.** The OECD's release dates for three-month rates are checked. If a month's rate was published after the month-end on which the backtest used it, the sleeve is re-run with central banks' daily rates, as a dated amendment.
+4. **Contract sizing (6 October 2026, before any trade).** The contract check (book/contract\_check\_2026-10-06.csv) found that three trend markets need less than half a contract at their target risk: Nasdaq-100 (0.25), the 30-year Treasury (0.39) and gold (0.35). They are left out. Each asset class stays covered: equities by the S&P 500, bonds by the 2-year and 10-year Treasuries, and metals by silver and copper. The S&P 500 (0.70), the 10-year Treasury (0.71) and the New Zealand dollar (0.55) are traded at one contract. The 12-market trend sleeve carries about 84% of the 15-market target risk, within 25%. A post-result backtest of the 12-market version is reported alongside the original.
