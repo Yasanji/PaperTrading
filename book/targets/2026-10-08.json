@@ -5,7 +5,7 @@
   "1": {
    "pod": 1,
    "stage": "incubation",
-   "scale": 0.25
+   "scale": 1.0
   },
   "3": {
    "pod": 3,
@@ -13,7 +13,9 @@
    "scale": 0.25
   }
  },
- "problems": [],
- "created": "2026-10-08T16:33:35",
- "targets_sha256": "d805a8897a41a4597032e5977f3d7d60a2195db78ccb3ba347314cfbfacbeb89"
+ "problems": [
+  "turnover 830,273 over 50% of NAV: batch held for review"
+ ],
+ "created": "2026-10-08T17:40:57",
+ "targets_sha256": "4f741a999ce1d74ff8e722b7c2744b28e9f24ce49f27f1623691cbbe02c714bf"
 }
