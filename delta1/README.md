@@ -34,3 +34,7 @@ STOXX DVP Calculation Guide (September 2026) and STOXX Calculation Guide (Sectio
 - Weights are approximate: Yahoo's free-float counts differ from STOXX's free-float factors.
 - Yahoo data is not redistributed; only the code that collects it is committed.
 - Dividend futures (FEXD) and index futures (FESX) prices are not yet collected: next sources are Interactive Brokers and Eurex settlements.
+
+## Dividend forecasts
+
+`dividends/model.py` estimates EURO STOXX 50 index dividend points for the current and next dividend-futures years. The nightly run (`python collect.py divfcst`, included in `all`) stores the totals in `dividend_forecast_summary` and each company's points in `forecasts`. Futures prices are recorded by hand: `python collect.py fexd 2027-12-17 189.10 barchart`. Bottom-up inputs for the largest contributors are in `dividends/dps_inputs.csv`; update the file and its `checked` date when companies declare.

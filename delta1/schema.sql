@@ -26,3 +26,4 @@ CREATE TABLE IF NOT EXISTS reconciliation (date TEXT, instrument_id INTEGER REFE
 CREATE TABLE IF NOT EXISTS events (event_id INTEGER PRIMARY KEY, at TEXT, kind TEXT, detail TEXT, resolution TEXT);
 CREATE INDEX IF NOT EXISTS ix_prices_inst ON prices(instrument_id, date);
 CREATE INDEX IF NOT EXISTS ix_divs_inst ON dividends_actual(instrument_id, ex_date);
+CREATE TABLE IF NOT EXISTS dividend_forecast_summary (as_of TEXT, index_code TEXT, futures_year INTEGER, measure TEXT, points REAL, assumption TEXT, run_id INTEGER REFERENCES runs, PRIMARY KEY (as_of, index_code, futures_year, measure));

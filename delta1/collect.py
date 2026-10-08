@@ -1,4 +1,4 @@
-"""delta1 collector. Usage: python collect.py init | sx5e | divs | msci_europe | estr | levels | all
+"""delta1 collector. Usage: python collect.py init | sx5e | divs | msci_europe | estr | levels | divfcst | all, or fexd EXPIRY PRICE
 Appends to delta1.db (point in time: rows are added, never updated). Keep delta1.db off GitHub and back it up."""
 import io, sys, sqlite3, datetime as dt, requests, numpy as np, pandas as pd, yfinance as yf
 DB, H = 'delta1.db', {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/120 Safari/537.36'}
@@ -76,10 +76,32 @@ def levels():
     for d, v in s.items(): n += add('index_levels', dict(date=d.date().isoformat(), index_code='SX5E', value=float(v), source='yahoo', retrieved_at=NOW))
     finish(r, n); print('levels rows added:', n)
 
-JOBS = dict(init=init, sx5e=sx5e, divs=divs, msci_europe=msci_europe, estr=estr, levels=levels)
+def divfcst():
+    """EURO STOXX 50 dividend points: this futures year (realised and expected) and next year (flat and bottom-up)."""
+    sys.path.insert(0, 'dividends'); import model
+    r = run('divfcst'); n = 0
+    s, out, _ = model.run(g_rest=0.05)
+    for measure, yr, pts, note in [('realised', s['current_year'], s['current_realised'], 'ex-dates to date'),
+                                   ('expected', s['current_year'], s['current_expected'], "realised plus last year's remaining payments"),
+                                   ('flat', s['current_year'] + 1, s['next_flat'], 'last 12 months repeated'),
+                                   ('bottom_up', s['current_year'] + 1, s['next_bottom_up'], 'dps_inputs.csv; others +5%')]:
+        n += add('dividend_forecast_summary', dict(as_of=TODAY, index_code='SX5E', futures_year=yr, measure=measure, points=pts, assumption=note, run_id=r))
+    for sym, x in out.iterrows():
+        iid = inst(sym)
+        for basis in ['flat', 'bottom_up']:
+            n += add('forecasts', dict(as_of=TODAY, index_code='SX5E', period=str(s['current_year'] + 1), instrument_id=iid, expected_ex_date='', amount=None, index_points=float(x[basis]), basis=basis))
+    finish(r, n); print('divfcst rows added:', n, s)
+
+def fexd():
+    """Record a EURO STOXX 50 dividend futures price by hand: python collect.py fexd 2027-12-17 189.10 [source]"""
+    r = run('fexd'); exp, px = sys.argv[2], float(sys.argv[3]); src = sys.argv[4] if len(sys.argv) > 4 else 'manual'
+    n = add('futures_prices', dict(date=TODAY, product='FEXD', expiry=exp, settle=px, source=src, retrieved_at=NOW))
+    finish(r, n); print('fexd rows added:', n)
+
+JOBS = dict(init=init, sx5e=sx5e, divs=divs, msci_europe=msci_europe, estr=estr, levels=levels, divfcst=divfcst, fexd=fexd)
 if __name__ == '__main__':
     cmd = sys.argv[1] if len(sys.argv) > 1 else 'all'
-    for job in (['init', 'sx5e', 'divs', 'msci_europe', 'estr', 'levels'] if cmd == 'all' else [cmd]):
+    for job in (['init', 'sx5e', 'divs', 'msci_europe', 'estr', 'levels', 'divfcst'] if cmd == 'all' else [cmd]):
         try: JOBS[job]()
         except Exception as e:
             print(f'{job} failed: {e}'); con.execute('INSERT INTO events (at, kind, detail) VALUES (?,?,?)', (NOW, 'collector_error', f'{job}: {e}')); con.commit()
