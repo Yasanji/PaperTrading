@@ -1,0 +1,19 @@
+{
+ "as_of": "2026-10-08",
+ "source": "db",
+ "pods": {
+  "1": {
+   "pod": 1,
+   "stage": "incubation",
+   "scale": 0.25
+  },
+  "3": {
+   "pod": 3,
+   "stage": "forward test",
+   "scale": 0.25
+  }
+ },
+ "problems": [],
+ "created": "2026-10-08T16:33:35",
+ "targets_sha256": "d805a8897a41a4597032e5977f3d7d60a2195db78ccb3ba347314cfbfacbeb89"
+}
