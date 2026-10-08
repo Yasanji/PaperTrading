@@ -92,3 +92,8 @@ Run with step8_us_through_2025.py after it was committed. Checks Harvey, Mazzole
 | ETFs (SPY, IEF) | 2003 to 2025 | 5,642 | -0.488 (t -3.85) | -0.216 (t -2.28) |
 
 On all three data sources both coefficients are positive and not significant over March 2023 to December 2025, and adding those months makes the full-sample coefficients and t-statistics smaller. This does not reproduce the statement in footnote 32, for which no estimates are published. Limits: the futures series are unadjusted front-month contracts with roll days kept; the index-and-yields main sample has 6,373 observations here against 6,293 in Step 1, a difference not yet explained.
+
+### Step 8 follow-up: set-up checks, 8 October 2026
+
+1. **Observation gap explained.** Step 1 downloads Treasury yields from 1997, so momentum (which needs 252 days) is missing for the first months of the sample and about 80 days drop out (6,293). Step 8 downloads from 1996 and keeps them (6,373). With the full start, the Threshold coefficient is -0.407 against -0.414 published. The Calendar gap (-0.200 against -0.303) remains.
+2. **The hold-out regressions alone do not show the effect has gone.** Estimated on 1997 to 2025 with the rebalancing coefficients allowed to change after 20 March 2023 (other coefficients held fixed, HC1), the change is +0.067 (t 0.28) for Threshold and +0.021 (t 0.21) for Calendar x last week on index and yields, and +0.075 (t 0.31) and +0.051 (t 0.45) on ETFs. The positive hold-out coefficients in the table above come largely from re-estimating every control on about 700 days. The data cannot distinguish "the effect has gone" from "the effect is unchanged".
