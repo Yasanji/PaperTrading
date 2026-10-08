@@ -7,7 +7,8 @@ Checks, in order (any failure stops the batch and is recorded):
   1. no open kill event;  2. the targets file is committed and pushed, and its checksum matches;
   3. an approval exists for this exact orders file;  4. the batch has not been sent before;
   5. connected through the paper port to the paper account stored in ~/.delta1/paper_account (and it starts with DU);
-  6. per order: reference price within 10% of the last close, size no more than twice the target, notional <= 10% of NAV.
+  6. per order: reference price within 10% of the last close, size no more than twice the target, notional <= 10% of NAV unless the order was flagged
+     in the orders file and approved with a written reason (BOOK_AMENDMENT_1 s.3).
 Futures go to the front contract that is not within 5 business days of its last trade date (or of the first day of
 its delivery month for physically delivered contracts); open positions in an older contract are rolled.
 
@@ -92,7 +93,8 @@ def main():
     for r in o.itertuples():
         tq = t.loc[(r.pod, r.symbol), 'target_qty'] if (r.pod, r.symbol) in t.index else 0
         if abs(r.order_qty) > 2 * max(abs(tq), abs(r.current_qty)): stop(f'{r.symbol}: order {r.order_qty} more than twice the target')
-        if r.order_notional_usd > C.ORDER_LIMIT * C.NAV: stop(f'{r.symbol}: order over 10% of NAV')
+        if r.order_notional_usd > C.ORDER_LIMIT * C.NAV and not (isinstance(r.flag, str) and r.flag and approval.get('reason')):
+            stop(f'{r.symbol}: order over 10% of NAV, not flagged and approved with a reason')   # flagged orders pass only with a written reason
     if x.offline:
         print(f'OFFLINE dry run, batch {batch}, targets commit {commit or "not pushed"}:'); print(o[['pod', 'symbol', 'order_qty', 'order_type']].to_string(index=False)); return
 

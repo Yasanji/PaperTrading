@@ -9,3 +9,7 @@ At the incubation scale of 0.25, Pod 1's rates and equity index legs round to ze
 ## 2. Price data
 
 The live IB account has no futures market data subscriptions, and IB will not activate them until the account is funded. Until then, prices for targets, sizing and reconciliation marks come from Yahoo Finance (`futures_ib.py --yahoo-only`, `execute.py NO_IB_DATA = True`). IB is used only to send orders and report fills and positions. Fill prices from IB are the record of execution; Yahoo prices are the record of signals. Differences between the two are logged by reconciliation. When IB data is active, this section lapses and the change is recorded in the events table.
+
+## 3. Orders over 10% of NAV
+
+At full risk, single futures orders can exceed 10% of NAV in face value (US Treasury futures and the Canadian dollar on 8 October 2026), although their risk is far smaller. Such an order is no longer stopped outright. It is flagged in the orders file, the batch is held, and it is sent only if the batch is approved with a written reason (`approve.py ... --reason`). An order over 10% of NAV that was not flagged in the approved, checksummed orders file still trips the kill switch.

@@ -17,8 +17,8 @@ print(f"\nturnover ${o.order_notional_usd.sum():,.0f} ({o.order_notional_usd.sum
       f"kill switch: {'ON' if kill.is_killed() else 'off'}")
 if len(sys.argv) < 3: sys.exit()
 mode = sys.argv[2]; reason = sys.argv[sys.argv.index('--reason') + 1] if '--reason' in sys.argv else ''
-held = any('50%' in p for p in meta['problems'])
-if held and mode != 'none' and not reason: sys.exit('Batch is over the 50% turnover cap: add --reason "..." to approve it.')
+held = any('50%' in p for p in meta['problems']) or o['flag'].fillna('').astype(bool).any()
+if held and mode != 'none' and not reason: sys.exit('Batch is over the 50% turnover cap or has orders over 10% of NAV: add --reason "..." to approve it.')
 skip = set(sys.argv[3].split(',')) if mode == 'except' else set()
 ok = [] if mode == 'none' else [s for s in o.symbol if s not in skip]
 rec = dict(date=date, batch_id=str(o.batch_id.iloc[0]) if len(o) else '', approved=ok, rejected=[s for s in o.symbol if s not in ok],
