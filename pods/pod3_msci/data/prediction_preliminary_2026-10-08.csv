@@ -1,0 +1,4 @@
+call,market,name,isin,symbol,full_usd,ff_usd,cutoff,ratio
+watch: delete,DE,ZALANDO SE,DE000ZAL1111,ZAL.DE,6.194,5.035,8.424,1.103
+watch: delete,NO,SALMAR ASA,NO0010310956,SALM.OL,7.82,3.883,10.515,1.116
+watch: delete,FI,ELISA OYJ,FI0009007884,ELISA.HE,6.447,5.613,8.424,1.148
