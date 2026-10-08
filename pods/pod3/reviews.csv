@@ -1,0 +1,3 @@
+review,index,announce_date,effective_date,prediction_file,actual_file
+2026-11 MSCI Europe,MSCI_EUROPE,2026-11-11,2026-11-30,../pod3_msci/data/prediction_final_2026-10-30.csv,actual_2026-11_msci.csv
+2026-12 STOXX Europe 600,STOXX600,2026-12-01,2026-12-18,../pod3_stoxx/data/prediction_final_2026-11-19.csv,actual_2026-12_stoxx.csv

@@ -1,0 +1,7 @@
+ib_symbol,sec_type,exchange,primary_exchange,currency,target_qty,reason,current_qty,order_qty,order_type
+INPST,STK,SMART,AEB,EUR,-245,DELETE margin 419.00,0.0,-245.0,MOC
+HOC,STK,SMART,LSE,GBP,-620,DELETE margin 62.00,0.0,-620.0,MOC
+GBF,STK,SMART,IBIS,EUR,-68,DELETE margin 58.00,0.0,-68.0,MOC
+TECN,STK,SMART,EBS,CHF,15,ADD margin 57.00,0.0,15.0,MOC
+AZE,STK,SMART,ENEXT.BE,EUR,308,ADD margin 5.00,0.0,308.0,MOC
+BRAV,STK,SMART,SFB,SEK,286,ADD margin 0.00,0.0,286.0,MOC
