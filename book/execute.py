@@ -17,6 +17,7 @@ from zoneinfo import ZoneInfo
 import pandas as pd
 import config as C, kill
 
+NO_IB_DATA = True                                # paper account has no futures data yet (amendment 5); price check uses no IB close
 PHYSICAL = {'ZT', 'ZN', 'SIC'}                     # roll before the delivery month
 SETTLE = {  # product: (exchange time zone, settlement time)
     'MES': ('America/Chicago', '15:00'), 'ZT': ('America/Chicago', '14:00'), 'ZN': ('America/Chicago', '14:00'),
@@ -110,7 +111,7 @@ def main():
         else:
             c = Stock(r.symbol, 'SMART', r.currency, primaryExchange=r.primary_exchange); o_qty = r.order_qty
         ib.qualifyContracts(c)
-        bars = ib.reqHistoricalData(c, '', '5 D', '1 day', 'TRADES', useRTH=True)
+        bars = ib.reqHistoricalData(c, '', '5 D', '1 day', 'TRADES', useRTH=True, timeout=15) if not NO_IB_DATA else []   # skipped without IB market data
         last = bars[-1].close if bars else None
         ref = r.ref_price
         if last and r.currency == 'GBP' and pd.notna(ref) and last / ref > 50: last /= 100      # London quoted in pence
