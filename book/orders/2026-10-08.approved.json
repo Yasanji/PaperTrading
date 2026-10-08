@@ -1,15 +1,23 @@
 {
  "date": "2026-10-08",
- "batch_id": "2026-10-08-d805a889",
+ "batch_id": "2026-10-08-4f741a99",
  "approved": [
   "M6A",
+  "M6B",
   "M6E",
   "MCD",
+  "MCL",
+  "MES",
+  "MHG",
   "MJY",
-  "MSF"
+  "MSF",
+  "NZD",
+  "SIC",
+  "ZN",
+  "ZT"
  ],
  "rejected": [],
- "orders_sha256": "5d25202dad4faa46e0befd56865018ce05157411b979dcc1a27fab49b0eb7fe5",
- "reason": "",
- "at": "2026-10-08T16:33:35"
+ "orders_sha256": "4f0b6c7aaef028bc88c87f6176ac3eae09c23998979ccfca51322c8762d8566e",
+ "reason": "First full-size day after Amendment 1: book goes from flat to target, so turnover is the whole position",
+ "at": "2026-10-08T17:41:31"
 }
