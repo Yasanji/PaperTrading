@@ -63,6 +63,7 @@ def front(ib, symbol, exchange, currency, today):
 
 
 def good_after(symbol, date):
+    """10 minutes before settlement on the day the order is sent (the batch is dated the evening before)."""
     tz, t = SETTLE[symbol]
     ts = pd.Timestamp(f'{date} {t}').tz_localize(ZoneInfo(tz)) - pd.Timedelta(minutes=10)
     return ts.tz_convert('UTC').strftime('%Y%m%d-%H:%M:%S')
@@ -122,7 +123,7 @@ def main():
     for c, qty, kind, r in plan:
         side = 'BUY' if qty > 0 else 'SELL'
         if c.secType == 'STK': order = Order(action=side, totalQuantity=abs(qty), orderType='MOC', account=acct)
-        else: order = Order(action=side, totalQuantity=abs(qty), orderType='MKT', goodAfterTime=good_after(r.symbol, date), tif='DAY', account=acct)
+        else: order = Order(action=side, totalQuantity=abs(qty), orderType='MKT', goodAfterTime=good_after(r.symbol, dt.date.today().isoformat()), tif='DAY', account=acct)
         order.orderRef = f'{batch}|pod{r.pod}|{kind}'
         print(f'{"SEND" if x.send else "DRY"} {side} {abs(qty)} {c.localSymbol or c.symbol} {order.orderType} {getattr(order, "goodAfterTime", "")}')
         if x.send:
