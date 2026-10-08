@@ -44,10 +44,25 @@ def trend(prices, previous_sign):
     return out
 
 
+CACHE = os.path.join(C.ROOT, 'delta1', 'oecd_rates_cache.csv')
+
+
 def oecd_rates(start='2025-01'):
+    """OECD three-month rates (SONIA for sterling). Cached; if the OECD or the Bank of England does not answer within
+    30 seconds, the last cached table is used and the run says so. Rates are monthly, so a day-old cache is enough."""
+    try:
+        w = _oecd_rates(start); w.to_csv(CACHE); return w
+    except Exception as e:
+        if os.path.exists(CACHE):
+            print(f'rates: download failed ({type(e).__name__}); using cache from {pd.Timestamp(os.path.getmtime(CACHE), unit="s").date()}')
+            return pd.read_csv(CACHE, index_col=0)
+        raise
+
+
+def _oecd_rates(start):
     u = ('https://sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_FINMARK,4.0/'
          f'{"+".join(set(CARRY_CCY.values()) | {"USA"})}.M.IR3TIB.PA.....?startPeriod={start}&format=csvfilewithlabels')
-    d = pd.read_csv(io.StringIO(requests.get(u, timeout=120).text))
+    d = pd.read_csv(io.StringIO(requests.get(u, timeout=30).text))
     w = d.pivot_table(index='TIME_PERIOD', columns='REF_AREA', values='OBS_VALUE')
     s = sonia_monthly(); s.index = s.index.strftime('%Y-%m')            # sterling: SONIA after the OECD series ends
     w['GBR'] = w.get('GBR', pd.Series(dtype=float)).combine_first(s.reindex(w.index))
@@ -57,7 +72,7 @@ def oecd_rates(start='2025-01'):
 def sonia_monthly():
     u = ('https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?csv.x=yes&Datefrom=01/Jan/2025&Dateto=now'
          '&SeriesCodes=IUDSOIA&CSVF=TN&UsingCodes=Y&VPD=Y&VFD=N')
-    d = pd.read_csv(io.StringIO(requests.get(u, headers={'User-Agent': 'Mozilla/5.0'}, timeout=90).text))
+    d = pd.read_csv(io.StringIO(requests.get(u, headers={'User-Agent': 'Mozilla/5.0'}, timeout=30).text))
     d['DATE'] = pd.to_datetime(d.DATE, format='%d %b %Y')
     return d.set_index('DATE').IUDSOIA.resample('MS').mean()
 
