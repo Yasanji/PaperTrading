@@ -74,3 +74,21 @@ Run on 5 October 2026 after the corrected analysis, for the paper draft.
 - UK month-end strategy, net of 1 basis point a trade on each leg: Sharpe ratio 0.57 (t 2.78) over the main sample and 0.19 (t 0.35) over the hold-out.
 
 The paper is in paper/, as the PDF posted to SSRN.
+
+## Step 8: US through 2025 (exploratory, not pre-registered), 8 October 2026
+
+Run with step8_us_through_2025.py after it was committed. Checks Harvey, Mazzoleni and Melone's statement (working paper of 14 January 2026, footnote 32) that results "become even stronger" with the sample extended through 2025. Coefficients with HC1 t-statistics; Newey-West (9 lags) in step8_us_through_2025.csv.
+
+| Data | Period | N | Threshold | Calendar x last week |
+| --- | --- | --- | --- | --- |
+| Index and yields | 1997 to Mar 2023 | 6,373 | -0.407 (t -3.46) | -0.200 (t -2.67) |
+| Index and yields | Mar 2023 to Dec 2025 | 695 | +0.407 (t 1.14) | +0.195 (t 1.10) |
+| Index and yields | 1997 to 2025 | 7,068 | -0.348 (t -3.10) | -0.180 (t -2.48) |
+| Futures (ES, ZN) | 2001 to Mar 2023 | 5,388 | -0.518 (t -3.93) | -0.259 (t -2.86) |
+| Futures (ES, ZN) | Mar 2023 to Dec 2025 | 703 | +0.317 (t 0.87) | +0.196 (t 1.11) |
+| Futures (ES, ZN) | 2001 to 2025 | 6,091 | -0.453 (t -3.62) | -0.233 (t -2.68) |
+| ETFs (SPY, IEF) | 2003 to Mar 2023 | 4,942 | -0.549 (t -4.10) | -0.243 (t -2.45) |
+| ETFs (SPY, IEF) | Mar 2023 to Dec 2025 | 700 | +0.227 (t 0.62) | +0.211 (t 1.10) |
+| ETFs (SPY, IEF) | 2003 to 2025 | 5,642 | -0.488 (t -3.85) | -0.216 (t -2.28) |
+
+On all three data sources both coefficients are positive and not significant over March 2023 to December 2025, and adding those months makes the full-sample coefficients and t-statistics smaller. This does not reproduce the statement in footnote 32, for which no estimates are published. Limits: the futures series are unadjusted front-month contracts with roll days kept; the index-and-yields main sample has 6,373 observations here against 6,293 in Step 1, a difference not yet explained.
