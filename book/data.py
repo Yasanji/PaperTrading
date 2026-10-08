@@ -11,10 +11,14 @@ YAHOO = {'MES': 'ES=F', 'ZT': 'ZT=F', 'ZN': 'ZN=F', 'MCL': 'CL=F', 'MHNG': 'NG=F
 
 def prices_db(start='2024-01-01'):
     con = sqlite3.connect(C.DB)
-    d = pd.read_sql("SELECT date, product, settle FROM futures_prices WHERE source='ib_continuous' AND date >= ?", con, params=(start,))
+    d = pd.read_sql("SELECT date, product, settle, source FROM futures_prices WHERE source IN ('ib_continuous', 'yahoo_continuous') AND date >= ?",
+                    con, params=(start,))
     if d.empty: return {}
-    w = d.pivot_table(index='date', columns='product', values='settle'); w.index = pd.to_datetime(w.index)
-    return {c: w[c].dropna() for c in w}
+    d['date'] = pd.to_datetime(d.date.str[:10]); out = {}
+    for p, g in d.groupby('product'):                    # IB where it has the market, Yahoo otherwise
+        src = 'ib_continuous' if (g.source == 'ib_continuous').any() else 'yahoo_continuous'
+        out[p] = g[g.source == src].drop_duplicates('date', keep='last').set_index('date').settle.sort_index()
+    return out
 
 
 def prices_yahoo(start='2024-01-01', end=None):
