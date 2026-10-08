@@ -8,9 +8,9 @@ D=$(date +%F)
 LOG=book/evening.log
 {
   echo "=== $(date) ==="
-  python book/futures_ib.py                                   # futures closes from IB into delta1.db
+  python book/futures_ib.py --yahoo-only                      # futures closes (Yahoo until IB data is funded)
   python book/book.py "$D" --source db                       # pods -> book rules -> targets and orders files
-  git add "book/targets/$D.csv" "book/targets/$D.json"
+  git add "book/targets/$D.csv" "book/targets/$D.json" "book/orders/$D.csv"
   git commit -q -m "Targets for $D"
   git push -q                                                 # targets public before any order
   python book/approve.py "$D"                                 # prints the batch for review
