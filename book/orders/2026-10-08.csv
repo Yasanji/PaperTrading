@@ -1,0 +1,6 @@
+pod,symbol,sec_type,exchange,primary_exchange,currency,multiplier,target_qty,ref_price,notional_usd,reason,current_qty,order_qty,order_notional_usd,order_type,flag,batch_id
+1,M6A,FUT,CME,CME,USD,10000.0,3,0.6945000290870667,20835.000872612,"trend 1.0 (z 0.719), carry 1.0, exact 3.32",0,3,20835.000872612,MKT 10 min before settlement,,2026-10-08-d805a889
+1,M6E,FUT,CME,CME,USD,12500.0,-1,1.1224000453948975,-14030.000567436218,"trend -1.0 (z -0.709), carry -, exact -1.2",0,-1,14030.000567436218,MKT 10 min before settlement,,2026-10-08-d805a889
+1,MCD,FUT,CME,CME,USD,10000.0,-5,0.7041000127792358,-35205.00063896179,"trend -1.0 (z -0.419), carry -1.0, exact -4.54",0,-5,35205.00063896179,MKT 10 min before settlement,,2026-10-08-d805a889
+1,MJY,FUT,CME,CME,USD,1250000.0,-2,0.006353000178933144,-15882.500447332859,"trend -1.0 (z -0.432), carry -1.0, exact -1.81",0,-2,15882.500447332859,MKT 10 min before settlement,,2026-10-08-d805a889
+1,MSF,FUT,CME,CME,USD,12500.0,-1,1.209149956703186,-15114.374458789825,"trend - (z nan), carry -1.0, exact -0.55",0,-1,15114.374458789825,MKT 10 min before settlement,,2026-10-08-d805a889
