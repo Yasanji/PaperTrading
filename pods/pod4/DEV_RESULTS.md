@@ -19,3 +19,14 @@ Read with care, recorded before the next test:
 4. 36 universe tickers have no Yahoo data (mostly Reuters-style codes in the STOXX list) and are absent.
 
 Implementation choices: the index proxies are ^STOXX, ^GSPC and ^HSI from Yahoo; a stock with no price on a day contributes zero that day; liquidity is checked at the month-end before entry.
+
+## Diversification test (s.8.2)
+
+Run on 9 October 2026 with book/components.py over 1 July 2006 to 31 December 2015 (2,353 common days). Trend and currency carry rebuilt with their own rules; each series scaled to equal volatility over the period.
+
+| Book | Sharpe |
+| --- | --- |
+| Trend and carry | 0.51 |
+| Trend, carry and Pod 4 | 0.89 |
+
+Correlations with Pod 4: trend -0.07, carry -0.01. Sharpe on their own: trend 0.57, carry 0.15, Pod 4 0.78 (common days). **Passes.** The hold-out runs next, once.
