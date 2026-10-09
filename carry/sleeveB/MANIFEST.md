@@ -1,6 +1,6 @@
 # Sleeve B and Pod 4 data manifest
 
-Downloaded 2026-10-09 from Yahoo Finance and Wikipedia (revisions named in sleeveB_universe.py). Sectors (sectors.csv) are being downloaded separately and will be added before Sleeve B runs. Data not redistributed.
+Downloaded 2026-10-09 from Yahoo Finance and Wikipedia (revisions named in sleeveB_universe.py). Sectors (sectors.csv) were read from Yahoo on 9 October 2026 through the Mac, since Yahoo refused the request from the cloud workspace; 105 of 1,049 tickers have no sector and are excluded from ranking. Data not redistributed.
 
 | File | Rows | SHA-256 |
 | --- | --- | --- |
@@ -12,3 +12,4 @@ Downloaded 2026-10-09 from Yahoo Finance and Wikipedia (revisions named in sleev
 | indices.csv | 5872 | b57796282443b1588901912d9fc28b4514cb0b0a84ef351d0172e03d22635fb7 |
 | wiki_sp500_1376729338.html | 5880 | c9614391ec0c4714720dd27ad51be05dfbed5e2d34a02ad66a3f61c789612e98 |
 | wiki_hsi_1377881667.html | 1870 | bd17956d6a4f7490d87e7a16a8c798e06a89971e44a9a8df0167aee5fab70c76 |
+| sectors.csv | 1049 | 5ec7ef5b7f44ea0da619c6d509938f7ae6b4875796589749644aabbd494a8d80 |
