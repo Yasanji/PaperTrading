@@ -88,7 +88,7 @@ def carry(prices, rates, as_of):
     ranked = sorted(c, key=c.get); out = {}
     for s in ranked[:3] + ranked[-3:]:
         p = prices.get(s)
-        if p is None: continue
+        if p is None or s not in CARRY.index: continue      # ranked among all seven; a currency LEFT OUT by the contract check is not traded (10.4)
         sign = 1 if s in ranked[-3:] else -1
         out[s] = dict(sign=sign, carry=round(float(c[s]), 3), exact=float(CARRY_TARGET / risk_per_contract(p.dropna(), CARRY.loc[s].multiplier)))
     return out

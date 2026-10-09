@@ -13,3 +13,7 @@ The live IB account has no futures market data subscriptions, and IB will not ac
 ## 3. Orders over 10% of NAV
 
 At full risk, single futures orders can exceed 10% of NAV in face value (US Treasury futures and the Canadian dollar on 8 October 2026), although their risk is far smaller. Such an order is no longer stopped outright. It is flagged in the orders file, the batch is held, and it is sent only if the batch is approved with a written reason (`approve.py ... --reason`). An order over 10% of NAV that was not flagged in the approved, checksummed orders file still trips the kill switch.
+
+## 4. Contract check at the 60/20/20 split
+
+Re-run on 9 October 2026 with IB Gateway (contract_check_2026-10-09.csv), after Sleeve C took 20% of Pod 1's risk. Trend trades 12 of 15 markets at 99% of its target risk (PASS); Nasdaq-100, 30-year Treasuries and gold stay out. The New Zealand dollar falls to 0.44 of a contract and is left out of currency carry under amendment 10.4. Carry still ranks all seven currencies, and a position that would fall to the New Zealand dollar is not taken, so the carry sleeve can hold five positions instead of six.
