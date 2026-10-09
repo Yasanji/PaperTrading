@@ -15,6 +15,7 @@ def _load(name, path):
     spec = importlib.util.spec_from_file_location(name, path); m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m); return m
 pod1 = _load('pod1', os.path.join(C.ROOT, 'pods', 'pod1', 'pod.py'))
 sleeve_c = _load('sleeve_c', os.path.join(C.ROOT, 'pods', 'pod1', 'sleeve_c.py'))
+pod4 = _load('pod4', os.path.join(C.ROOT, 'pods', 'pod4', 'pod.py'))
 sys.path.insert(0, os.path.join(C.ROOT, 'pods', 'pod3'))            # pod3/orders.py imports its own pod.py as 'pod'
 import pod as pod3
 pod3_orders = _load('pod3_orders', os.path.join(C.ROOT, 'pods', 'pod3', 'orders.py'))
@@ -78,14 +79,15 @@ def apply_rules(t, pos, as_of):
     out = []
     for r in t.itertuples(index=False):
         r = r._asdict(); c = cur.get((r['pod'], r['symbol']))
-        sc_now, sc_prev = int(r.get('sleeve_c') or 0), int(r.get('sleeve_c_prev') or 0)
+        num = lambda v: int(v) if pd.notna(v) else 0
+        sc_now, sc_prev = num(r.get('sleeve_c')), num(r.get('sleeve_c_prev'))
         if sc_now or sc_prev:                        # rules apply to trend and carry only; Sleeve C passes through (sleeve s.4.1)
             r['target_qty'] -= sc_now
             if c is not None: c = c._replace(qty=c.qty - sc_prev)
         if c is not None and c.qty != 0:
             held = len(pd.bdate_range(c.opened, as_of)) - 1 if pd.notna(c.opened) else 99
             if held < C.MIN_HOLD_DAYS and (np.sign(r['target_qty']) != np.sign(c.qty) or abs(r['target_qty']) < abs(c.qty)) \
-                    and 'exit' not in r['reason'] and r['pod'] != 3:     # Pod 3's exits are its own rule (s.4)
+                    and 'exit' not in r['reason'] and r['pod'] not in (3, 4):   # Pods 3 and 4 exit by their own rules
                 r['reason'] += f'; held {held} days < {C.MIN_HOLD_DAYS}: kept {c.qty}'; r['target_qty'] = c.qty
             elif np.sign(r['target_qty']) == np.sign(c.qty) and abs(r['target_qty'] - c.qty) <= C.NO_TRADE_BAND * abs(c.qty):
                 r['reason'] += f'; within 25% band: kept {c.qty}'; r['target_qty'] = c.qty
@@ -113,12 +115,13 @@ def run(as_of, source='db', positions=None, write=True):
     pos = current_positions(positions)
     prices = data.prices(source, start=(pd.Timestamp(as_of) - pd.DateOffset(months=18)).strftime('%Y-%m-%d'))
     problems = pod1.checks(prices, as_of) if source == 'db' else []
-    rows = pod1_rows(as_of, prices, pos) + pod3_rows(as_of)
+    rows = pod1_rows(as_of, prices, pos) + pod3_rows(as_of) + pod4.book_rows(as_of, pos)
+    problems += pod4.checks(as_of)
     t = apply_rules(pd.DataFrame(rows, columns=COLS), pos, pd.Timestamp(as_of))
     o = orders(t, pos)
     turnover = o.order_notional_usd.sum()
     if turnover > C.DAILY_LIMIT * C.NAV: problems.append(f'turnover {turnover:,.0f} over 50% of NAV: batch held for review')
-    meta = dict(as_of=str(as_of), source=source, pods={1: pod1.status(), 3: pod3.status()}, problems=problems,
+    meta = dict(as_of=str(as_of), source=source, pods={1: pod1.status(), 3: pod3.status(), 4: pod4.status()}, problems=problems,
                 created=dt.datetime.now(dt.timezone.utc).replace(tzinfo=None).isoformat(timespec='seconds'))
     if write:
         os.makedirs(C.TARGETS_DIR, exist_ok=True); os.makedirs(C.ORDERS_DIR, exist_ok=True)

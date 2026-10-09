@@ -9,6 +9,7 @@ LOG=book/evening.log
 {
   echo "=== $(date) ==="
   python book/futures_ib.py --yahoo-only                      # futures closes (Yahoo until IB data is funded)
+  python pods/pod4/refresh.py                                 # Pod 4 prices, volumes and dividends (several minutes)
   python book/book.py "$D" --source db                       # pods -> book rules -> targets and orders files
   git add "book/targets/$D.csv" "book/targets/$D.json" "book/orders/$D.csv"
   git commit -q -m "Targets for $D"
