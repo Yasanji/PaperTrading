@@ -19,3 +19,4 @@ delta1/delta1.db
 delta1/.venv/
 delta1/collect.log
 delta1/oecd_rates_cache.csv
+delta1/sleeve_c_inputs.csv

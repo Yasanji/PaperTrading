@@ -14,12 +14,14 @@ import importlib.util
 def _load(name, path):
     spec = importlib.util.spec_from_file_location(name, path); m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m); return m
 pod1 = _load('pod1', os.path.join(C.ROOT, 'pods', 'pod1', 'pod.py'))
+sleeve_c = _load('sleeve_c', os.path.join(C.ROOT, 'pods', 'pod1', 'sleeve_c.py'))
 sys.path.insert(0, os.path.join(C.ROOT, 'pods', 'pod3'))            # pod3/orders.py imports its own pod.py as 'pod'
 import pod as pod3
 pod3_orders = _load('pod3_orders', os.path.join(C.ROOT, 'pods', 'pod3', 'orders.py'))
 
 CC = pd.read_csv(C.CONTRACTS).set_index('found')
-COLS = ['pod', 'symbol', 'sec_type', 'exchange', 'primary_exchange', 'currency', 'multiplier', 'target_qty', 'ref_price', 'notional_usd', 'reason']
+COLS = ['pod', 'symbol', 'sec_type', 'exchange', 'primary_exchange', 'currency', 'multiplier', 'target_qty', 'ref_price', 'notional_usd', 'reason',
+        'sleeve_c', 'sleeve_c_prev']
 
 
 def current_positions(path=None):
@@ -46,13 +48,16 @@ def previous_signs(pos):
 
 def pod1_rows(as_of, prices, pos):
     rates = pod1.oecd_rates((pd.Timestamp(as_of) - pd.DateOffset(months=6)).strftime('%Y-%m'))
-    t = pod1.targets(as_of, prices, rates, previous_signs(pos))
+    sc = sleeve_c.targets(as_of)
+    t = pod1.targets(as_of, prices, rates, previous_signs(pos), sleeve=sc)
     rows = []
     for r in t.itertuples():
         c = CC.loc[r.market]; px = float(prices[r.market].iloc[-1])
         reason = f"trend {r.trend_sign if pd.notna(r.trend_sign) else '-'} (z {r.trend_z}), carry {r.carry_sign if pd.notna(r.carry_sign) else '-'}, exact {r.exact}"
+        if r.sleeve_c or r.sleeve_c_prev: reason += f", sleeve C {r.sleeve_c:+d} (signal {sc['cal']:+.4f})"
         rows.append(dict(pod=1, symbol=r.market, sec_type='FUT', exchange=c.exchange, primary_exchange=c.exchange, currency=c.currency,
-                         multiplier=c.multiplier, target_qty=r.contracts, ref_price=px, notional_usd=r.contracts * px * c.multiplier, reason=reason))
+                         multiplier=c.multiplier, target_qty=r.contracts, ref_price=px, notional_usd=r.contracts * px * c.multiplier, reason=reason,
+                         sleeve_c=r.sleeve_c, sleeve_c_prev=r.sleeve_c_prev))
     return rows
 
 
@@ -73,6 +78,10 @@ def apply_rules(t, pos, as_of):
     out = []
     for r in t.itertuples(index=False):
         r = r._asdict(); c = cur.get((r['pod'], r['symbol']))
+        sc_now, sc_prev = int(r.get('sleeve_c') or 0), int(r.get('sleeve_c_prev') or 0)
+        if sc_now or sc_prev:                        # rules apply to trend and carry only; Sleeve C passes through (sleeve s.4.1)
+            r['target_qty'] -= sc_now
+            if c is not None: c = c._replace(qty=c.qty - sc_prev)
         if c is not None and c.qty != 0:
             held = len(pd.bdate_range(c.opened, as_of)) - 1 if pd.notna(c.opened) else 99
             if held < C.MIN_HOLD_DAYS and (np.sign(r['target_qty']) != np.sign(c.qty) or abs(r['target_qty']) < abs(c.qty)) \
@@ -80,6 +89,7 @@ def apply_rules(t, pos, as_of):
                 r['reason'] += f'; held {held} days < {C.MIN_HOLD_DAYS}: kept {c.qty}'; r['target_qty'] = c.qty
             elif np.sign(r['target_qty']) == np.sign(c.qty) and abs(r['target_qty'] - c.qty) <= C.NO_TRADE_BAND * abs(c.qty):
                 r['reason'] += f'; within 25% band: kept {c.qty}'; r['target_qty'] = c.qty
+        r['target_qty'] += sc_now
         out.append(r)
     for k, c in cur.items():                                   # positions no pod targets any more go to zero
         if c.qty != 0 and not any(o['pod'] == k[0] and o['symbol'] == k[1] for o in out):

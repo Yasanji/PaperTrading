@@ -1,4 +1,5 @@
-"""Pod 1: systematic macro. Trend (75% of the pod's risk) and G10 currency carry (25%), in micro futures.
+"""Pod 1: systematic macro. Trend (60% of the pod's risk), G10 currency carry (20%) and Sleeve C, month-end rebalancing
+(20%, rebal/SLEEVE_C_PREREGISTRATION.md, pods/pod1/sleeve_c.py), in micro futures.
 
 Trend (pairs/part4/trend_dev.py, portfolio amendment 10.1): each Friday, the 12-month return divided by the 12-month
 volatility (z). Long if z > 0.25, short if z < -0.25; inside the band the existing direction is kept. Size: whole
@@ -18,8 +19,8 @@ TRADED = CC[CC.verdict.str.startswith('TRADED')]
 TREND = TRADED[TRADED.use.str.contains('trend')].set_index('found')
 CARRY = TRADED[TRADED.use.str.contains('carry')].set_index('found')
 CARRY_CCY = {'M6E': 'EA20', 'MJY': 'JPN', 'M6B': 'GBR', 'MSF': 'CHE', 'M6A': 'AUS', 'MCD': 'CAN', 'NZD': 'NZL'}
-TREND_TARGET = float(CC[CC.use.str.startswith('trend')].target_risk.iloc[0])   # per-market target risk, from the contract check
-CARRY_TARGET = float(CC[CC.use == 'carry'].target_risk.iloc[0])
+TREND_TARGET = float(CC[CC.use.str.startswith('trend')].target_risk.iloc[0]) * C.TREND_SHARE / C.CHECK_SHARES[0]   # contract check, rescaled to the current split
+CARRY_TARGET = float(CC[CC.use == 'carry'].target_risk.iloc[0]) * C.CARRY_SHARE / C.CHECK_SHARES[1]
 BAND = 0.25
 
 
@@ -93,17 +94,20 @@ def carry(prices, rates, as_of):
     return out
 
 
-def targets(as_of, prices, rates, previous_sign=None, scale=None):
-    """Contracts per market (trend and carry netted), before the book's band and holding rules."""
+def targets(as_of, prices, rates, previous_sign=None, scale=None, sleeve=None):
+    """Contracts per market (trend, carry and Sleeve C netted), before the book's band and holding rules.
+    sleeve: output of sleeve_c.targets(); its whole contracts are added after trend and carry are rounded (s.4.4)."""
     scale = C.SCALE[1] if scale is None else scale
     t, k = trend(prices, previous_sign or {}), carry(prices, rates, as_of)
+    sc = {m: (sleeve or {}).get(m, 0) for m in ('MES', 'ZN')}; sp = {m: (sleeve or {}).get(m + '_prev', 0) for m in ('MES', 'ZN')}
     rows = []
-    for sym in sorted(set(t) | set(k)):
+    for sym in sorted(set(t) | set(k) | {m for m in sc if sc[m] or sp[m]}):
         e = t.get(sym, {}).get('sign', 0) * t.get(sym, {}).get('exact', 0) + k.get(sym, {}).get('sign', 0) * k.get(sym, {}).get('exact', 0)
         e *= scale
         n = int(math.copysign(max(1, round(abs(e))), e)) if abs(e) >= 0.5 else 0       # half-contract rule (s.3.8)
         rows.append(dict(market=sym, trend_sign=t.get(sym, {}).get('sign'), trend_z=t.get(sym, {}).get('z'),
-                         carry_sign=k.get(sym, {}).get('sign'), exact=round(e, 2), contracts=n))
+                         carry_sign=k.get(sym, {}).get('sign'), exact=round(e, 2), contracts=n + sc.get(sym, 0),
+                         sleeve_c=sc.get(sym, 0), sleeve_c_prev=sp.get(sym, 0)))
     return pd.DataFrame(rows)
 
 

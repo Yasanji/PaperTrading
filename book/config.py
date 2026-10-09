@@ -8,7 +8,8 @@ VOL_WINDOW = 126                # s.3.1
 N_PODS = 6
 POD_RISK = NAV * BOOK_VOL / math.sqrt(N_PODS)          # as in contract_check.py
 SCALE = {1: 1.0, 2: 0.25, 3: 0.25, 4: 0.25, 5: 0.25, 6: 0.25}   # s.6.4 incubation / forward test; pod 1 at 1.0 in paper (BOOK_AMENDMENT_1)
-TREND_SHARE, CARRY_SHARE = 0.75, 0.25                  # s.2
+TREND_SHARE, CARRY_SHARE, SLEEVE_C_SHARE = 0.60, 0.20, 0.20   # Pod 1 split, rebal/SLEEVE_C_PREREGISTRATION.md s.4.2
+CHECK_SHARES = (0.75, 0.25)     # trend and carry shares the contract-check file was sized at; update when it is re-run
 MIN_HOLD_DAYS = 15              # s.3.6
 NO_TRADE_BAND = 0.25            # s.3.7
 ORDER_LIMIT = 0.10              # s.3.4 and DESIGN s.6.4: one order <= 10% of NAV
