@@ -8,7 +8,8 @@ from ib_async import IB, Contract
 NAV = 1_000_000           # paper book, US dollars
 BOOK_VOL = 0.06           # book volatility target
 N_PODS = 6                # pods at equal target risk; roughly uncorrelated, so each pod's risk = book risk / sqrt(6)
-TREND_SHARE, CARRY_SHARE = 0.75, 0.25      # Pod 1 split
+import config as _C
+TREND_SHARE, CARRY_SHARE = _C.TREND_SHARE, _C.CARRY_SHARE      # Pod 1 split, from config.py (60/20 with Sleeve C)
 TREND_MARKETS, TREND_DIVERSIFICATION = 15, 2.7   # 2.7 = undiversified / actual volatility, trend over 2013-2022 (Ratnaike, 2026)
 CARRY_POSITIONS = 6       # 3 long, 3 short; treated as uncorrelated
 VIX_LOSS_LIMIT = 0.03     # Pod 6: a doubling of the VIX future may lose at most 3% of pod capital
