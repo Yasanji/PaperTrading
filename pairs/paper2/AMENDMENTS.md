@@ -87,3 +87,12 @@ A pooled coefficient is supported if it is negative with a t-statistic below -2.
 ### 4.8 Unchanged
 
 The Threshold band range (amendment 1), the Calendar construction, the last-week definition, momentum, the main-sample end date of 17 March 2023 and the hold-out end of 30 September 2026. Anything not specified here is labelled exploratory.
+
+## 5. Markets entering the tests, and the German equity series
+
+Made on 11 October 2026, after the Amendment 4.3 data checks (RESULTS_LOG.md) and before any equity data for a new market is used.
+
+1. **New markets.** Canada and Australia passed rules 4.3.1 and 4.3.2 and enter the tests. Japan, Sweden and Switzerland failed. For France, the Netherlands, Spain and Italy no official daily 10-year series covering 2005 to September 2026 could be obtained: the Banque de France series needs an API key, the Dutch State Treasury Agency's file starts in 2010 and was last updated in April 2025, and no daily series was found for Spain or Italy. They are recorded as not obtainable and do not enter. France may be added by a further amendment, before its equity data is used, if its series is obtained.
+2. **German equity.** Yahoo's DAX price index (^GDAXIP) starts on 5 March 2013, so under 4.4 Germany's main sample on the common basis runs from March 2014 (after a year for momentum) to 17 March 2023. The total-return DAX against the ECB bond return with carry, over 2005 to 2023 as before, is reported as the check.
+3. **Data starts.** Canada from 2002 (Bank of Canada yields from 2001), Australia, the UK and the US from 1999, each after a year of data for momentum.
+4. **Tests.** Primary: the pooled test on Canada and Australia (4.6.1) and the change after March 2023 on the same pool (4.6.2). Secondary: each new market (4.6.3) and the pool of all five markets (4.6.4).
