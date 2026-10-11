@@ -110,3 +110,11 @@ Made on 11 October 2026, after the Amendment 4 main results (RESULTS_LOG.md) and
 7. **Which leg moves.** The equity return and the bond return, each on its own, as the dependent variable.
 8. **Stability.** Main-sample coefficients over 1999-2008 and 2009-March 2023 separately; equality of coefficients across the pooled markets (Wald test).
 9. **Economic value and out-of-sample fit.** The out-of-sample R-squared of Campbell and Thompson (2008), with coefficients estimated on an expanding window from 2010, and the Sharpe ratio after one basis point a leg of the month-end trade described in the submitted paper, per market.
+
+## 7. Corrections after an independent audit
+
+Made on 11 October 2026, after an independent review of a4_step2_main.py (RESULTS_LOG.md, "Independent audit") and before the Amendment 6 battery is run.
+
+1. **Bond-leg alignment (an error).** Bond returns were computed on each yield's own calendar and then joined to equity dates, so a yield move on a day with no equity price was dropped while the equity return spanned both days. From now on yields are first aligned to the equity calendar and the bond return is computed over the same interval as the equity return. The main tests are re-run once with this fix and reported beside the original run.
+2. **Canada's US signal (a design choice to report, not to change).** The rule takes the US signal from the last US close before the local day, which for Canada, closing at the same time as the US, is the previous day. The primary tests keep the rule as registered. Each test involving Canada is also reported with the same-day US signal, and the paper states that Canada's month-end result does not survive it.
+3. **German bond.** The German return uses a 10-year zero-coupon bond on the euro-area AAA curve (duration 10, not about 8.5 as for the par bonds elsewhere); this is stated as a limit. Germany is a secondary market.
