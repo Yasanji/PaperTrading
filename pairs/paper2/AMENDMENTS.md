@@ -96,3 +96,17 @@ Made on 11 October 2026, after the Amendment 4.3 data checks (RESULTS_LOG.md) an
 2. **German equity.** Yahoo's DAX price index (^GDAXIP) starts on 5 March 2013, so under 4.4 Germany's main sample on the common basis runs from March 2014 (after a year for momentum) to 17 March 2023. The total-return DAX against the ECB bond return with carry, over 2005 to 2023 as before, is reported as the check.
 3. **Data starts.** Canada from 2002 (Bank of Canada yields from 2001), Australia, the UK and the US from 1999, each after a year of data for momentum.
 4. **Tests.** Primary: the pooled test on Canada and Australia (4.6.1) and the change after March 2023 on the same pool (4.6.2). Secondary: each new market (4.6.3) and the pool of all five markets (4.6.4).
+
+## 6. Dynamics and robustness, specified before they are run
+
+Made on 11 October 2026, after the Amendment 4 main results (RESULTS_LOG.md) and before any test below is run. These are checks: they do not change the primary tests or their verdicts, and every result is reported whatever it shows.
+
+1. **Error correction (pre-registered 5 October).** The original equation with the current and four previous returns, per market and pooled; the half-life of a Threshold deviation, ln(0.5)/ln(1 + coefficient), when the coefficient is between -1 and 0.
+2. **Short run against long run (pre-registered 5 October).** Local projections of the cumulative equity-minus-bond return over 1, 5 and 10 days on each signal, with Hodrick standard errors. Reversal: the day-10 effect is under half the day-1 effect and not significant.
+3. **Global equity leg (4.7.2).** The signals rebuilt from a portfolio of the MSCI World price index (iShares URTH from 2012 if the index is unavailable) in local currency against the local bond, used to predict the same local equity-minus-bond return, alone and together with the local signals.
+4. **Spillover control.** The previous two days' S&P 500 returns added as controls for markets other than the US, as Harvey, Mazzoleni and Melone do for international equities.
+5. **Standard errors.** Pooled tests also with Driscoll-Kraay errors (robust to correlation across markets and over time, 10 lags).
+6. **Placebos.** The Calendar signal interacted with the first, second and third weeks of the month instead of the last; the pressure should appear only in the last week.
+7. **Which leg moves.** The equity return and the bond return, each on its own, as the dependent variable.
+8. **Stability.** Main-sample coefficients over 1999-2008 and 2009-March 2023 separately; equality of coefficients across the pooled markets (Wald test).
+9. **Economic value and out-of-sample fit.** The out-of-sample R-squared of Campbell and Thompson (2008), with coefficients estimated on an expanding window from 2010, and the Sharpe ratio after one basis point a leg of the month-end trade described in the submitted paper, per market.
