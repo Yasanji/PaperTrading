@@ -21,7 +21,7 @@ def canada():     # Bank of Canada, 10-year benchmark bond yield
     t = get('https://www.bankofcanada.ca/valet/observations/BD.CDN.10YR.DQ.YLD/json?start_date=2004-01-01').json()
     return pd.Series({pd.Timestamp(o['d']): float(o['BD.CDN.10YR.DQ.YLD']['v']) for o in t['observations'] if o.get('BD.CDN.10YR.DQ.YLD')})
 def australia():  # Reserve Bank of Australia, F2 daily (historical workbook to 2013, current csv after)
-    cur = pd.read_csv(io.StringIO(get('https://www.rba.gov.au/statistics/tables/csv/f2-data.csv').content.decode('utf-8-sig')), skiprows=11, header=None)
+    cur = pd.read_csv(io.StringIO(get('https://www.rba.gov.au/statistics/tables/csv/f2-data.csv').content.decode('utf-8-sig')), skiprows=11, header=None, names=range(10))
     cur = pd.Series(pd.to_numeric(cur[4], errors='coerce').values, index=pd.to_datetime(cur[0], format='%d-%b-%Y', errors='coerce'))
     h = pd.read_excel(io.BytesIO(get('https://www.rba.gov.au/statistics/tables/xls-hist/f02dhist.xls').content), sheet_name='Data', header=None, skiprows=11)
     hist = pd.Series(pd.to_numeric(h[4], errors='coerce').values, index=pd.to_datetime(h[0], errors='coerce'))
