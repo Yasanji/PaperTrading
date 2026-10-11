@@ -97,3 +97,18 @@ On all three data sources both coefficients are positive and not significant ove
 
 1. **Observation gap explained.** Step 1 downloads Treasury yields from 1997, so momentum (which needs 252 days) is missing for the first months of the sample and about 80 days drop out (6,293). Step 8 downloads from 1996 and keeps them (6,373). With the full start, the Threshold coefficient is -0.407 against -0.414 published. The Calendar gap (-0.200 against -0.303) remains.
 2. **The hold-out regressions alone do not show the effect has gone.** Estimated on 1997 to 2025 with the rebalancing coefficients allowed to change after 20 March 2023 (other coefficients held fixed, HC1), the change is +0.067 (t 0.28) for Threshold and +0.021 (t 0.21) for Calendar x last week on index and yields, and +0.075 (t 0.31) and +0.051 (t 0.45) on ETFs. The positive hold-out coefficients in the table above come largely from re-estimating every control on about 700 days. The data cannot distinguish "the effect has gone" from "the effect is unchanged".
+
+## Amendment 4.3 data checks, 11 October 2026
+
+Run with a4_step1_yields.py after it was committed (two later commits fixed the Australian file reader only). Bond returns only; no equity data touched.
+
+| Market | Official yield | Coverage 2005 to Sep 2026 | Timing check (same day / previous day) | Result |
+| --- | --- | --- | --- | --- |
+| Canada | Bank of Canada 10-year benchmark | Yes | 0.87 / 0.06 against XGB.TO | **Pass** |
+| Australia | RBA F2, 10-year | Yes | 0.72 / 0.05 against IGB.AX | **Pass** |
+| Japan | Ministry of Finance, 10-year | Yes | 0.46 / 0.00 against 1482.T | Fail (rule 2) |
+| Sweden | Riksbank, 10-year | Yes | No traded series on Yahoo | Fail (rule 2) |
+| Switzerland | SNB Confederation 10-year spot | Ends 31 Jul 2025 | 0.41 / 0.05 against CSBGC0.SW | Fail (rules 1 and 2) |
+| France, Netherlands, Spain, Italy | Banque de France, DNB, Banco de Espana, Banca d'Italia | Not reached from this workspace | | Pending a manual download |
+
+Notes recorded with the result: the Japanese and Swiss ETFs may be less liquid or shorter in duration than a 10-year bond, so a low same-day correlation may reflect the ETF rather than the yield's timing; under rule 2 the markets fail all the same. The four euro-area markets are not failed: their official daily series are to be downloaded by hand and checked by the same script before any equity data is used.

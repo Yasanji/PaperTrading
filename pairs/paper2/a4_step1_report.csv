@@ -1,0 +1,10 @@
+market,status,first,last,longest_gap_bdays,rule1,corr_same,corr_prev,rule2,note
+JP,fail,2005-01-04,2026-09-30,6.0,True,0.46,0.0,False,"1482.T, 2526 common days from 2016-05-26"
+CA,pass,2005-01-04,2026-09-29,2.0,True,0.87,0.06,True,"XGB.TO, 4964 common days from 2006-11-14"
+AU,pass,2005-01-04,2026-09-30,3.0,True,0.72,0.05,True,"IGB.AX, 3663 common days from 2012-03-14"
+SE,fail,2005-01-03,2026-09-30,3.0,True,,,False,no traded local government bond series on Yahoo Finance
+CH,fail,2005-01-03,2025-07-31,3.0,False,0.41,0.05,False,"CSBGC0.SW, 4417 common days from 2008-01-04"
+FR,source not reached,,,,,,,,Banque de France webstat (TEC10) returns no observations without an API key
+NL,source not reached,,,,,,,,De Nederlandsche Bank data portal refuses this workspace (403)
+ES,source not reached,,,,,,,,Banco de Espana daily bond table not identified in its CSV service
+IT,source not reached,,,,,,,,Banca d'Italia BDS not reachable as a file from this workspace

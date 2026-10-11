@@ -31,7 +31,7 @@ Risk: two pods, each NAV x 6% / sqrt(2); Pods 3 and 4 keep NAV / 6 capital. Pape
 3. **Dry run days 3 to 10**, then switch execute.py to --send in the paper account.
 4. **Dividend futures code**: daily gap from dividend_forecast_summary against a recorded FEXD price, entry at +/-3%, exit inside +/-1%; add FEXD contracts to the contract check; find an automatic Eurex settlement source.
 5. **Pod 4**: delta1/pod4/hk_lots.csv with Hong Kong board lots.
-6. **Paper 2**: target **Economics Letters** (2,000 words); plan, UK and German issues and verified references in pairs/paper2/PAPER_PLAN.md. Next: Amendment 4 data checks (official daily 10-year yields, timing test), then rebuild all markets on one basis and run the pooled tests once.
+6. **Paper 2**: target **Economics Letters** (2,000 words); plan, UK and German issues and verified references in pairs/paper2/PAPER_PLAN.md. Amendment 4 data checks run 11 Oct: Canada and Australia pass; Japan, Sweden, Switzerland fail; France, Netherlands, Spain, Italy need official daily 10-year yields downloaded by hand (Banque de France TEC10, DNB, Banco de Espana, Banca d'Italia), then the same script. Then rebuild all markets on one basis and run the pooled tests once.
 7. **Real money (later)**: household compliance allows broad ETFs (more than ten holdings) and mutual funds freely; single stocks only with prior approval and a 30-day minimum hold; no shorts. Needs its own pre-registered long-only version (for example index additions held 30 days or more).
 
 ## Working rules
