@@ -1,0 +1,19 @@
+,0
+US thr,0.004454365548747674
+pooled all five thr,0.00984471015562833
+UK calw4,0.03285991497780216
+"pooled new (CA, AU) thr",0.033612562259013566
+US calw4,0.05166228952299434
+pooled all five calw4,0.07843215884913882
+"pooled new (CA, AU) calw4",0.08480333296605343
+AU calw4,0.08480333296605343
+UK thr,0.08741713842463472
+CA calw4,0.14591526971136193
+AU thr,0.30261122680766306
+CA thr,0.30261122680766306
+DE calw4,0.7565838746668705
+"change new (CA, AU) calw4_post",1.0
+change all five thr_post,1.0
+DE thr,1.0
+change all five calw4_post,1.0
+"change new (CA, AU) thr_post",1.0

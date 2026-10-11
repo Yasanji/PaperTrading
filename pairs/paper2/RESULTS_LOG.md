@@ -112,3 +112,25 @@ Run with a4_step1_yields.py after it was committed (two later commits fixed the 
 | France, Netherlands, Spain, Italy | Banque de France, DNB, Banco de Espana, Banca d'Italia | Not reached from this workspace | | Pending a manual download |
 
 Notes recorded with the result: the Japanese and Swiss ETFs may be less liquid or shorter in duration than a 10-year bond, so a low same-day correlation may reflect the ETF rather than the yield's timing; under rule 2 the markets fail all the same. The four euro-area markets are not failed: their official daily series are to be downloaded by hand and checked by the same script before any equity data is used.
+
+## Amendment 4 main tests, 11 October 2026
+
+Run once with a4_step2_main.py after it and Amendment 5 were committed. Common basis (price index, bond price change, no carry); equation of Harvey, Mazzoleni and Melone plus lagged US signals. Coefficients with t-statistics (pooled: clustered by date; single markets: Newey-West).
+
+| Test | Threshold | Calendar x last week |
+| --- | --- | --- |
+| **Pooled, Canada and Australia, 1999-2023 (primary)** | **-0.314 (t -3.06)** | **-0.202 (t -2.69)** |
+| Change after March 2023, Canada and Australia (primary) | +0.032 (t 0.48; 95% CI -0.098 to 0.162) | -0.090 (t -1.25; CI -0.230 to 0.051) |
+| Pooled, all five markets | -0.273 (t -3.44) | -0.164 (t -2.75) |
+| Change after March 2023, all five | +0.067 (t 0.99) | -0.045 (t -0.75) |
+| Canada, 2002-2023 | -0.374 (t -2.07; IVX p 0.02) | -0.239 (t -2.40; IVX p 0.02) |
+| Australia, 1999-2023 | -0.269 (t -2.08; IVX p 0.01) | -0.165 (t -2.67; IVX p 0.03) |
+| UK, 1999-2023 | -0.240 (t -2.62) | -0.151 (t -3.08) |
+| Germany, 2014-2023 (price index) | +0.140 (t 0.92) | +0.113 (t 1.53) |
+| US, 1999-2023 | -0.429 (t -3.66) | -0.212 (t -2.90) |
+
+Holm-adjusted across these 18 tests: pooled Canada and Australia Threshold p = 0.034 (supported); its Calendar signal p = 0.085; pooled all five Threshold p = 0.010; US Threshold 0.005; UK Calendar 0.033. Single new markets pass the per-market rule but not after Holm. No change after March 2023 is significant, so the data cannot say whether the effect has weakened.
+
+Pre-registered checks (4.7.1): with 40% and 30% equity targets the pooled Canada and Australia coefficients are -0.280 (t -2.85) and -0.301 (t -2.90) for Threshold and -0.205 (t -2.74) and -0.234 (t -2.76) for Calendar; no change after March 2023 is significant. The global equity leg (4.7.2) is not yet run.
+
+Reading, recorded with the result: the effect found in the US replicates out of sample in two new markets whose data had not been used; on a common return basis the UK effect also holds for both signals; Germany shows nothing over its short price-index sample.
