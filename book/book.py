@@ -54,7 +54,7 @@ def pod1_rows(as_of, prices, pos):
     rows = []
     for r in t.itertuples():
         c = CC.loc[r.market]; px = float(prices[r.market].iloc[-1])
-        reason = f"trend {r.trend_sign if pd.notna(r.trend_sign) else '-'} (z {r.trend_z}), carry {r.carry_sign if pd.notna(r.carry_sign) else '-'}, exact {r.exact}"
+        reason = f"trend {r.trend_sign if pd.notna(r.trend_sign) else '-'} (z {r.trend_z}), {'carry shadow' if C.CARRY_SHARE == 0 else 'carry'} {r.carry_sign if pd.notna(r.carry_sign) else '-'}, exact {r.exact}"
         if r.sleeve_c or r.sleeve_c_prev: reason += f", sleeve C {r.sleeve_c:+d} (signal {sc['cal']:+.4f})"
         rows.append(dict(pod=1, symbol=r.market, sec_type='FUT', exchange=c.exchange, primary_exchange=c.exchange, currency=c.currency,
                          multiplier=c.multiplier, target_qty=r.contracts, ref_price=px, notional_usd=r.contracts * px * c.multiplier, reason=reason,

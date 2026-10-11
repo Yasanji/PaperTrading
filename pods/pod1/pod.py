@@ -1,5 +1,5 @@
 """Pod 1: systematic macro. Trend (60% of the pod's risk), G10 currency carry (20%) and Sleeve C, month-end rebalancing
-(20%, rebal/SLEEVE_C_PREREGISTRATION.md, pods/pod1/sleeve_c.py), in micro futures.
+(20%, rebal/SLEEVE_C_PREREGISTRATION.md, pods/pod1/sleeve_c.py). Since Book Amendment 3: trend 80%, Sleeve C 20%, carry logged only, in micro futures.
 
 Trend (pairs/part4/trend_dev.py, portfolio amendment 10.1): each Friday, the 12-month return divided by the 12-month
 volatility (z). Long if z > 0.25, short if z < -0.25; inside the band the existing direction is kept. Size: whole
@@ -19,8 +19,9 @@ TRADED = CC[CC.verdict.str.startswith('TRADED')]
 TREND = TRADED[TRADED.use.str.contains('trend')].set_index('found')
 CARRY = TRADED[TRADED.use.str.contains('carry')].set_index('found')
 CARRY_CCY = {'M6E': 'EA20', 'MJY': 'JPN', 'M6B': 'GBR', 'MSF': 'CHE', 'M6A': 'AUS', 'MCD': 'CAN', 'NZD': 'NZL'}
-TREND_TARGET = float(CC[CC.use.str.startswith('trend')].target_risk.iloc[0]) * C.TREND_SHARE / C.CHECK_SHARES[0]   # contract check, rescaled to the current split
-CARRY_TARGET = float(CC[CC.use == 'carry'].target_risk.iloc[0]) * C.CARRY_SHARE / C.CHECK_SHARES[1]
+TREND_TARGET = float(CC[CC.use.str.startswith('trend')].target_risk.iloc[0]) * C.TREND_SHARE / C.CHECK_SHARES[0] * C.POD_RISK / C.CHECK_POD_RISK   # contract check, rescaled to the current split and pod risk
+CARRY_TARGET = float(CC[CC.use == 'carry'].target_risk.iloc[0]) * C.CARRY_SHARE / C.CHECK_SHARES[1] * C.POD_RISK / C.CHECK_POD_RISK
+CARRY_SHADOW = os.path.join(C.ROOT, 'book', 'carry_shadow_log.csv')   # carry signals logged while CARRY_SHARE is 0
 BAND = 0.25
 
 
@@ -99,6 +100,9 @@ def targets(as_of, prices, rates, previous_sign=None, scale=None, sleeve=None):
     sleeve: output of sleeve_c.targets(); its whole contracts are added after trend and carry are rounded (s.4.4)."""
     scale = C.SCALE[1] if scale is None else scale
     t, k = trend(prices, previous_sign or {}), carry(prices, rates, as_of)
+    if C.CARRY_SHARE == 0 and k:                                 # shadow record (Book Amendment 3)
+        pd.DataFrame([dict(as_of=str(as_of), market=m, sign=v['sign'], carry=v['carry']) for m, v in k.items()]) \
+            .to_csv(CARRY_SHADOW, mode='a', header=not os.path.exists(CARRY_SHADOW), index=False)
     sc = {m: (sleeve or {}).get(m, 0) for m in ('MES', 'ZN')}; sp = {m: (sleeve or {}).get(m + '_prev', 0) for m in ('MES', 'ZN')}
     rows = []
     for sym in sorted(set(t) | set(k) | {m for m in sc if sc[m] or sp[m]}):

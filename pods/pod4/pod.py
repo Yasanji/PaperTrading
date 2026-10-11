@@ -67,7 +67,7 @@ def targets(as_of, held=None, nav=NAV):
     as_of = pd.Timestamp(as_of); E = next_day(as_of)
     px, vol, dv, ix, exd = load(); u = pd.read_csv(UNIVERSE).set_index('yahoo').region
     held = held if held is not None else pd.DataFrame(columns=['symbol', 'qty', 'opened'])
-    cap = nav / N_PODS * SCALE; size = POS_SHARE * cap; rows = []
+    cap = C.STRATEGY_CAPITAL * nav / C.NAV * SCALE; size = POS_SHARE * cap; rows = []
     live = [s for s, q in zip(held.symbol, held.qty) if q]
     if live:                                                    # announced ex-dates for held stocks, read now (at most 20 calls)
         try:
