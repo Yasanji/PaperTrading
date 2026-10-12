@@ -1,0 +1,190 @@
+block,spec,test,signal,coef,t,note
+A primary,aligned,pooled new,thr,-0.3210820502765355,-3.09580401440122,
+A primary,aligned,"change after Mar 2023, new",thr,0.031920199356679606,0.480720526795411,95% CI -0.098 to 0.162
+A primary,aligned,pooled new,calw4,-0.2007236753472603,-2.6722417680612707,
+A primary,aligned,"change after Mar 2023, new",calw4,-0.08734402219344116,-1.224532402622305,95% CI -0.227 to 0.052
+A primary,aligned,pooled all,thr,-0.26486404756214305,-3.3481231645863447,
+A primary,aligned,"change after Mar 2023, all",thr,0.06339485308842956,0.9453398328687755,95% CI -0.068 to 0.195
+A primary,aligned,pooled all,calw4,-0.16168766787667574,-2.7229863267804206,
+A primary,aligned,"change after Mar 2023, all",calw4,-0.04482532707926025,-0.7481239250212406,95% CI -0.162 to 0.073
+A primary,aligned,US,thr,-0.36768692323759994,-3.2036009088186552,
+A primary,aligned,US,calw4,-0.20582047193061836,-2.8435248673795024,
+A primary,aligned,UK,thr,-0.24694637632863387,-2.7417999328097444,
+A primary,aligned,UK,calw4,-0.14955001864352813,-3.061270558520746,
+A primary,aligned,DE,thr,0.12734596540419196,0.7899820418640879,
+A primary,aligned,DE,calw4,0.11572841363922219,1.5722929128094325,
+A primary,aligned,CA,thr,-0.36766719685496174,-2.1209356808266997,
+A primary,aligned,CA,calw4,-0.23974723280959712,-2.4046166433315275,
+A primary,aligned,AU,thr,-0.28203394403944765,-2.1679171960840424,
+A primary,aligned,AU,calw4,-0.1609911705060134,-2.635818979925907,
+A primary,"aligned, Canada same-day US",pooled new,thr,-0.38361090896767974,-3.733821242347317,
+A primary,"aligned, Canada same-day US","change after Mar 2023, new",thr,0.03161906830141101,0.4793278069545502,95% CI -0.098 to 0.161
+A primary,"aligned, Canada same-day US",pooled new,calw4,-0.12837809178623066,-1.7312482317724929,
+A primary,"aligned, Canada same-day US","change after Mar 2023, new",calw4,-0.1046510560667304,-1.4533082387481528,95% CI -0.246 to 0.036
+A primary,"aligned, Canada same-day US",pooled all,thr,-0.288739591318323,-3.6906619550464184,
+A primary,"aligned, Canada same-day US","change after Mar 2023, all",thr,0.06388145841265977,0.9547003918159953,95% CI -0.067 to 0.195
+A primary,"aligned, Canada same-day US",pooled all,calw4,-0.13873844337455046,-2.4809514487688693,
+A primary,"aligned, Canada same-day US","change after Mar 2023, all",calw4,-0.05145613233236777,-0.8628846426687866,95% CI -0.168 to 0.065
+A primary,"aligned, Canada same-day US",US,thr,-0.36768692323759994,-3.2036009088186552,
+A primary,"aligned, Canada same-day US",US,calw4,-0.20582047193061836,-2.8435248673795024,
+A primary,"aligned, Canada same-day US",UK,thr,-0.24694637632863387,-2.7417999328097444,
+A primary,"aligned, Canada same-day US",UK,calw4,-0.14955001864352813,-3.061270558520746,
+A primary,"aligned, Canada same-day US",DE,thr,0.12734596540419196,0.7899820418640879,
+A primary,"aligned, Canada same-day US",DE,calw4,0.11572841363922219,1.5722929128094325,
+A primary,"aligned, Canada same-day US",CA,thr,-0.5047379999780452,-2.999437734416945,
+A primary,"aligned, Canada same-day US",CA,calw4,-0.07117618757028539,-0.6671216104089269,
+A primary,"aligned, Canada same-day US",AU,thr,-0.28203394403944765,-2.1679171960840424,
+A primary,"aligned, Canada same-day US",AU,calw4,-0.1609911705060134,-2.635818979925907,
+B error correction,5 lags,US,thr,-0.27681455419784295,-1.5123582017903543,half-life 2.14 days
+B error correction,5 lags,US,calw4,-0.22149274942189853,-2.9909370800300845,
+B error correction,5 lags,UK,thr,-0.12729116599303633,-1.1953658810183756,half-life 5.09 days
+B error correction,5 lags,UK,calw4,-0.1578450097613487,-3.165558039470322,
+B error correction,5 lags,DE,thr,-0.05971434933124456,-0.2839327351402573,half-life 11.26 days
+B error correction,5 lags,DE,calw4,0.12224214695756516,1.6337226014609505,
+B error correction,5 lags,CA,thr,-0.4369376420584295,-1.9299237378392995,half-life 1.21 days
+B error correction,5 lags,CA,calw4,-0.23207581205047148,-2.3175500294455413,
+B error correction,5 lags,AU,thr,-0.26940170676860004,-1.6710174714167292,half-life 2.21 days
+B error correction,5 lags,AU,calw4,-0.15960041913888534,-2.5229388970612385,
+C local projections,h=1,US,thr,-0.36860257234804555,-3.0576388090251783,
+C local projections,h=5,US,thr,-0.9688942403620013,-2.1057433245559656,
+C local projections,h=10,US,thr,-0.6915111925910097,-0.924162066979291,reversal by day 10: False
+C local projections,h=1,US,calw4,-0.2062322924931312,-2.5624454596260486,
+C local projections,h=5,US,calw4,0.07692530776733825,0.2812790858824261,
+C local projections,h=10,US,calw4,0.04168288005234335,0.11013097119545208,reversal by day 10: True
+C local projections,h=1,UK,thr,-0.24610221847638264,-2.400057548158338,
+C local projections,h=5,UK,thr,-0.6190307724352583,-1.5104034080960065,
+C local projections,h=10,UK,thr,-0.701467905903947,-0.994735376562152,reversal by day 10: False
+C local projections,h=1,UK,calw4,-0.15051417137346704,-2.2066018285581177,
+C local projections,h=5,UK,calw4,-0.16268018613096316,-0.6398178852698535,
+C local projections,h=10,UK,calw4,0.15977464489474924,0.439768317215355,reversal by day 10: False
+C local projections,h=1,DE,thr,0.12964503903220356,0.7107392718298038,
+C local projections,h=5,DE,thr,0.6033750699299184,0.9642613585139783,
+C local projections,h=10,DE,thr,0.8882465270641071,0.8229870660796739,reversal by day 10: False
+C local projections,h=1,DE,calw4,0.11417882053497426,1.1676882531844197,
+C local projections,h=5,DE,calw4,0.6742591635409382,1.7544928321928186,
+C local projections,h=10,DE,calw4,0.5242154955244702,0.865132735466158,reversal by day 10: False
+C local projections,h=1,CA,thr,-0.3685354530301011,-2.5152532493819386,
+C local projections,h=5,CA,thr,-0.6369017581416258,-1.2823872446341706,
+C local projections,h=10,CA,thr,-0.9318459789314572,-1.1683662287538412,reversal by day 10: False
+C local projections,h=1,CA,calw4,-0.24049028219102725,-1.9796565279787495,
+C local projections,h=5,CA,calw4,-0.06778391600204911,-0.18434020141081,
+C local projections,h=10,CA,calw4,0.15080637283879408,0.28812935492428743,reversal by day 10: False
+C local projections,h=1,AU,thr,-0.2847070984265426,-2.487802195086467,
+C local projections,h=5,AU,thr,-0.6069598252485958,-1.531096964757478,
+C local projections,h=10,AU,thr,-0.923354243192049,-1.419153145640127,reversal by day 10: False
+C local projections,h=1,AU,calw4,-0.15891699278675625,-1.972060514977313,
+C local projections,h=5,AU,calw4,-0.22514902257913877,-0.8219526143111281,
+C local projections,h=10,AU,calw4,0.12654608493201178,0.32635234359170373,reversal by day 10: False
+C local projections,h=1,pooled new (Driscoll-Kraay),thr,-0.32300060627789423,-2.385625072482599,95% CI -0.588 to -0.058
+C local projections,h=5,pooled new (Driscoll-Kraay),thr,-0.6171894398863845,-2.372421999669533,95% CI -1.127 to -0.107
+C local projections,h=10,pooled new (Driscoll-Kraay),thr,-0.926629032565487,-2.4003446655505165,95% CI -1.683 to -0.170
+C local projections,h=1,pooled new (Driscoll-Kraay),calw4,-0.2000430736095047,-2.9209742969427968,95% CI -0.334 to -0.066
+C local projections,h=5,pooled new (Driscoll-Kraay),calw4,-0.1467169908395374,-0.7618677381326027,95% CI -0.524 to 0.231
+C local projections,h=10,pooled new (Driscoll-Kraay),calw4,0.13861973186247756,0.718792912232013,95% CI -0.239 to 0.517
+D global leg,global only,US,thr_g,-0.28302070261295537,-2.7958567872726143,from 1999-01-04
+D global leg,global only,US,calw4_g,-0.17165168468701827,-2.33785779711107,
+D global leg,global only,UK,thr_g,0.4851665638540302,4.4134824994661965,from 2003-12-02
+D global leg,global only,UK,calw4_g,-0.09467262094077204,-1.6532697159015195,
+D global leg,local and global,UK,thr,-0.38200701667053444,-3.596308731672391,
+D global leg,local and global,UK,calw4,-0.08839999257078456,-0.8801018080254762,
+D global leg,local and global,UK,thr_g,0.5498653589154682,4.7485448156677155,
+D global leg,local and global,UK,calw4_g,-0.029550543374897216,-0.2911616266001298,
+D global leg,global only,DE,thr_g,0.3222765147145288,1.8215948255832317,from 2014-03-07
+D global leg,global only,DE,calw4_g,0.07696022638504006,0.9212053070485418,
+D global leg,local and global,DE,thr,-0.002446740786939342,-0.013831035041028245,
+D global leg,local and global,DE,calw4,0.16007729074520635,1.5719398031892018,
+D global leg,local and global,DE,thr_g,0.35498570827400183,1.8358993998706443,
+D global leg,local and global,DE,calw4_g,-0.0672425484686145,-0.5746438481903366,
+D global leg,global only,CA,thr_g,-0.00683759048969626,-0.06308452372008226,from 2003-09-18
+D global leg,global only,CA,calw4_g,-0.24396127606800094,-3.3276276255061545,
+D global leg,local and global,CA,thr,-0.33722466723582234,-1.870089627256179,
+D global leg,local and global,CA,calw4,-0.18370145718957984,-1.386501338443555,
+D global leg,local and global,CA,thr_g,-0.006591366131716889,-0.06718006133048261,
+D global leg,local and global,CA,calw4_g,-0.11888033512321092,-1.2703282123147859,
+D global leg,global only,AU,thr_g,0.9017522960156169,5.380252563698595,from 2006-05-17
+D global leg,global only,AU,calw4_g,-0.09654950420635146,-1.3889752620144329,
+D global leg,local and global,AU,thr,-0.7179334591152785,-4.299074125855552,
+D global leg,local and global,AU,calw4,-0.14615963128209586,-1.7682054341430848,
+D global leg,local and global,AU,thr_g,0.9728150810291036,6.28731412987689,
+D global leg,local and global,AU,calw4_g,-0.04031552714293269,-0.4965807217491729,
+E spillover,+ two lagged S&P 500 returns,pooled new,thr,-0.3137341195215844,-3.1069066195555375,
+E spillover,+ two lagged S&P 500 returns,pooled new,calw4,-0.2005074751462903,-2.6829807490295474,
+E spillover,+ two lagged S&P 500 returns,CA,thr,-0.35787063422227133,-2.1128034262785262,
+E spillover,+ two lagged S&P 500 returns,CA,calw4,-0.23959149581838762,-2.4105020634455094,
+E spillover,+ two lagged S&P 500 returns,AU,thr,-0.27585258787736633,-2.290757636766249,
+E spillover,+ two lagged S&P 500 returns,AU,calw4,-0.160867797738675,-2.6030222554532996,
+E spillover,+ two lagged S&P 500 returns,UK,thr,-0.24287329422423093,-2.640517755685327,
+E spillover,+ two lagged S&P 500 returns,UK,calw4,-0.1503518532974647,-3.071189875467169,
+E spillover,+ two lagged S&P 500 returns,DE,thr,0.1335558849726693,0.8035771850421645,
+E spillover,+ two lagged S&P 500 returns,DE,calw4,0.11179797787261378,1.5068641832109437,
+F inference,Driscoll-Kraay,pooled new,thr,-0.3210820502765386,-2.3471328704489784,
+F inference,Driscoll-Kraay,pooled new,calw4,-0.2007236753472598,-2.9976096945341153,
+F inference,joint Wald,pooled new,thr and calw4,,,p = 0.0012
+F inference,Driscoll-Kraay,pooled all,thr,-0.2648640475621433,-3.0801027669220047,
+F inference,Driscoll-Kraay,pooled all,calw4,-0.16168766787667493,-3.0937653483815546,
+F inference,joint Wald,pooled all,thr and calw4,,,p = 0.0008
+G placebo,Calendar x week 1,pooled new,calw (placebo),0.17191265384742802,1.7438842974222606,
+G placebo,Calendar x week 2,pooled new,calw (placebo),0.06485113470547464,0.5557182390213979,
+G placebo,Calendar x week 3,pooled new,calw (placebo),0.09548536777371831,1.1830088331557458,
+H legs,re_next,pooled new,thr,-0.2678637187831863,-2.765724856918962,
+H legs,re_next,pooled new,calw4,-0.18560034047620053,-2.7766861447782576,
+H legs,rb_next,pooled new,thr,0.053218331493349216,1.9881310224857482,
+H legs,rb_next,pooled new,calw4,0.015123334871059704,0.8047875460679877,
+I stability,1999-2008,pooled new,thr,-0.24618824611279516,-1.8090400939853244,
+I stability,1999-2008,pooled new,calw4,-0.29731831116302404,-2.724055882503581,
+I stability,2009-2023,pooled new,thr,-0.3764258608778123,-2.5782123657193603,
+I stability,2009-2023,pooled new,calw4,-0.13224215799983555,-1.3618463368794664,
+I stability,equal Threshold across new markets,Wald,thr,,,p = 0.5701
+I stability,extra Threshold effect after a down month,pooled new,thr x down,-0.07821911483517248,-0.8983204950672484,
+J out of sample,expanding from 2010,US,R2 (Campbell-Thompson),0.009984935223180003,1.9975515132222748,"t is Clark-West, one-sided"
+J out of sample,"month-end trade, 1bp a leg",US,Sharpe,0.373038470884313,,
+J out of sample,expanding from 2010,UK,R2 (Campbell-Thompson),0.0009559573701491964,3.0669511860037098,"t is Clark-West, one-sided"
+J out of sample,"month-end trade, 1bp a leg",UK,Sharpe,0.5855815668421913,,
+J out of sample,expanding from 2010,DE,R2 (Campbell-Thompson),-0.07896102826408935,,"t is Clark-West, one-sided"
+J out of sample,"month-end trade, 1bp a leg",DE,Sharpe,-0.36749550828827476,,
+J out of sample,expanding from 2010,CA,R2 (Campbell-Thompson),-0.003697270931888541,1.6134397390294979,"t is Clark-West, one-sided"
+J out of sample,"month-end trade, 1bp a leg",CA,Sharpe,0.198602063265065,,
+J out of sample,expanding from 2010,AU,R2 (Campbell-Thompson),0.0019054348952115552,2.2739914817482427,"t is Clark-West, one-sided"
+J out of sample,"month-end trade, 1bp a leg",AU,Sharpe,0.42120086377740373,,
+K IVX multivariate,White variance,US,thr,-0.40868741172946244,-3.3248252131794835,
+K IVX multivariate,White variance,US,calw4,-0.20768505008217086,-2.767452831505504,joint p = 0.0004
+K IVX multivariate,White variance,UK,thr,-0.2691864605213558,-2.623876695089513,
+K IVX multivariate,White variance,UK,calw4,-0.1633286576861227,-2.4851160118279854,joint p = 0.0040
+K IVX multivariate,White variance,DE,thr,0.1012345055560972,0.554953157970985,
+K IVX multivariate,White variance,DE,calw4,0.1227573391298024,1.2362288087613038,joint p = 0.4370
+K IVX multivariate,White variance,CA,thr,-0.3697161871089045,-2.61098956745892,
+K IVX multivariate,White variance,CA,calw4,-0.24055061349597598,-2.3173866449620855,joint p = 0.0063
+K IVX multivariate,White variance,AU,thr,-0.29344029803169713,-2.5903241236021266,
+K IVX multivariate,White variance,AU,calw4,-0.15069198270346545,-1.9690630201193489,joint p = 0.0084
+K wild bootstrap,"by date, Rademacher, 999",pooled new,thr,,-3.098085161323454,p = 0.0040
+K wild bootstrap,"by date, Rademacher, 999",pooled new,calw4,,-2.6742108126313076,p = 0.0080
+K wild bootstrap,"by date, Rademacher, 999",pooled all,thr,,-3.3505880256454663,p = 0.0030
+K wild bootstrap,"by date, Rademacher, 999",pooled all,calw4,,-2.7249909671808714,p = 0.0090
+K wild bootstrap,"by date, Rademacher, 999",US,thr,,-3.1300196042839747,p = 0.0020
+K wild bootstrap,"by date, Rademacher, 999",US,calw4,,-2.738871861290891,p = 0.0040
+K wild bootstrap,"by date, Rademacher, 999",UK,thr,,-2.4335451162414365,p = 0.0190
+K wild bootstrap,"by date, Rademacher, 999",UK,calw4,,-2.305666631139706,p = 0.0200
+K wild bootstrap,"by date, Rademacher, 999",DE,thr,,0.7017878980360918,p = 0.4930
+K wild bootstrap,"by date, Rademacher, 999",DE,calw4,,1.1982873681703017,p = 0.2710
+K wild bootstrap,"by date, Rademacher, 999",CA,thr,,-2.587241369656792,p = 0.0090
+K wild bootstrap,"by date, Rademacher, 999",CA,calw4,,-2.309545798900875,p = 0.0260
+K wild bootstrap,"by date, Rademacher, 999",AU,thr,,-2.5374119876503447,p = 0.0160
+K wild bootstrap,"by date, Rademacher, 999",AU,calw4,,-2.115798125869605,p = 0.0360
+K Romano-Wolf,step-down over 14 tests,pooled all,thr,,-3.3505880256454663,p = 0.0100
+K Romano-Wolf,step-down over 14 tests,US,thr,,-3.1300196042839747,p = 0.0180
+K Romano-Wolf,step-down over 14 tests,pooled new,thr,,-3.098085161323454,p = 0.0190
+K Romano-Wolf,step-down over 14 tests,US,calw4,,-2.738871861290891,p = 0.0590
+K Romano-Wolf,step-down over 14 tests,pooled all,calw4,,-2.7249909671808714,p = 0.0610
+K Romano-Wolf,step-down over 14 tests,pooled new,calw4,,-2.6742108126313076,p = 0.0670
+K Romano-Wolf,step-down over 14 tests,CA,thr,,-2.587241369656792,p = 0.0830
+K Romano-Wolf,step-down over 14 tests,AU,thr,,-2.5374119876503447,p = 0.0890
+K Romano-Wolf,step-down over 14 tests,UK,thr,,-2.4335451162414365,p = 0.1000
+K Romano-Wolf,step-down over 14 tests,CA,calw4,,-2.309545798900875,p = 0.1170
+K Romano-Wolf,step-down over 14 tests,UK,calw4,,-2.305666631139706,p = 0.1170
+K Romano-Wolf,step-down over 14 tests,AU,calw4,,-2.115798125869605,p = 0.1170
+K Romano-Wolf,step-down over 14 tests,DE,calw4,,1.1982873681703017,p = 0.4620
+K Romano-Wolf,step-down over 14 tests,DE,thr,,0.7017878980360918,p = 0.4930
+K Ibragimov-Mueller,2 markets,new,thr,-0.32485057044720467,-7.587019289038424,p = 0.0834
+K Ibragimov-Mueller,2 markets,new,calw4,-0.20036920165780525,-5.0883499199194375,p = 0.1235
+K Ibragimov-Mueller,5 markets,all,thr,-0.22739769501129023,-2.4769364243845153,p = 0.0684
+K Ibragimov-Mueller,5 markets,all,calw4,-0.12807609605010697,-2.0314215613598194,p = 0.1120

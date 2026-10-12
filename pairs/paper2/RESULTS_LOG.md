@@ -134,3 +134,35 @@ Holm-adjusted across these 18 tests: pooled Canada and Australia Threshold p = 0
 Pre-registered checks (4.7.1): with 40% and 30% equity targets the pooled Canada and Australia coefficients are -0.280 (t -2.85) and -0.301 (t -2.90) for Threshold and -0.205 (t -2.74) and -0.234 (t -2.76) for Calendar; no change after March 2023 is significant. The global equity leg (4.7.2) is not yet run.
 
 Reading, recorded with the result: the effect found in the US replicates out of sample in two new markets whose data had not been used; on a common return basis the UK effect also holds for both signals; Germany shows nothing over its short price-index sample.
+
+## Independent audit of the main tests, 11 October 2026
+
+An independent reviewer reproduced the Canada regression exactly (thr -0.3735, t -2.07; calw4 -0.2390, t -2.40) and found no look-ahead. Two findings led to Amendment 7: bond returns were computed before aligning yields to equity dates (a small error), and Canada, which closes with the US, receives the previous day's US signal under the registered rule.
+
+## Amendments 6 to 8: checks, run once on 12 October 2026 (a4_step3_battery.py; a4_step3_results.csv)
+
+All with the alignment fix (7.1). Pooled = Canada and Australia unless stated.
+
+**Primary tests after the alignment fix.** Pooled Threshold -0.321 (t -3.10), Calendar x last week -0.201 (t -2.67); change after March 2023 +0.032 (CI -0.098 to 0.162) and -0.087 (CI -0.227 to 0.052). All five pooled: -0.265 (t -3.35) and -0.162 (t -2.72). Canada -0.368 (t -2.12) and -0.240 (t -2.40); Australia -0.282 (t -2.17) and -0.161 (t -2.64).
+
+**Canada with the same-day US signal (7.2).** Canada Threshold -0.505 (t -3.00), Calendar -0.071 (t -0.67). Pooled Threshold -0.384 (t -3.73), Calendar -0.128 (t -1.73). The Threshold result strengthens; the month-end result in Canada does not survive.
+
+**Inference for few markets and persistence.** Wild bootstrap by date: pooled Threshold p 0.004, Calendar p 0.008. Romano-Wolf over 14 tests: pooled Threshold p 0.019, all-five Threshold p 0.010, US Threshold 0.018; every Calendar test 0.06 to 0.12. Driscoll-Kraay: pooled Threshold t -2.35, Calendar t -3.00. Joint Wald (both zero): pooled p 0.001. Multivariate IVX with White variance: Threshold and Calendar negative and significant in the US, UK, Canada and Australia (t between -1.97 and -3.32), not in Germany. Ibragimov-Mueller across market estimates: two new markets, Threshold p 0.083 (one degree of freedom); all five, p 0.068 (Germany pulls it down).
+
+**Error correction (5 lags).** With four extra lagged returns the Threshold coefficient weakens everywhere (Canada -0.437, t -1.93; Australia -0.269, t -1.67; US -0.277, t -1.51), while Calendar holds (Canada t -2.32, Australia -2.52). Half-lives of a Threshold deviation: 1.2 days (Canada), 2.2 (Australia), 2.1 (US), 5.1 (UK).
+
+**Reversal (local projections, pooled, Driscoll-Kraay).** Calendar: -0.200 at day 1 (t -2.92), -0.147 at day 5, +0.139 at day 10 (CI -0.239 to 0.517): it reverses, as temporary price pressure should. Threshold: -0.323, -0.617, -0.927 at days 1, 5, 10 (all t below -2.3): it does not reverse but accumulates, which a persistent signal repeating its pressure would also produce.
+
+**Global equity leg (6.3).** First run invalid: the MSCI World index closes with the US, after the UK, German and Australian closes, so the global signal used later information (large positive coefficients). Re-run with the previous global close for those markets (a4_step3_global_fixed.csv): the global signal predicts nothing in the UK, Germany or Australia, while the local signals keep their sign (Australia Threshold -0.353, t -2.01; Calendar -0.230, t -3.17). In Canada local and global signals are collinear (correlation 0.69) and neither is significant alone in the joint regression.
+
+**Spillover (6.4).** Two lagged S&P 500 returns change nothing (pooled -0.314, t -3.11; -0.201, t -2.68).
+
+**Placebos (6.6).** Calendar interacted with weeks 1, 2 and 3: +0.172 (t 1.74), +0.065, +0.096; the negative effect is only in the last week.
+
+**Which leg (6.7).** The equity return carries it (Threshold -0.268, t -2.77; Calendar -0.186, t -2.78); the bond return moves the other way, weakly (+0.053, t 1.99).
+
+**Stability (6.8, 8.5).** Threshold -0.246 (t -1.81) in 1999-2008 and -0.376 (t -2.58) in 2009-2023; Calendar -0.297 (t -2.72) and -0.132 (t -1.36). Equal Threshold across Canada and Australia: p 0.57. No extra effect after a down month (-0.078, t -0.90).
+
+**Economic value (6.9, 8.3).** Out-of-sample R-squared from 2010: US 1.0%, UK 0.10%, Australia 0.19%, Canada -0.37%, Germany -7.9%; Clark-West t: US 2.00, UK 3.07, Australia 2.27, Canada 1.61. Month-end trade Sharpe after 1bp a leg, 1999-2023: US 0.37, UK 0.59, Australia 0.42, Canada 0.20, Germany -0.37.
+
+**Reading.** The Threshold effect is the robust result: pooled, bootstrapped, Romano-Wolf adjusted, IVX, Driscoll-Kraay, spillover-controlled, stronger with Canada's same-day US signal, and equal across the two new markets. It weakens when four lagged returns are added and does not reverse, so it may partly capture short-run return dynamics rather than pure price pressure. The month-end effect behaves like price pressure (only in the last week, on the equity leg, reversing within ten days) but is weaker statistically: it fails Romano-Wolf and does not survive Canada's same-day US signal.
