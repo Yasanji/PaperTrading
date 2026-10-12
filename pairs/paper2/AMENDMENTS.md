@@ -118,3 +118,13 @@ Made on 11 October 2026, after an independent review of a4_step2_main.py (RESULT
 1. **Bond-leg alignment (an error).** Bond returns were computed on each yield's own calendar and then joined to equity dates, so a yield move on a day with no equity price was dropped while the equity return spanned both days. From now on yields are first aligned to the equity calendar and the bond return is computed over the same interval as the equity return. The main tests are re-run once with this fix and reported beside the original run.
 2. **Canada's US signal (a design choice to report, not to change).** The rule takes the US signal from the last US close before the local day, which for Canada, closing at the same time as the US, is the previous day. The primary tests keep the rule as registered. Each test involving Canada is also reported with the same-day US signal, and the paper states that Canada's month-end result does not survive it.
 3. **German bond.** The German return uses a 10-year zero-coupon bond on the euro-area AAA curve (duration 10, not about 8.5 as for the par bonds elsewhere); this is stated as a limit. Germany is a secondary market.
+
+## 8. Inference added after the literature review
+
+Made on 12 October 2026, after the literature review (reports/Rebalancing pressure literature review) and before the Amendment 6 battery is run. Checks only; primary tests and verdicts unchanged.
+
+1. **Wild bootstrap.** For the pooled tests and each market, p-values from a wild bootstrap with Rademacher weights drawn by date (shared across markets on the same date), under the null of a zero coefficient, 999 draws.
+2. **Romano-Wolf.** Step-down adjusted p-values over the family of the Threshold and Calendar-in-last-week tests (pooled new markets, pooled all five, each of the five markets), from the same bootstrap draws.
+3. **Clark-West.** The out-of-sample test of 6.9 is reported with the Clark and West (2007) statistic against the historical mean.
+4. **Joint test.** A Wald test that the Threshold and Calendar-in-last-week coefficients are both zero, pooled and per market.
+5. **Equity drawdowns.** The pooled Threshold coefficient after months in which the local equity index fell, against months in which it rose (pension funds rebalance more after losses: Tyagi, Schotman and Bams).
