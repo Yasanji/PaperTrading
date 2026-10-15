@@ -1,0 +1,92 @@
+block,test,signal,coef,t,coef2,t2,period,n,note
+A vol controls,"pooled + RV, VIX",thr,-0.3201610008065794,-3.1977369462291287,,,,,
+A vol controls,"pooled + RV, VIX",calw4,-0.20066317267929726,-2.6906703494157456,,,,,
+A vol interaction,low-vol days (base),thr,-0.2511497426941829,-2.7775433933248816,,,,,
+A vol interaction,extra on high-vol days,thr,-0.22019051417814417,-1.8373336032888228,,,,,
+A vol interaction,low-vol days (base),calw4,-0.12415640141364627,-2.0314221337054184,,,,,
+A vol interaction,extra on high-vol days,calw4,-0.16450830953143863,-1.9993999769524595,,,,,
+A vol interaction,US,thr base / extra high-vol,-0.23296607274774705,-2.206535023700566,-0.22693422809422595,-1.7626791110339002,,,
+A vol interaction,UK,thr base / extra high-vol,-0.2036434184544689,-2.1638884300703722,-0.14125151303483968,-1.3168661719954156,,,
+A vol interaction,DE,thr base / extra high-vol,0.14399519106247965,0.8770044340313243,-0.14153945784158464,-0.8382285799047415,,,
+A vol interaction,CA,thr base / extra high-vol,-0.24519855490571124,-1.84044664318493,-0.31262775462916204,-1.8831343304741477,,,
+A vol interaction,AU,thr base / extra high-vol,-0.20695019042455637,-1.8929050464833161,-0.20698840468134677,-1.8277129889817219,,,
+B by period,US,thr,-0.525860984300386,-3.1169598652787434,,,1999-2008,2515.0,
+B by period,US,thr,-0.14434442810185913,-1.0022525205078576,,,2009-2019,2768.0,
+B by period,US,thr,-0.8215548691329866,-1.6999260172415878,,,2020-Mar 2023,808.0,
+B by period,US,thr,0.2788962457602771,0.8826333001805197,,,Mar 2023-Sep 2026,887.0,
+B by period,US,thr,-0.24531717578134915,-2.300864764866377,,,1999-Sep 2026 ex 2020-Mar 2023,6170.0,
+E HMM exclusion,US,thr,-0.27273184876496637,-3.0707181930331124,,,"main ex Sep08-Mar09, Mar20",5923.0,
+B by period,UK,thr,-0.372938798723013,-2.4669477968936486,,,1999-2008,2527.0,
+B by period,UK,thr,-0.13901789856926006,-1.0670016102797542,,,2009-2019,2778.0,
+B by period,UK,thr,-0.3300702392713037,-1.375569449906709,,,2020-Mar 2023,810.0,
+B by period,UK,thr,-0.035063601291785894,-0.28197404589682934,,,Mar 2023-Sep 2026,893.0,
+B by period,UK,thr,-0.2340978094017234,-2.655183961009229,,,1999-Sep 2026 ex 2020-Mar 2023,6198.0,
+E HMM exclusion,UK,thr,-0.2566983137336943,-2.9679683570302737,,,"main ex Sep08-Mar09, Mar20",5944.0,
+B by period,DE,thr,,,,,1999-2008,,zero-size array to reduction operation maximum which has no 
+B by period,DE,thr,0.18080443379924555,1.2292129425539284,,,2009-2019,1466.0,
+B by period,DE,thr,-0.18350675991745935,-0.48240868933528347,,,2020-Mar 2023,821.0,
+B by period,DE,thr,0.24101248349720403,0.7708853500882368,,,Mar 2023-Sep 2026,898.0,
+B by period,DE,thr,0.19484209343963688,1.4275474750721495,,,1999-Sep 2026 ex 2020-Mar 2023,2364.0,
+E HMM exclusion,DE,thr,0.1437540741762385,1.0151571696057726,,,"main ex Sep08-Mar09, Mar20",2265.0,
+B by period,CA,thr,-0.48186987926472763,-2.7754531490226744,,,1999-2008,1761.0,
+B by period,CA,thr,0.09817499116979794,0.6445492434907293,,,2009-2019,2759.0,
+B by period,CA,thr,-1.4644760649433157,-2.2047380617127743,,,2020-Mar 2023,806.0,
+B by period,CA,thr,0.002521911007176164,0.013813454695162153,,,Mar 2023-Sep 2026,888.0,
+B by period,CA,thr,-0.14859102805806884,-1.4422501930053657,,,1999-Sep 2026 ex 2020-Mar 2023,5408.0,
+E HMM exclusion,CA,thr,-0.15354002004404804,-1.7041743790990573,,,"main ex Sep08-Mar09, Mar20",5158.0,
+B by period,AU,thr,-0.06502188083095119,-0.41045550854584323,,,1999-2008,2531.0,
+B by period,AU,thr,-0.3011356334783965,-2.20547152857428,,,2009-2019,2772.0,
+B by period,AU,thr,-0.6341054183212131,-1.4007988017960624,,,2020-Mar 2023,813.0,
+B by period,AU,thr,0.12774074785251316,0.5447907680108277,,,Mar 2023-Sep 2026,896.0,
+B by period,AU,thr,-0.14756695110622708,-1.4872581485881275,,,1999-Sep 2026 ex 2020-Mar 2023,6199.0,
+E HMM exclusion,AU,thr,-0.13295755946934332,-1.4561142905991327,,,"main ex Sep08-Mar09, Mar20",5946.0,
+C legs,pooled re_next,thr,-0.2678637187831863,-2.765724856918962,,,,,
+C legs,pooled re_next,calw4,-0.18560034047620053,-2.7766861447782576,,,,,
+C legs,pooled rb_next,thr,0.053218331493349216,1.9881310224857482,,,,,
+C legs,pooled rb_next,calw4,0.015123334871059704,0.8047875460679877,,,,,
+C strategy,US,cost 0bp/leg,0.5662512377031337,13.201139795019811,,,main,,"coef=Sharpe, t=annual return %"
+C strategy,US,cost 1bp/leg,0.5278448527390033,12.305011080523014,,,main,,"coef=Sharpe, t=annual return %"
+C strategy,US,cost 0bp/leg,0.4323373343733592,8.8802970882089,,,main ex crises,,"coef=Sharpe, t=annual return %"
+C strategy,US,cost 1bp/leg,0.3902944573903779,8.01661314426158,,,main ex crises,,"coef=Sharpe, t=annual return %"
+C strategy,US,cost 0bp/leg,-0.6737120721807449,-10.718498073139088,,,Mar 2023-Sep 2026,,"coef=Sharpe, t=annual return %"
+C strategy,US,cost 1bp/leg,-0.7043264021626863,-11.20147439782905,,,Mar 2023-Sep 2026,,"coef=Sharpe, t=annual return %"
+C strategy,UK,cost 0bp/leg,0.5299138301820069,11.371838690675192,,,main,,"coef=Sharpe, t=annual return %"
+C strategy,UK,cost 1bp/leg,0.48851362172166596,10.484996499342405,,,main,,"coef=Sharpe, t=annual return %"
+C strategy,UK,cost 0bp/leg,0.5779322501878233,11.348239495766176,,,main ex crises,,"coef=Sharpe, t=annual return %"
+C strategy,UK,cost 1bp/leg,0.533814356734814,10.483367355793098,,,main ex crises,,"coef=Sharpe, t=annual return %"
+C strategy,UK,cost 0bp/leg,-0.7329448073534768,-8.319513577251694,,,Mar 2023-Sep 2026,,"coef=Sharpe, t=annual return %"
+C strategy,UK,cost 1bp/leg,-0.7639440355249346,-8.675079086770172,,,Mar 2023-Sep 2026,,"coef=Sharpe, t=annual return %"
+C strategy,DE,cost 0bp/leg,0.3422701908506456,7.357228096177162,,,main,,"coef=Sharpe, t=annual return %"
+C strategy,DE,cost 1bp/leg,0.3043342784366866,6.541379336823089,,,main,,"coef=Sharpe, t=annual return %"
+C strategy,DE,cost 0bp/leg,0.30283080865063877,6.183870575738275,,,main ex crises,,"coef=Sharpe, t=annual return %"
+C strategy,DE,cost 1bp/leg,0.2637001344054343,5.38491944343792,,,main ex crises,,"coef=Sharpe, t=annual return %"
+C strategy,DE,cost 0bp/leg,0.44758598133904426,7.149491067208998,,,Mar 2023-Sep 2026,,"coef=Sharpe, t=annual return %"
+C strategy,DE,cost 1bp/leg,0.40307631825068635,6.436707102843744,,,Mar 2023-Sep 2026,,"coef=Sharpe, t=annual return %"
+C strategy,CA,cost 0bp/leg,-0.01603654427243129,-0.31615648575096456,,,main,,"coef=Sharpe, t=annual return %"
+C strategy,CA,cost 1bp/leg,-0.0550317675133086,-1.0850772458800422,,,main,,"coef=Sharpe, t=annual return %"
+C strategy,CA,cost 0bp/leg,-0.10589149725309739,-1.7351446101860655,,,main ex crises,,"coef=Sharpe, t=annual return %"
+C strategy,CA,cost 1bp/leg,-0.15072790428167154,-2.4701834271916088,,,main ex crises,,"coef=Sharpe, t=annual return %"
+C strategy,CA,cost 0bp/leg,0.23361168443402217,3.118794960046254,,,Mar 2023-Sep 2026,,"coef=Sharpe, t=annual return %"
+C strategy,CA,cost 1bp/leg,0.1941509417058359,2.5909571222084185,,,Mar 2023-Sep 2026,,"coef=Sharpe, t=annual return %"
+C strategy,AU,cost 0bp/leg,0.29271390094960076,5.604163747594802,,,main,,"coef=Sharpe, t=annual return %"
+C strategy,AU,cost 1bp/leg,0.2512827133435334,4.8105862459597475,,,main,,"coef=Sharpe, t=annual return %"
+C strategy,AU,cost 0bp/leg,0.31391700064261724,5.4481255787737295,,,main ex crises,,"coef=Sharpe, t=annual return %"
+C strategy,AU,cost 1bp/leg,0.2693491995258609,4.674240614091593,,,main ex crises,,"coef=Sharpe, t=annual return %"
+C strategy,AU,cost 0bp/leg,-0.052917616330878645,-0.634826597497775,,,Mar 2023-Sep 2026,,"coef=Sharpe, t=annual return %"
+C strategy,AU,cost 1bp/leg,-0.08997116726335297,-1.079201597497772,,,Mar 2023-Sep 2026,,"coef=Sharpe, t=annual return %"
+D spillover,UK,us_thr,-0.09219986568959285,-1.3845228090743766,,,equity-minus-bond,6115.0,
+D spillover,UK,us_calw4,-0.09192397858640809,-1.7692271360408773,,,equity-minus-bond,6115.0,
+D spillover,UK,us_thr,-0.08900811664625739,-1.4955075451662976,,,equity,6115.0,
+D spillover,UK,us_calw4,-0.09047387955562122,-1.891279796254907,,,equity,6115.0,
+D spillover,DE,us_thr,-0.25941023731475166,-2.4425586505280763,,,equity-minus-bond,2539.0,
+D spillover,DE,us_calw4,0.02432940513163445,0.45116679936397064,,,equity-minus-bond,2539.0,
+D spillover,DE,us_thr,-0.239086939676724,-2.5219290576681357,,,equity,2539.0,
+D spillover,DE,us_calw4,-0.004392813028806608,-0.08799115589886648,,,equity,2539.0,
+D spillover,CA,us_thr,-0.04222492348528159,-0.6925202628688323,,,equity-minus-bond,5578.0,
+D spillover,CA,us_calw4,-0.030209859480579335,-0.7557024687068881,,,equity-minus-bond,5578.0,
+D spillover,CA,us_thr,-0.040861838587413664,-0.7659617868619811,,,equity,5578.0,
+D spillover,CA,us_calw4,-0.03467243643804509,-1.0039735896440947,,,equity,5578.0,
+D spillover,AU,us_thr,0.023176022903386443,0.4323751143962946,,,equity-minus-bond,6116.0,
+D spillover,AU,us_calw4,-0.09304407425018836,-2.879744062156464,,,equity-minus-bond,6116.0,
+D spillover,AU,us_thr,-0.000995311526765668,-0.021991631298700857,,,equity,6116.0,
+D spillover,AU,us_calw4,-0.08050195377358065,-2.7875805425659768,,,equity,6116.0,
