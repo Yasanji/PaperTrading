@@ -1,0 +1,173 @@
+=== TABLE 2 ===
+pooled new -0.321 (t -3.10) -0.201 (t -2.67) N 11442
+  start CA 2002-01-04
+  start AU 1999-01-04
+change thr_post +0.032 CI [-0.098, 0.162] t 0.48
+change cal_lw_post -0.087 CI [-0.227, 0.052] t -1.22
+single NW CA -0.368 (t -2.12) -0.240 (t -2.40)
+single NW AU -0.282 (t -2.17) -0.161 (t -2.64)
+single NW UK -0.247 (t -2.74) -0.150 (t -3.06)
+single NW DE +0.127 (t +0.79) +0.116 (t +1.57)
+single NW US -0.368 (t -3.20) -0.206 (t -2.84)
+CA same-day US -0.505 (t -3.00) -0.071 (t -0.67)
+pooled new CA same-day -0.384 (t -3.73) -0.128 (t -1.73)
+pooled all five -0.265 (t -3.35) -0.162 (t -2.72)
+DE first date 2014-03-07
+wild p pooled new thr 0.001
+wild p pooled new cal_lw 0.014
+RW ('pooled all', 'thr') 0.013
+RW ('US', 'thr') 0.025
+RW ('pooled new', 'thr') 0.027
+RW ('US', 'cal_lw') 0.061
+RW ('pooled all', 'cal_lw') 0.061
+RW ('pooled new', 'cal_lw') 0.072
+RW ('CA', 'thr') 0.094
+RW ('AU', 'thr') 0.094
+RW ('UK', 'thr') 0.112
+RW ('CA', 'cal_lw') 0.123
+RW ('UK', 'cal_lw') 0.123
+RW ('AU', 'cal_lw') 0.127
+RW ('DE', 'cal_lw') 0.451
+RW ('DE', 'thr') 0.515
+Calendar RW range 0.061 0.451
+=== Threshold paragraph ===
+DK -0.321 (t -2.38) -0.201 (t -3.00)
++2 lagged SPX -0.315 (t -3.11)
+IM new thr -0.325 p 0.083
+IM new cal_lw -0.2 p 0.124
+IM all thr -0.227 p 0.068
+IM all cal_lw -0.128 p 0.112
+Wald CA=AU p 0.57 CA -0.367 AU -0.285
+Clark-West CA t 1.61 OOS R2 -0.0037
+Clark-West AU t 2.27 OOS R2 0.0019
+=== Has it faded / sub-periods (pooled new, cluster) ===
+1999-2019 -0.180 (t -2.10) -0.223 (t -3.21) N 9823
+2020-Mar2023 -0.998 (t -3.07) -0.162 (t -0.74) N 1619
+later alone +0.064 (t +0.43) -0.080 (t -0.98) N 1784
+1999-2008 -0.246 (t -1.81) -0.297 (t -2.72) N 4292
+2009-2019 -0.120 (t -1.13) -0.142 (t -2.04) N 5531
+2009-Mar2023 -0.376 (t -2.58) -0.132 (t -1.36) N 7150
+ex Feb-May 2020 -0.200 (t -2.51) -0.229 (t -3.62)
+ex 2020-Mar2023 (=1999-2019) -0.180 (t -2.10)
+full to 2026 excl 2020-2023 -0.145 (t -1.81) -0.213 (t -3.25)
+full to Sep 2026, one coefficient -0.284 (t -2.96) -0.195 (t -2.78)
+           end      b      t
+0   2005-06-30 -0.180 -1.427
+1   2005-12-31 -0.180 -1.476
+2   2006-06-30 -0.106 -0.830
+3   2006-12-31  0.018  0.157
+4   2007-06-30 -0.113 -0.985
+5   2007-12-31 -0.066 -0.474
+6   2008-06-30  0.219  1.078
+7   2008-12-31 -0.327 -1.323
+8   2009-06-30 -0.151 -0.640
+9   2009-12-31 -0.144 -0.624
+10  2010-06-30 -0.161 -0.684
+11  2010-12-31 -0.134 -0.553
+12  2011-06-30 -0.049 -0.210
+13  2011-12-31 -0.055 -0.240
+14  2012-06-30 -0.264 -1.150
+15  2012-12-31 -0.010 -0.050
+16  2013-06-30 -0.126 -0.664
+17  2013-12-31 -0.125 -0.646
+18  2014-06-30 -0.183 -0.936
+19  2014-12-31 -0.083 -0.451
+20  2015-06-30 -0.227 -1.186
+21  2015-12-31 -0.110 -0.691
+22  2016-06-30 -0.133 -0.799
+23  2016-12-31 -0.188 -1.077
+24  2017-06-30 -0.170 -1.009
+25  2017-12-31 -0.172 -1.059
+26  2018-06-30 -0.137 -0.915
+27  2018-12-31 -0.245 -1.630
+28  2019-06-30 -0.173 -1.182
+29  2019-12-31 -0.324 -2.419
+30  2020-06-30 -0.782 -3.040
+31  2020-12-31 -0.743 -2.962
+32  2021-06-30 -0.735 -2.931
+33  2021-12-31 -0.761 -2.983
+34  2022-06-30 -0.852 -3.065
+35  2022-12-31 -0.926 -3.444
+36  2023-06-30 -1.010 -3.499
+37  2023-12-31 -0.921 -3.119
+38  2024-06-30 -0.337 -2.667
+39  2024-12-31 -0.343 -2.663
+40  2025-06-30 -0.090 -0.647
+41  2025-12-31 -0.104 -0.728
+42  2026-06-30 -0.066 -0.489
+repo fig2_rolling first/last: {'end': '2005-12-31', 'coef': -0.1796481111092648, 'lo': -0.4182420998571082, 'hi': 0.0589458776385784} {'end': '2026-09-30', 'coef': 0.0027325497523484, 'lo': -0.2799800086214365, 'hi': 0.2854451081261335}
+by market US 1999-2008 -0.526 (t -3.12) -0.335 (t -2.77) 2515
+by market US 2009-2019 -0.144 (t -1.00) -0.112 (t -1.41) 2768
+by market US 2020-Mar23 -0.822 (t -1.70) +0.024 (t +0.16) 808
+by market US post +0.279 (t +0.88) +0.132 (t +1.07) 887
+by market UK 1999-2008 -0.373 (t -2.47) -0.216 (t -2.86) 2527
+by market UK 2009-2019 -0.139 (t -1.07) -0.127 (t -1.71) 2778
+by market UK 2020-Mar23 -0.330 (t -1.38) +0.020 (t +0.14) 810
+by market UK post -0.035 (t -0.28) -0.009 (t -0.10) 893
+by market DE 1999-2008 n/a
+by market DE 2009-2019 +0.181 (t +1.23) +0.005 (t +0.07) 1466
+by market DE 2020-Mar23 -0.184 (t -0.48) +0.310 (t +2.20) 821
+by market DE post +0.241 (t +0.77) -0.090 (t -0.92) 898
+by market CA 1999-2008 -0.482 (t -2.78) -0.430 (t -2.90) 1761
+by market CA 2009-2019 +0.098 (t +0.64) -0.125 (t -1.26) 2759
+by market CA 2020-Mar23 -1.464 (t -2.20) -0.027 (t -0.18) 806
+by market CA post +0.003 (t +0.01) -0.027 (t -0.23) 888
+by market AU 1999-2008 -0.065 (t -0.41) -0.144 (t -1.28) 2531
+by market AU 2009-2019 -0.301 (t -2.21) -0.152 (t -1.77) 2772
+by market AU 2020-Mar23 -0.634 (t -1.40) -0.274 (t -1.92) 813
+by market AU post +0.128 (t +0.54) -0.139 (t -1.25) 896
+=== Month-end / mechanism ===
+placebo week 1 +0.172 (t +1.74)
+placebo week 2 +0.065 (t +0.56)
+placebo week 3 +0.095 (t +1.18)
+leg re1 -0.268 (t -2.77) -0.186 (t -2.78)
+leg rb1 +0.053 (t +1.99) +0.015 (t +0.80)
+LP h 1 -0.321 (t -2.39) -0.201 (t -2.93)
+LP h 5 -0.609 (t -2.33) -0.150 (t -0.78)
+LP h 10 -0.945 (t -2.41) +0.140 (t +0.73)
+=== Is Threshold short-term reversal? ===
++ lags 1-4 (draft: 4 further) -0.349 (t -2.70) -0.196 (t -2.67)
++ lags 1-5 -0.326 (t -2.51) -0.207 (t -2.83)
++ current equity return -0.318 (t -3.07)
++ equity ret t, t-1 -0.347 (t -3.10)
++ 5-day cum return -0.340 (t -2.70)
++ 5 & 20-day cum return -0.341 (t -2.70)
+5-day cum return alone (with controls) -0.002 (t -0.16)
+corr thr with 5d/20d cum CA 0.69 0.61
+corr thr with 5d/20d cum AU 0.693 0.625
+=== Inference variants ===
+pooled HC1 -0.321 (t -3.63) -0.201 (t -3.09)
+single HC1 US -0.368 (t -3.13) -0.206 (t -2.74)
+single HC1 UK -0.247 (t -2.43) -0.150 (t -2.30)
+single HC1 DE +0.127 (t +0.70) +0.116 (t +1.20)
+single HC1 CA -0.368 (t -2.59) -0.240 (t -2.31)
+single HC1 AU -0.282 (t -2.54) -0.161 (t -2.11)
+DK 20 lags -0.321 (t -2.42)
+=== Outliers: winsorise y at 1/99% per market ===
+winsorised pooled -0.245 (t -3.31) -0.168 (t -3.67)
+winsorised CA -0.266 (t -2.42) -0.201 (t -3.70)
+winsorised AU -0.226 (t -2.41) -0.135 (t -2.68)
+drop 10 most influential dates -0.284 (t -3.22)
+drop 25 most influential dates -0.194 (t -2.45)
+drop 50 most influential dates -0.210 (t -2.96)
+top influential dates ['2020-03-12', '2008-10-10', '2020-03-13', '2020-03-23', '2020-03-06', '2020-03-16', '2020-03-24', '2008-11-28', '2020-03-09', '2008-11-19']
+=== Band averaging ===
+band 0 only -17.349 (t -2.11)
+band 0.5% -0.125 (t -2.11)
+band 1% -0.053 (t -1.50)
+band 2% -0.034 (t -1.69)
+band 2.5% -0.040 (t -2.40)
+0-2% avg -0.343 (t -3.09)
+=== Economic size ===
+thr sd (pp) CA 0.459 mean |thr| pp 0.409
+thr sd (pp) AU 0.441 mean |thr| pp 0.385
+thr sd (pp) US 0.486 mean |thr| pp 0.43
+pooled: -0.321 * 1 sd = -14.44 bp; per 1pp = -32.1 bp
+cost-free sign trade CA ann ret % -0.32 Sharpe -0.02
+   after 1bp a leg per flip -0.09 flips/yr 38.4
+   post-Mar2023 cost-free Sharpe 0.23
+cost-free sign trade AU ann ret % 5.6 Sharpe 0.29
+   after 1bp a leg per flip 0.21 flips/yr 39.7
+   post-Mar2023 cost-free Sharpe -0.05
+=== Placebo: randomly shifted signal ===
+shift placebo: share |t|>=3.10: 0.0 share t<=-3.10 0.0 sd of t 1.0 95th |t| 1.98

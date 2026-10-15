@@ -1,0 +1,13 @@
+IVX CA {'thr': (np.float64(-0.37), np.float64(-2.61)), 'calw4': (np.float64(-0.241), np.float64(-2.32))} joint p 0.0063
+IVX AU {'thr': (np.float64(-0.293), np.float64(-2.59)), 'calw4': (np.float64(-0.151), np.float64(-1.97))} joint p 0.0084
+IVX UK {'thr': (np.float64(-0.269), np.float64(-2.62)), 'calw4': (np.float64(-0.163), np.float64(-2.49))} joint p 0.004
+IVX US {'thr': (np.float64(-0.409), np.float64(-3.32)), 'calw4': (np.float64(-0.208), np.float64(-2.77))} joint p 0.0004
+corr local thr/us_thr CA 0.513
+  us_thr coef {'b': -0.019, 'se': 0.093, 't': -0.202} us_cal_lw {'b': 0.06, 'se': 0.049, 't': 1.23}
+  no US ctrl thr {'b': -0.391, 'se': 0.146, 't': -2.67}
+corr local thr/us_thr AU 0.625
+  us_thr coef {'b': 0.128, 'se': 0.073, 't': 1.748} us_cal_lw {'b': -0.018, 'se': 0.041, 't': -0.433}
+  no US ctrl thr {'b': -0.207, 'se': 0.108, 't': -1.914}
+corr local thr/us_thr UK 0.53
+  us_thr coef {'b': -0.119, 'se': 0.07, 't': -1.708} us_cal_lw {'b': -0.019, 'se': 0.055, 't': -0.349}
+  no US ctrl thr {'b': -0.321, 'se': 0.085, 't': -3.773}

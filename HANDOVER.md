@@ -1,4 +1,4 @@
-# Handover: state of the paper book, 11 October 2026
+# Handover: state of the paper book, 15 October 2026
 
 Read this first on a new machine or in a new session.
 
@@ -32,7 +32,9 @@ Risk: two pods, each NAV x 6% / sqrt(2); Pods 3 and 4 keep NAV / 6 capital. Pape
 4. **Dividend futures code**: daily gap from dividend_forecast_summary against a recorded FEXD price, entry at +/-3%, exit inside +/-1%; add FEXD contracts to the contract check; find an automatic Eurex settlement source.
 5. **Pod 4**: delta1/pod4/hk_lots.csv with Hong Kong board lots.
 6. **Paper 2**: target **Economics Letters** (2,000 words); plan, UK and German issues and verified references in pairs/paper2/PAPER_PLAN.md. Amendment 4 run 11 Oct (with Amendment 5): Canada and Australia entered; the pooled test on them supports the effect (Threshold t -3.06, Holm p 0.034; Calendar t -2.69); UK holds on the common basis; Germany null (2014-23); no significant change after March 2023. France could still be added with a Banque de France API key. Checks run 12 Oct (Amendments 6-8, results in RESULTS_LOG.md): Threshold robust (bootstrap, Romano-Wolf p 0.019, IVX, Driscoll-Kraay, spillover); month-end behaves like price pressure but fails Romano-Wolf and Canada's same-day US signal. Literature review in reports/Rebalancing pressure literature review.md. Next: write the Economics Letters draft.
-7. **Real money (later)**: household compliance allows broad ETFs (more than ten holdings) and mutual funds freely; single stocks only with prior approval and a 30-day minimum hold; no shorts. Needs its own pre-registered long-only version (for example index additions held 30 days or more).
+7. **Paper 2 decisions, 12-15 October.** An independent audit (pairs/paper2/audit_v2/AUDIT_REPORT.md) reproduced every number but found the Economics Letters framing overclaimed: the Threshold effect is concentrated in 2008 and 2020-22, absent since March 2023 (full break test t 2.11), and the registration history must be disclosed. Decision: no Economics Letters submission for now. Instead an SSRN working paper on Canada and Australia with the honest framing: pairs/paper2/ssrn2 (build.sh; 'Does Rebalancing Pressure Travel? Local Signals in Canada and Australia'). The earlier UK/Germany SSRN paper stays separate.
+8. **Paper 3, the proper paper**: institutional vs small-trader positioning after large moves and under stress, CFTC TFF data. Design, literature gap, data and lessons in research/positioning/README.md. Register before any test.
+9. **Real money (later)**: household compliance allows broad ETFs (more than ten holdings) and mutual funds freely; single stocks only with prior approval and a 30-day minimum hold; no shorts. Needs its own pre-registered long-only version (for example index additions held 30 days or more).
 
 ## Working rules
 
