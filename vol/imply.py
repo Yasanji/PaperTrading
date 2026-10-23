@@ -29,24 +29,41 @@ def implied_vol(price, F, K, T, D, right):
         return None
 
 
-def slice_total_variance(quotes, F, D, T):
-    """For one expiry's clean OTM quotes, return rows of (k, w, sigma, vega).
+def slice_total_variance(quotes, F, D, T, exercise='european', S=None):
+    """For one expiry's clean OTM quotes, return rows of (k, w, sigma, vega, ex_premium).
 
     k = log-moneyness ln(K/F); w = total implied variance sigma^2 * T;
     vega is the Black-76 vega, used later to weight the fit.
+
+    exercise='european': invert Black-76 directly (SPX, or SPY as an approximation).
+    exercise='american':  de-Americanize with the binomial model (SPY). r and q are taken
+    from the implied forward and discount, and the early-exercise premium is recorded.
     """
     from math import log
+    import american
+    r = q_yld = None
+    if exercise == 'american':
+        r = -log(D) / T
+        q_yld = r - log(F / S) / T
     rows = []
-    for q in quotes:
-        sigma = implied_vol(q['mid'], F, q['strike'], T, D, q['right'])
+    for qt in quotes:
+        K, right = qt['strike'], qt['right']
+        ex_premium = 0.0
+        if exercise == 'american':
+            sigma = american.implied_vol(qt['mid'], S, K, T, r, q_yld, right)
+            if sigma is not None:
+                ex_premium = american.premium(S, K, T, sigma, r, q_yld, right)
+        else:
+            sigma = implied_vol(qt['mid'], F, K, T, D, right)
         if sigma is None:
             continue
         rows.append({
-            'strike': q['strike'],
-            'right': q['right'],
-            'k': log(q['strike'] / F),
+            'strike': K,
+            'right': right,
+            'k': log(K / F),
             'sigma': sigma,
             'w': sigma * sigma * T,
-            'vega': bs.black76_vega(F, q['strike'], T, sigma, D),
+            'vega': bs.black76_vega(F, K, T, sigma, D),
+            'ex_premium': ex_premium,
         })
     return rows

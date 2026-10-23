@@ -85,9 +85,15 @@ SPY options are **American** and the underlying pays dividends, so they carry an
 
 1. Use only **out-of-the-money** options (section 5), where the early-exercise premium is smallest, and accept the residual bias for short expiries.
 2. Move to **SPX** index options (European, cash-settled) when a feed is available; this removes the problem entirely and is what a desk uses.
-3. De-Americanize with a binomial model before inverting. Most work for least gain at this stage; noted, not done now.
+3. De-Americanize with a binomial model before inverting.
 
-The module uses option 1 and records the choice. This distinction is itself a core piece of vol-desk knowledge and a real data-requirement decision.
+All three are now implemented, and the choice is explicit per run:
+
+- **OTM-only** is always applied in cleaning, so inversion never touches the options with the largest early-exercise premium.
+- **SPX** (`python build.py SPX`) uses `^SPX` index options, which are European and cash-settled — Black-76 is then exact and put-call parity holds exactly. The clean default for an index vol surface.
+- **De-Americanization** (`--exercise american`, the default for SPY) prices each quote with a Cox-Ross-Rubinstein binomial tree (`american.py`): at every node the holder takes the larger of holding and exercising, so early exercise is valued explicitly. The implied vol is the vol that makes the American tree price match the market quote (the European-equivalent vol the surface wants); the early-exercise premium (American minus European on the same tree) is recorded per expiry in `vol_clean_log`. `r` and `q` come from the implied forward and discount.
+
+Measured on short-dated OTM SPY at current rates and dividend, the early-exercise premium is under a cent and the European vs de-Americanized ATM vols differ by under 0.1 vol point — so OTM-on-SPY is a good approximation here, but the American machinery is in place and matters for in-the-money, longer-dated, or higher-rate cases, and SPX avoids the question entirely. Barone-Adesi-Whaley is the faster closed-form approximation a production system would use; the binomial is chosen here for transparency. This distinction is itself a core piece of vol-desk knowledge and a real data-requirement decision.
 
 ---
 

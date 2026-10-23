@@ -10,6 +10,19 @@ import yfinance as yf
 
 COLS = ['expiry', 'strike', 'right', 'bid', 'ask', 'last', 'volume', 'open_interest']
 
+# Friendly name -> (Yahoo symbol, exercise style). SPX/XSP index options are European and
+# cash-settled; SPY (ETF) options are American and pay dividends.
+UNDERLYINGS = {
+    'SPY': ('SPY', 'american'),
+    'SPX': ('^SPX', 'european'),
+    'XSP': ('^XSP', 'european'),
+}
+
+
+def resolve(name):
+    """Return (yahoo_symbol, default_exercise) for a friendly underlying name."""
+    return UNDERLYINGS.get(name.upper(), (name, 'american'))
+
 
 def _spot(t):
     try:

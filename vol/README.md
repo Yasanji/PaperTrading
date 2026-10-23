@@ -9,11 +9,16 @@ sends no orders.
 
 ```
 cd vol
-python build.py                      # today, SPY, into ../delta1/delta1.db
+python build.py                      # today, SPY (American, de-Americanized), into ../delta1/delta1.db
+python build.py SPX                  # S&P 500 index options (European, cash-settled) — cleanest
 python build.py 2026-10-23 SPY       # a given date and underlying
-python build.py --db /tmp/x.db --max-expiries 14 --no-store   # a quick scratch run
+python build.py SPY --exercise european   # force Black-76 on SPY (OTM approximation)
+python build.py --db /tmp/x.db --max-expiries 22 --no-store   # a quick scratch run
 python test_synth.py                 # self-test on a known surface (no network)
 ```
+
+Underlyings: `SPY` (American, default `--exercise american`), `SPX`/`XSP` (European). SPX needs
+enough expiries to cover 30 days for the VIX check (e.g. `--max-expiries 22`), else it reports n/a.
 
 A run fetches the chain, cleans it, implies the forward, inverts to implied vol, fits a
 smile per expiry, removes calendar crossings, runs the QA gate, and stores the raw quotes,
@@ -27,7 +32,8 @@ the fitted parameters and the QA results point-in-time in `delta1.db`.
 | `clean.py` | Cleaning rules: drop non-positive/crossed/wide quotes, keep OTM options, remove static-arbitrage outliers. |
 | `forward.py` | Forward `F` and discount `D` per expiry from put-call parity. |
 | `bs.py` | Black-76 price/vega (for inversion and pricing) and Black-Scholes spot greeks. |
-| `imply.py` | Invert Black-76 to implied vol; return total variance `w = sigma^2 T` per quote. |
+| `american.py` | Cox-Ross-Rubinstein binomial pricer with early exercise; de-Americanization and the early-exercise premium (for SPY). |
+| `imply.py` | Invert to implied vol (Black-76 European, or the binomial for American); total variance `w = sigma^2 T` per quote. |
 | `svi.py` | Fit the SVI smile per expiry, vega-weighted; butterfly (Gatheral) check; calendar repair. |
 | `surface.py` | The `Surface`: `vol(K,T)`, `price`, `greeks`, ATM term structure, 25-delta risk reversal and butterfly, forward vol, and the variance-swap (VIX) replication. |
 | `qa.py` | The QA gate: arbitrage-free, fit error, VIX cross-check, reprice error. |
