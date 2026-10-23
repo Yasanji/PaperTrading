@@ -18,7 +18,7 @@ def build(as_of=None, underlying='SPY', db_path=None, max_expiries=None, store=T
     as_of_date = dt.date.fromisoformat(as_of)
     symbol, default_exercise = chain.resolve(underlying)
     exercise = exercise or default_exercise         # 'european' (SPX) or 'american' (SPY)
-    con = db.connect(db_path)
+    con = db.connect(db_path or (':memory:' if not store else None))
     db.ensure_schema(con)
     run_id = db.run(con, f'vol_build {underlying} {as_of} {exercise}')
 
@@ -146,14 +146,22 @@ def _print(surface, slice_meta, checks, info):
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()
-    ap.add_argument('as_of', nargs='?', default=None)
-    ap.add_argument('underlying', nargs='?', default='SPY')
+    ap.add_argument('tokens', nargs='*',
+                    help='a date (YYYY-MM-DD) and/or an underlying (SPY, SPX, XSP), in any order')
     ap.add_argument('--db', default=None)
     ap.add_argument('--max-expiries', type=int, default=None)
     ap.add_argument('--no-store', action='store_true')
     ap.add_argument('--exercise', choices=['european', 'american'], default=None,
                     help='override the default (SPX=european, SPY=american)')
     a = ap.parse_args()
-    s, meta, checks, info = build(a.as_of, a.underlying, a.db, a.max_expiries,
+    # Classify positionals: anything that parses as a date is the as_of, else the underlying.
+    as_of, underlying = None, 'SPY'
+    for tok in a.tokens:
+        try:
+            dt.date.fromisoformat(tok)
+            as_of = tok
+        except ValueError:
+            underlying = tok
+    s, meta, checks, info = build(as_of, underlying, a.db, a.max_expiries,
                                   store=not a.no_store, exercise=a.exercise)
     _print(s, meta, checks, info)
