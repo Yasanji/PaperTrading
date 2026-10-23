@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vol Desk</title>
+<meta name="description" content="Volatility desk tool: the VRP book and P&L by greek, the implied-vol surface, and the skew & term-structure monitor.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@31.3.4/styles/ag-grid.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@31.3.4/styles/ag-theme-quartz.css">
+<script src="https://cdn.jsdelivr.net/npm/ag-grid-community@31.3.4/dist/ag-grid-community.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+<style>
+  :root{--bg:#0e1116;--panel:#161b22;--panel2:#1c2230;--border:#2a3139;--text:#e6edf3;--muted:#8b949e;
+    --accent:#58a6ff;--pos:#3fb950;--neg:#f85149;--warn:#d29922;
+    --theta:#3fb950;--gamma:#f85149;--vega:#58a6ff;--vanna:#d29922;--volga:#bc8cff;--resid:#8b949e}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  header{padding:14px 22px 0;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg);z-index:5}
+  h1{margin:0;font-size:17px;font-weight:650}
+  .sub{color:var(--muted);font-size:12px;margin:3px 0 10px}
+  .nav{display:flex;gap:4px}
+  .nav button{background:none;border:0;border-bottom:2px solid transparent;color:var(--muted);
+    padding:8px 16px;cursor:pointer;font-size:13.5px;font-weight:600}
+  .nav button.on{color:var(--text);border-bottom-color:var(--accent)}
+  .wrap{padding:16px 22px 60px;max-width:1500px;margin:0 auto}
+  .view{display:none}.view.on{display:block}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:0 0 20px}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:11px 14px}
+  .card .k{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.5px}
+  .card .v{font-size:19px;font-weight:650;margin-top:3px;font-variant-numeric:tabular-nums}
+  .card .r{font-size:12px;margin-top:3px}
+  .read-rich,.read-stress{color:var(--neg)}.read-cheap{color:var(--pos)}.read-normal{color:var(--muted)}
+  section{margin:0 0 24px}
+  .sh{display:flex;align-items:baseline;gap:12px;margin:0 0 5px}
+  .sh h2{margin:0;font-size:15px;font-weight:650}.sh .hint{color:var(--muted);font-size:12.5px}
+  .panel{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 15px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .two.wide{grid-template-columns:1.1fr .9fr}
+  @media(max-width:900px){.two,.two.wide{grid-template-columns:1fr}}
+  .bars{display:flex;flex-direction:column;gap:7px}
+  .barrow{display:grid;grid-template-columns:76px 1fr 96px;align-items:center;gap:10px;font-variant-numeric:tabular-nums}
+  .barrow .lab{color:var(--muted);font-size:13px}
+  .bartrack{position:relative;height:15px;background:var(--panel2);border-radius:4px}
+  .barfill{position:absolute;top:0;bottom:0;border-radius:4px;opacity:.9}
+  .barval{text-align:right;font-size:13px}.pos{color:var(--pos)}.neg{color:var(--neg)}
+  .callout{background:var(--panel2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:6px;padding:9px 13px;margin-top:10px;font-size:13px}
+  .toggle{display:inline-flex;gap:2px;background:var(--panel2);border:1px solid var(--border);border-radius:7px;padding:2px}
+  .toggle button{background:none;border:0;color:var(--muted);padding:3px 11px;border-radius:5px;cursor:pointer;font-size:12.5px}
+  .toggle button.on{background:var(--accent);color:#06121f;font-weight:600}
+  svg{display:block;width:100%}
+  .glossary{columns:2;column-gap:28px;font-size:13px}.glossary div{break-inside:avoid;margin-bottom:8px}.glossary b{color:var(--text)}
+  .ag-theme-quartz{--ag-background-color:var(--panel);--ag-odd-row-background-color:#12171e;--ag-header-background-color:var(--panel2);
+    --ag-border-color:var(--border);--ag-foreground-color:var(--text);--ag-secondary-foreground-color:var(--muted);
+    --ag-row-hover-color:#1b2430;--ag-font-size:13px;--ag-header-foreground-color:var(--muted)}
+  .ag-theme-quartz .ag-cell{font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+<header>
+  <h1>Vol Desk <span style="color:var(--muted);font-weight:400">· VRP book · surface · monitor</span></h1>
+  <div class="sub" id="sub"></div>
+  <div class="nav">
+    <button data-v="bookpnl" class="on">Book &amp; P&amp;L</button>
+    <button data-v="surface">Vol Surface</button>
+    <button data-v="monitor">Monitor</button>
+  </div>
+</header>
+<div class="wrap">
+  <div class="view on" id="view-bookpnl">
+    <div class="cards" id="cards"></div>
+    <section>
+      <div class="sh"><h2>P&amp;L</h2><span class="hint">Cumulative net P&amp;L. Day / month / year-to-date in the cards.</span>
+        <span style="flex:1"></span>
+        <span class="toggle" id="rangeToggle"><button data-r="ytd" class="on">YTD</button><button data-r="all">All (backtest)</button></span></div>
+      <div class="panel"><svg id="cumchart" viewBox="0 0 1000 240" preserveAspectRatio="none" style="height:240px"></svg></div>
+    </section>
+    <section><div class="two wide">
+      <div><div class="sh"><h2>P&amp;L by greek</h2><span class="hint">What drove it.</span></div>
+        <div class="panel"><div class="bars" id="bars"></div><div class="callout" id="core"></div></div></div>
+      <div><div class="sh"><h2>Performance &amp; drawdowns</h2><span class="hint">Dev vs hold-out; worst peak-to-trough.</span></div>
+        <div class="panel" style="padding:10px"><div id="statsGrid" class="ag-theme-quartz" style="height:168px"></div>
+          <div id="ddGrid" class="ag-theme-quartz" style="height:180px;margin-top:10px"></div></div></div>
+    </div></section>
+    <section><div class="sh"><h2>Current book</h2><span class="hint" id="bookHint"></span></div>
+      <div id="bookGrid" class="ag-theme-quartz" style="height:230px"></div></section>
+    <section><div class="sh"><h2>Blotter</h2><span class="hint" id="blotHint"></span></div>
+      <div id="blotterGrid" class="ag-theme-quartz" style="height:420px"></div></section>
+    <section><div class="sh"><h2>Daily P&amp;L — greek attribution</h2><span class="hint">Short options → <b>+theta</b>, <b>−gamma</b>. Net Δ is the residual delta the hedge flattens.</span></div>
+      <div id="dailyGrid" class="ag-theme-quartz" style="height:500px"></div></section>
+    <section><div class="sh"><h2>Glossary</h2></div><div class="panel glossary" id="glossary"></div></section>
+  </div>
+
+  <div class="view" id="view-surface">
+    <section><div class="sh"><h2>Volatility surface</h2><span class="hint">Implied vol for every strike (moneyness) and expiry — the full 3-D surface. Skew: puts (left) richer than calls; term structure: vol vs expiry.</span></div>
+      <div class="two"><div class="panel" style="padding:6px"><div id="surf3d" style="height:460px"></div></div>
+        <div id="curveGrid" class="ag-theme-quartz" style="height:460px"></div></div></section>
+  </div>
+
+  <div class="view" id="view-monitor">
+    <div class="cards" id="mcards"></div>
+    <section><div class="sh"><h2>Term structure</h2><span class="hint">ATM vol by tenor today (9d→6m); slope VIX3M−VIX vs history. Positive = contango (calm); negative = backwardation (stress).</span></div>
+      <div class="two"><div class="panel"><div id="termCurve" style="height:300px"></div></div>
+        <div class="panel"><div id="slopeHist" style="height:300px"></div></div></div></section>
+    <section><div class="sh"><h2>Skew</h2><span class="hint">Live 25-delta risk reversal (put − call vol) and butterfly by expiry; CBOE SKEW index vs history.</span></div>
+      <div class="two"><div id="surfaceGrid" class="ag-theme-quartz" style="height:300px"></div>
+        <div class="panel"><div id="skewHist" style="height:300px"></div></div></div></section>
+    <section><div class="sh"><h2>Signals</h2><span class="hint">Where each metric sits in its 1- and 5-year range — the relative-value read.</span></div>
+      <div id="signalsGrid" class="ag-theme-quartz" style="height:170px"></div></section>
+  </div>
+</div>
+
+<script>
+const VRP = __VRP__;
+const MON = __MONITOR__;
+const usd=(n,d=0)=>(n==null||isNaN(n))?'':'$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
+const usdC=n=>{if(n==null||isNaN(n))return'';const a=Math.abs(n),s=n<0?'-':'';if(a>=1e6)return s+'$'+(a/1e6).toFixed(2)+'M';if(a>=1e3)return s+'$'+(a/1e3).toFixed(0)+'k';return s+'$'+a.toFixed(0);};
+const num=(n,d=2)=>(n==null||isNaN(n))?'':Number(n).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
+const signClass=p=>p.value<0?'neg':(p.value>0?'pos':'');
+const money=(d=0)=>({valueFormatter:p=>usd(p.value,d),cellClass:signClass,type:'rightAligned'});
+const moneyC={valueFormatter:p=>usdC(p.value),cellClass:signClass,type:'rightAligned'};
+const R={type:'rightAligned'};
+const readClass=r=>({rich:'read-rich','backwardation/stress':'read-stress',cheap:'read-cheap',normal:'read-normal',high:'read-rich',low:'read-cheap','steep contango':'read-normal'}[r]||'read-normal');
+
+document.getElementById('sub').textContent =
+  `VRP: ${VRP.meta.note} · as of ${VRP.daily[VRP.daily.length-1].date}  |  Monitor as of ${MON.meta.as_of}  ·  updated ${VRP.meta.generated}Z — end-of-day batch`;
+
+// ================= Book & P&L =================
+function buildBookPnl(){
+  const daily=VRP.daily, last=daily[daily.length-1], lastYr=last.date.slice(0,4), lastMo=last.date.slice(0,7);
+  const sum=f=>daily.reduce((a,r)=>a+(f(r)?r.net:0),0);
+  const S=VRP.summary;
+  document.getElementById('cards').innerHTML=[
+    ['Day P&L ('+last.date+')',usdC(last.net),last.net],
+    ['MTD P&L ('+lastMo+')',usdC(sum(r=>r.date.slice(0,7)===lastMo)),sum(r=>r.date.slice(0,7)===lastMo)],
+    ['YTD P&L ('+lastYr+')',usdC(sum(r=>r.date.slice(0,4)===lastYr)),sum(r=>r.date.slice(0,4)===lastYr)],
+    ['Net P&L (backtest)',usdC(VRP.by_greek.net),VRP.by_greek.net],
+    ['Sharpe (full)',num(S.full.sharpe,2),1],
+    ['Max drawdown',usdC(S.full.max_dd),S.full.max_dd],
+  ].map(([k,v,c])=>`<div class="card"><div class="k">${k}</div><div class="v ${c<0?'neg':''}">${v}</div></div>`).join('');
+
+  const order=['theta','gamma','vega','vanna','volga','residual','costs'];
+  const colors={theta:'var(--theta)',gamma:'var(--gamma)',vega:'var(--vega)',vanna:'var(--vanna)',volga:'var(--volga)',residual:'var(--resid)',costs:'var(--muted)'};
+  const mx=Math.max(...order.map(k=>Math.abs(VRP.by_greek[k]||0)));
+  document.getElementById('bars').innerHTML=order.map(k=>{const v=VRP.by_greek[k]||0,w=Math.abs(v)/mx*50,left=v<0?50-w:50;
+    return `<div class="barrow"><div class="lab">${k}</div><div class="bartrack"><div class="barfill" style="left:${left}%;width:${w}%;background:${colors[k]}"></div>
+      <div style="position:absolute;left:50%;top:-2px;bottom:-2px;border-left:1px solid var(--border)"></div></div>
+      <div class="barval ${v<0?'neg':'pos'}">${usdC(v)}</div></div>`;}).join('');
+  document.getElementById('core').innerHTML=`<b>Theta + Gamma = ${usdC(VRP.by_greek.theta+VRP.by_greek.gamma)}</b> — the variance risk premium: collect decay (theta), pay for realized moves (gamma), keep the difference. Residual ${usdC(VRP.by_greek.residual)} is the higher-order remainder.`;
+
+  agGrid.createGrid(document.getElementById('statsGrid'),{rowData:['dev','holdout','full'].filter(w=>S[w]).map(w=>({window:w,...S[w]})),
+    defaultColDef:{sortable:true,resizable:true},columnDefs:[{field:'window',headerName:'Window',width:92},
+    {field:'ann_pnl',headerName:'Ann P&L',...moneyC,flex:1},{field:'sharpe',headerName:'Sharpe',valueFormatter:p=>num(p.value,2),...R,width:88},
+    {field:'nw_t',headerName:'NW-t',valueFormatter:p=>num(p.value,1),...R,width:76},{field:'max_dd',headerName:'Max DD',...moneyC,flex:1},
+    {field:'pct_short',headerName:'% short',valueFormatter:p=>num(p.value,0)+'%',...R,width:84}]});
+  agGrid.createGrid(document.getElementById('ddGrid'),{rowData:VRP.drawdowns,defaultColDef:{sortable:true,resizable:true,flex:1},
+    columnDefs:[{field:'start_date',headerName:'Peak'},{field:'trough_date',headerName:'Trough'},{field:'depth',headerName:'Depth',...moneyC}]});
+
+  const gk={valueFormatter:p=>(p.value===''||p.value==null)?'':num(p.value,1),cellClass:signClass,...R};
+  const bk=VRP.book;
+  if(!bk.held){document.getElementById('bookHint').textContent='Flat — no straddle on at the last roll.';}
+  else{document.getElementById('bookHint').innerHTML=`Short 1-month ATM straddle · strike ${bk.strike} · expiry ${bk.expiry} · spot ${bk.spot} · <b>hedge: ${bk.hedge_es} S&amp;P mini futures (ES)</b> to flatten net Δ ${bk.net.delta}`;
+    const rows=bk.legs.map(l=>({ticker:'SPXW',...l}));
+    rows.push({ticker:'',instrument:'NET (options)',qty:'',dte:'',mark:'',vol:'',...bk.net});
+    rows.push({ticker:'ES',instrument:'Delta hedge (S&P fut)',qty:bk.hedge_es,dte:'',mark:'',vol:'',delta:bk.hedge_delta,gamma:'',vega:'',theta:'',vanna:'',volga:''});
+    agGrid.createGrid(document.getElementById('bookGrid'),{rowData:rows,defaultColDef:{resizable:true},
+      getRowStyle:p=>/^(NET|Delta)/.test(p.data.instrument)?{borderTop:'1px solid var(--border)',fontWeight:'600'}:null,
+      columnDefs:[{field:'ticker',headerName:'Ticker',width:90},{field:'instrument',headerName:'Instrument',flex:1.3,minWidth:170},
+        {field:'qty',headerName:'Qty',valueFormatter:p=>(p.value===''||p.value==null)?'':num(p.value,1),...R},
+        {field:'dte',headerName:'DTE',valueFormatter:p=>typeof p.value==='number'?p.value:'',...R,width:70},
+        {field:'mark',headerName:'Mark',valueFormatter:p=>p.value===''?'':num(p.value,2),...R},
+        {field:'vol',headerName:'IV',valueFormatter:p=>p.value===''?'':num(p.value,2),...R,width:72},
+        {field:'delta',headerName:'Delta',...gk},{field:'gamma',headerName:'Gamma',...gk},{field:'vega',headerName:'Vega',...gk},
+        {field:'theta',headerName:'Theta',...gk},{field:'vanna',headerName:'Vanna',...gk},{field:'volga',headerName:'Volga',...gk}]});}
+
+  document.getElementById('blotHint').innerHTML='Most recent first. <b>DELTA HEDGE</b> = trade S&amp;P futures (ES) to offset the straddle delta — no strike; negative qty = sell. <b>SELL/CLOSE STRADDLE</b> = monthly option rolls (carry strikes). Filter Action to isolate rolls.';
+  const trades=VRP.trades.map(t=>({...t,side:t.qty_es<0?'SELL':'BUY',ticker:t.action==='DELTA HEDGE'?'ES':'SPXW'}));
+  const actColor={'SELL STRADDLE':'var(--neg)','CLOSE STRADDLE':'var(--accent)','DELTA HEDGE':'var(--muted)'};
+  agGrid.createGrid(document.getElementById('blotterGrid'),{rowData:trades,defaultColDef:{sortable:true,resizable:true,filter:true},
+    columnDefs:[{field:'date',headerName:'Date',width:116,filter:'agDateColumnFilter',pinned:'left'},
+      {field:'action',headerName:'Action',width:148,cellStyle:p=>({color:actColor[p.value]||'var(--text)',fontWeight:'600'})},
+      {field:'side',headerName:'Side',width:76,cellStyle:p=>({color:p.value==='SELL'?'var(--neg)':'var(--pos)'})},
+      {field:'ticker',headerName:'Ticker',width:90},{field:'instrument',headerName:'Instrument',flex:1,minWidth:150},
+      {field:'qty_es',headerName:'Qty',valueFormatter:p=>num(p.value,1),...R,width:100},
+      {field:'price',headerName:'Price',valueFormatter:p=>num(p.value,2),...R,width:116},
+      {field:'strike',headerName:'Strike',valueFormatter:p=>p.value==null?'—':num(p.value,0),...R,width:96},
+      {field:'expiry',headerName:'Expiry',width:116},{field:'vol',headerName:'VIX',valueFormatter:p=>num(p.value,2),...R,width:84}]});
+
+  agGrid.createGrid(document.getElementById('dailyGrid'),{rowData:daily,defaultColDef:{sortable:true,resizable:true,filter:true,width:100},
+    columnDefs:[{field:'date',headerName:'Date',width:116,filter:'agDateColumnFilter',pinned:'left'},
+      {field:'spot',headerName:'SPX',valueFormatter:p=>num(p.value,0),...R},{field:'vix',headerName:'VIX',valueFormatter:p=>num(p.value,2),...R,width:86},
+      {field:'rvol',headerName:'Realized',valueFormatter:p=>num(p.value,2),...R,width:96},{field:'signal',headerName:'Pos',width:78},
+      {field:'theta',headerName:'Theta',...money(0)},{field:'gamma',headerName:'Gamma',...money(0)},{field:'vega',headerName:'Vega',...money(0)},
+      {field:'vanna',headerName:'Vanna',...money(0)},{field:'volga',headerName:'Volga',...money(0)},{field:'residual',headerName:'Resid',...money(0)},
+      {field:'gross',headerName:'Gross',...money(0)},{field:'cost',headerName:'Cost',valueFormatter:p=>p.value?usd(-p.value):'',...R},
+      {field:'net',headerName:'Net',...money(0)},{field:'cum_net',headerName:'Cum Net',...moneyC,width:120},
+      {field:'delta',headerName:'Net Δ',valueFormatter:p=>num(p.value,0),cellClass:signClass,...R},
+      {field:'hedge',headerName:'Hedge Δ',valueFormatter:p=>num(p.value,0),cellClass:signClass,...R}]});
+
+  document.getElementById('glossary').innerHTML=[
+    ['Short vol','We sold the straddle (call + put). As seller we are short volatility: we profit if realized stays below implied.'],
+    ['Theta','Time decay. Short options earn positive theta — the options we are short lose value each day, money to us.'],
+    ['Gamma','Delta vs spot. We are short gamma, so large moves cost us; quiet markets are good.'],
+    ['Vega','$ P&L per vol point. Short vega — gain when implied falls, lose when it rises.'],
+    ['Vanna / Volga','Second order: vanna is spot–vol cross; volga is vega vs vol (vol-of-vol).'],
+    ['Delta hedge','Buy/sell S&P futures (ES) daily to keep net delta ~0, so it is a bet on vol, not direction.'],
+    ['VRP','Variance risk premium: implied > realized on average. Theta + gamma is the premium captured.'],
+    ['VIX','S&P 30-day implied vol. What we mark at, and the implied leg of the signal.'],
+    ['25d RR / BF','Risk reversal = put vol − call vol (skew). Butterfly = wing vol − ATM (curvature).'],
+    ['Moneyness','Strike vs forward. Negative = downside puts (higher vol — the skew).'],
+  ].map(([t,d])=>`<div><b>${t}</b> — ${d}</div>`).join('');
+
+  function drawChart(range){const rows=range==='ytd'?daily.filter(r=>r.date.slice(0,4)===lastYr):daily;
+    let base=range==='ytd'?(rows.length?rows[0].cum_net-rows[0].net:0):0;
+    const pts=rows.map(r=>({d:r.date,y:r.cum_net-base})),W=1000,H=240,pl=64,pr=12,pt=12,pb=26,n=pts.length;
+    let mn=Math.min(0,...pts.map(p=>p.y)),mx=Math.max(0,...pts.map(p=>p.y));
+    const x=i=>pl+(n<2?0:i/(n-1))*(W-pl-pr),y=v=>H-pb-(v-mn)/((mx-mn)||1)*(H-pt-pb);
+    const path=pts.map((p,k)=>(k?'L':'M')+x(k).toFixed(1)+' '+y(p.y).toFixed(1)).join(' ');
+    const ticks=[],seen=new Set();pts.forEach((p,i)=>{const key=range==='ytd'?p.d.slice(0,7):p.d.slice(0,4);if(!seen.has(key)){seen.add(key);ticks.push([i,range==='ytd'?p.d.slice(5,7):p.d.slice(0,4)]);}});
+    const yt=[mn,(mn+mx)/2,mx].map(v=>`<line x1="${pl}" y1="${y(v)}" x2="${W-pr}" y2="${y(v)}" stroke="var(--border)" stroke-dasharray="${Math.abs(v)<1e-6?'':'2 3'}"/><text x="${pl-8}" y="${y(v)+3}" fill="var(--muted)" font-size="11" text-anchor="end">${usdC(v)}</text>`).join('');
+    const xt=ticks.filter((_,i)=>ticks.length<=14||i%Math.ceil(ticks.length/14)===0).map(([i,l])=>`<text x="${x(i)}" y="${H-8}" fill="var(--muted)" font-size="11" text-anchor="middle">${l}</text>`).join('');
+    document.getElementById('cumchart').innerHTML=yt+`<path d="${path}" fill="none" stroke="var(--pos)" stroke-width="1.6"/>`+xt;}
+  drawChart('ytd');
+  document.querySelectorAll('#rangeToggle button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#rangeToggle button').forEach(x=>x.classList.remove('on'));b.classList.add('on');drawChart(b.dataset.r);});
+}
+
+// ================= Vol Surface =================
+function buildSurface(){
+  const sf=VRP.surface;
+  if(sf&&sf.expiries&&sf.expiries.length){
+    Plotly.newPlot('surf3d',[{type:'surface',x:sf.moneyness_pct,y:sf.expiries.map(e=>e.dte),z:sf.expiries.map(e=>e.iv),
+      colorscale:'Viridis',showscale:true,colorbar:{title:'IV %',tickfont:{color:'#8b949e'},titlefont:{color:'#8b949e'},len:.7},
+      contours:{z:{show:true,usecolormap:true,project:{z:true}}}}],
+      {paper_bgcolor:'rgba(0,0,0,0)',margin:{l:0,r:0,t:6,b:0},
+       scene:{xaxis:{title:'Moneyness % (strike vs fwd)',color:'#8b949e',gridcolor:'#2a3139'},
+              yaxis:{title:'Days to expiry',color:'#8b949e',gridcolor:'#2a3139'},
+              zaxis:{title:'Implied vol %',color:'#8b949e',gridcolor:'#2a3139'},camera:{eye:{x:1.6,y:-1.5,z:.8}}}},
+      {responsive:true,displayModeBar:false});
+  } else document.getElementById('surf3d').innerHTML='<div class="sub" style="padding:20px">Surface unavailable.</div>';
+  agGrid.createGrid(document.getElementById('curveGrid'),{rowData:VRP.curve&&!VRP.curve[0]?.error?VRP.curve:[],defaultColDef:{sortable:true,resizable:true,flex:1},
+    columnDefs:[{field:'expiry',headerName:'Expiry',width:120},{field:'T',headerName:'T (yr)',valueFormatter:p=>num(p.value,3),...R,flex:1},
+      {field:'forward',headerName:'Forward',valueFormatter:p=>num(p.value,2),...R},{field:'atm_vol',headerName:'ATM vol',valueFormatter:p=>num(p.value,2),...R},
+      {field:'rr25',headerName:'25d RR',valueFormatter:p=>num(p.value,2),cellClass:signClass,...R},{field:'bf25',headerName:'25d BF',valueFormatter:p=>num(p.value,2),...R}]});
+}
+
+// ================= Monitor =================
+function buildMonitor(){
+  document.getElementById('mcards').innerHTML=MON.signals.map(s=>
+    `<div class="card"><div class="k">${s.name}</div><div class="v">${num(s.value,s.name.includes('SKEW')?1:2)}</div>
+     <div class="r"><span class="${readClass(s.read)}">${s.read}</span><span style="color:var(--muted)"> · ${s.pct_1y}%ile 1y · z ${num(s.z_1y,2)}</span></div></div>`).join('');
+  const axis={color:'#8b949e',gridcolor:'#2a3139',zerolinecolor:'#2a3139'};
+  const base={paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',font:{color:'#8b949e'},margin:{l:48,r:14,t:10,b:36},showlegend:false};
+  const cfg={responsive:true,displayModeBar:false};
+  const t=MON.term_now;
+  const tt=[{x:t.map(p=>p.tenor_days),y:t.map(p=>p.vol),mode:'lines+markers',line:{color:'#58a6ff',width:2},marker:{size:7},name:'VIX complex'}];
+  if(MON.surface_term&&MON.surface_term.length)tt.push({x:MON.surface_term.map(e=>e.dte),y:MON.surface_term.map(e=>e.atm_vol),mode:'markers',marker:{size:5,color:'#3fb950'},name:'SPX surface ATM'});
+  Plotly.newPlot('termCurve',tt,{...base,showlegend:true,legend:{font:{color:'#8b949e'},orientation:'h',y:1.12},xaxis:{...axis,title:'Tenor (days)'},yaxis:{...axis,title:'ATM implied vol'}},cfg);
+  function hist(el,key,bandKey,color){const h=MON.history,b=MON.bands[bandKey],x=h.map(r=>r.date),y=h.map(r=>r[key]);
+    const hl=(v,c,dash)=>({x:[x[0],x[x.length-1]],y:[v,v],mode:'lines',line:{color:c,width:1,dash:dash},hoverinfo:'skip'});
+    Plotly.newPlot(el,[hl(b.p75,'#2a3139','dot'),hl(b.p25,'#2a3139','dot'),hl(b.p50,'#4b5563','dash'),
+      {x,y,mode:'lines',line:{color:color,width:1.3}},{x:[x[x.length-1]],y:[y[y.length-1]],mode:'markers',marker:{size:8,color:color}}],
+      {...base,xaxis:{...axis},yaxis:{...axis,title:key==='slope'?'VIX3M − VIX':'SKEW'}},cfg);}
+  hist('slopeHist','slope','slope','#d29922');hist('skewHist','skew','skew','#bc8cff');
+  agGrid.createGrid(document.getElementById('surfaceGrid'),{rowData:MON.surface_term,defaultColDef:{sortable:true,resizable:true,flex:1},
+    columnDefs:[{field:'expiry',headerName:'Expiry',width:120},{field:'dte',headerName:'DTE',...R,width:80},
+      {field:'atm_vol',headerName:'ATM vol',valueFormatter:p=>num(p.value,2),...R},
+      {field:'rr25',headerName:'25d RR',valueFormatter:p=>num(p.value,2),cellClass:p=>p.value<0?'read-cheap':'read-rich',...R},
+      {field:'bf25',headerName:'25d BF',valueFormatter:p=>num(p.value,2),...R}]});
+  agGrid.createGrid(document.getElementById('signalsGrid'),{rowData:MON.signals,defaultColDef:{sortable:true,resizable:true},
+    columnDefs:[{field:'name',headerName:'Signal',flex:1.4,minWidth:200},{field:'value',headerName:'Value',valueFormatter:p=>num(p.value,2),...R,width:110},
+      {field:'pct_1y',headerName:'1y %ile',valueFormatter:p=>p.value==null?'':p.value+'%',...R,width:100},
+      {field:'pct_5y',headerName:'5y %ile',valueFormatter:p=>p.value==null?'':p.value+'%',...R,width:100},
+      {field:'z_1y',headerName:'z (1y)',valueFormatter:p=>num(p.value,2),...R,width:90},
+      {field:'read',headerName:'Read',width:180,cellClass:p=>readClass(p.value),cellStyle:{fontWeight:'600'}}]});
+}
+
+// ================= nav (lazy init) =================
+const built={bookpnl:false,surface:false,monitor:false};
+const builders={bookpnl:buildBookPnl,surface:buildSurface,monitor:buildMonitor};
+function show(v){
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));
+  document.querySelectorAll('.view').forEach(x=>x.classList.toggle('on',x.id==='view-'+v));
+  if(!built[v]){builders[v]();built[v]=true;}
+  else if(v!=='bookpnl'){document.querySelectorAll('#view-'+v+' .js-plotly-plot').forEach(p=>Plotly.Plots.resize(p));}
+}
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>show(b.dataset.v));
+show('bookpnl');
+</script>
+</body>
+</html>
