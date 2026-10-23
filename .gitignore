@@ -25,3 +25,13 @@ pods/pod6/index.csv
 carry/sleeveB/data/
 delta1/pod4/
 pairs/paper2/a4_step3_raw.pkl
+
+# vol: generated dashboards and runtime artifacts (rebuilt by vol/vrp/update.sh)
+vol/dashboard.html
+vol/vrp/viewer.html
+vol/monitor/monitor.html
+vol/vrp/vrp_backtest.json
+vol/monitor/monitor.json
+vol/vrp/launchd.out
+vol/vrp/launchd.err
+vol/vrp/update.log

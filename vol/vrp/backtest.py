@@ -120,12 +120,14 @@ def run(out_path=None, curve=True):
                  'note': 'implied=VIX; realised=21d SPX; delta-hedged short ATM straddle'},
         'summary': summary, 'by_greek': by_greek, 'drawdowns': _drawdowns(out),
         'book': _book(pos, spx[-1], vix[-1] / 100, dates[-1]),
+        'scenario': None,
         'trades': [{k: (round(v, 2) if isinstance(v, float) else v) for k, v in t.items()}
                    for t in reversed(trades)],      # most recent first
         'daily': [{k: (round(v, 2) if isinstance(v, float) else v) for k, v in r.items()}
                   for r in out.to_dict('records')],
     }
     result['curve'], result['surface'] = _spx_views() if curve else ([], {'moneyness_pct': [], 'expiries': []})
+    result['scenario'] = _scenario(result['book'])
     if out_path:
         json.dump(result, open(out_path, 'w'))
     _print(summary, by_greek, result)
@@ -154,6 +156,32 @@ def _book(pos, S, sig, last_date):
             'strike': round(pos['K'], 2), 'expiry': pos['expiry'], 'entry': pos['entry'],
             'legs': legs, 'net': {k: round(v, 1) for k, v in net.items()},
             'hedge_delta': round(hedge, 1), 'hedge_es': round(hedge / ES_MULT, 1), 'spot': round(S, 2)}
+
+
+def _scenario(book):
+    """Stress the current book: full revaluation P&L across spot and vol shocks (instantaneous,
+    no time decay). Also a fine P&L-vs-spot profile at today's vol. Short straddle + delta hedge,
+    so the grid shows the short-gamma / short-vega loss surface."""
+    if not book.get('held'):
+        return None
+    S0, K = book['spot'], book['strike']
+    T = book['legs'][0]['dte'] / 365
+    sig0 = book['legs'][0]['vol'] / 100
+    H = book['hedge_delta']                         # futures hedge, $ per index point
+    legs = [(l['qty'], 'C' if 'Call' in l['instrument'] else 'P') for l in book['legs']]
+
+    def val(S, sig):
+        return sum(q * bs.european_spot(S, K, max(T, 1e-6), sig, R, Q, r) for q, r in legs)
+
+    base = val(S0, sig0)
+    spot_sh = [-10, -5, -2, 0, 2, 5, 10]            # %
+    vol_sh = [5, 2, 0, -2, -5]                      # vol points
+    matrix = [[round(val(S0 * (1 + ds / 100), sig0 + dv / 100) - base + H * (S0 * (1 + ds / 100) - S0))
+               for ds in spot_sh] for dv in vol_sh]
+    profile = [{'shock': ds, 'pnl': round(val(S0 * (1 + ds / 100), sig0) - base + H * (S0 * (1 + ds / 100) - S0))}
+               for ds in range(-12, 13)]
+    return {'spot_shocks': spot_sh, 'vol_shocks': vol_sh, 'matrix': matrix, 'profile': profile,
+            'spot': round(S0, 2), 'vol': round(sig0 * 100, 2), 'dte': round(T * 365)}
 
 
 def _nw_t(y, L=21):

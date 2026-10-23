@@ -63,6 +63,7 @@
     <button data-v="bookpnl" class="on">Book &amp; P&amp;L</button>
     <button data-v="surface">Vol Surface</button>
     <button data-v="monitor">Monitor</button>
+    <button data-v="risk">Risk</button>
   </div>
 </header>
 <div class="wrap">
@@ -106,6 +107,16 @@
         <div class="panel"><div id="skewHist" style="height:300px"></div></div></div></section>
     <section><div class="sh"><h2>Signals</h2><span class="hint">Where each metric sits in its 1- and 5-year range — the relative-value read.</span></div>
       <div id="signalsGrid" class="ag-theme-quartz" style="height:170px"></div></section>
+  </div>
+
+  <div class="view" id="view-risk">
+    <section><div class="sh"><h2>Scenario &amp; stress</h2><span class="hint" id="riskHint"></span></div>
+      <div class="two wide">
+        <div id="scenarioGrid" class="ag-theme-quartz" style="height:272px"></div>
+        <div class="panel"><div id="pnlProfile" style="height:272px"></div></div>
+      </div>
+      <div class="callout" id="riskNote" style="margin-top:14px"></div>
+    </section>
   </div>
 </div>
 
@@ -273,9 +284,31 @@ function buildMonitor(){
       {field:'read',headerName:'Read',width:180,cellClass:p=>readClass(p.value),cellStyle:{fontWeight:'600'}}]});
 }
 
+// ================= Risk (scenario & stress) =================
+function buildRisk(){
+  const sc=VRP.scenario;
+  if(!sc){document.getElementById('riskHint').textContent='No book on — nothing to stress.';return;}
+  document.getElementById('riskHint').innerHTML=`Instantaneous P&amp;L of the current book (short straddle + ES hedge) under spot × vol shocks. Spot ${sc.spot} · IV ${sc.vol} · ${sc.dte} DTE.`;
+  const maxAbs=Math.max(...sc.matrix.flat().map(Math.abs))||1;
+  const cols=[{field:'vol',headerName:'Vol shock',width:104,pinned:'left',cellStyle:{color:'var(--muted)'}}];
+  sc.spot_shocks.forEach((s,i)=>cols.push({field:'c'+i,headerName:(s>0?'+':'')+s+'%',...R,flex:1,
+    valueFormatter:p=>usdC(p.value),
+    cellStyle:p=>{const v=p.value||0,a=Math.min(Math.abs(v)/maxAbs*0.6,0.6);
+      return {backgroundColor:v<0?`rgba(248,81,73,${a})`:(v>0?`rgba(63,185,80,${a})`:'transparent'),color:'var(--text)',textAlign:'right',fontVariantNumeric:'tabular-nums'};}}));
+  const rows=sc.vol_shocks.map((dv,r)=>{const o={vol:(dv>0?'+':'')+dv+' vp'};sc.spot_shocks.forEach((s,i)=>o['c'+i]=sc.matrix[r][i]);return o;});
+  agGrid.createGrid(document.getElementById('scenarioGrid'),{rowData:rows,defaultColDef:{resizable:true},columnDefs:cols});
+  const pr=sc.profile;
+  Plotly.newPlot('pnlProfile',[{x:pr.map(p=>p.shock),y:pr.map(p=>p.pnl),mode:'lines',line:{color:'#f85149',width:2},fill:'tozeroy',fillcolor:'rgba(248,81,73,0.08)'}],
+    {paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',font:{color:'#8b949e'},margin:{l:58,r:14,t:10,b:36},
+     xaxis:{title:'Spot shock %',color:'#8b949e',gridcolor:'#2a3139',zeroline:true,zerolinecolor:'#4b5563'},
+     yaxis:{title:'P&L ($), vol unch',color:'#8b949e',gridcolor:'#2a3139',zeroline:true,zerolinecolor:'#4b5563'}},
+    {responsive:true,displayModeBar:false});
+  document.getElementById('riskNote').innerHTML=`<b>Short gamma, short vega.</b> The delta hedge keeps small moves roughly flat, but a large spot move either way loses (the downward hump), and a vol spike (top row) adds to it. Worst corner: a big move <i>with</i> vol up — the stress a short-vol book fears, and why the risk stop and sizing matter.`;
+}
+
 // ================= nav (lazy init) =================
-const built={bookpnl:false,surface:false,monitor:false};
-const builders={bookpnl:buildBookPnl,surface:buildSurface,monitor:buildMonitor};
+const built={bookpnl:false,surface:false,monitor:false,risk:false};
+const builders={bookpnl:buildBookPnl,surface:buildSurface,monitor:buildMonitor,risk:buildRisk};
 function show(v){
   document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));
   document.querySelectorAll('.view').forEach(x=>x.classList.toggle('on',x.id==='view-'+v));
