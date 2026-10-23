@@ -52,6 +52,8 @@ class Surface:
         return w0 + (w1 - w0) * (T - T0) / (T1 - T0)
 
     def extrapolated(self, T):
+        if not self.Ts:
+            return True
         return T < self.Ts[0] or T > self.Ts[-1]
 
     # ---- vol, price, greeks at a strike ----

@@ -124,8 +124,8 @@ def run(out_path=None, curve=True):
                    for t in reversed(trades)],      # most recent first
         'daily': [{k: (round(v, 2) if isinstance(v, float) else v) for k, v in r.items()}
                   for r in out.to_dict('records')],
-        'curve': _curve() if curve else [],
     }
+    result['curve'], result['surface'] = _spx_views() if curve else ([], {'moneyness_pct': [], 'expiries': []})
     if out_path:
         json.dump(result, open(out_path, 'w'))
     _print(summary, by_greek, result)
@@ -198,19 +198,31 @@ def _drawdowns(out, top=5):
     return res
 
 
-def _curve():
-    try:
-        import build
-        surface, meta, checks, info = build.build(underlying='SPX', max_expiries=14, store=False)
-        if not meta:
-            return [{'error': 'no slices'}]
-        return [{'expiry': m['expiry'], 'T': round(m['T'], 4), 'forward': round(m['F'], 2),
-                 'atm_vol': round(surface.atm_vol(m['T']) * 100, 2),
-                 'rr25': round((surface.risk_reversal(m['T']) or 0) * 100, 2),
-                 'bf25': round((surface.butterfly(m['T']) or 0) * 100, 2)}
-                for m in sorted(meta, key=lambda x: x['T'])]
-    except Exception as e:
-        return [{'error': str(e)[:120]}]
+def _spx_views(max_expiries=12):
+    """Build the live SPX surface once and return (term-structure table, 3-D surface grid).
+    Retries a few times because the free feed is occasionally rate-limited."""
+    import time, math
+    import build
+    err = 'no slices'
+    ks = [-0.15, -0.12, -0.10, -0.08, -0.06, -0.04, -0.02, 0.0, 0.02, 0.04, 0.06]
+    for _ in range(4):
+        try:
+            surface, meta, checks, info = build.build(underlying='SPX', max_expiries=max_expiries, store=False)
+            if meta:
+                meta = sorted(meta, key=lambda x: x['T'])
+                curve = [{'expiry': m['expiry'], 'T': round(m['T'], 4), 'forward': round(m['F'], 2),
+                          'atm_vol': round(surface.atm_vol(m['T']) * 100, 2),
+                          'rr25': round((surface.risk_reversal(m['T']) or 0) * 100, 2),
+                          'bf25': round((surface.butterfly(m['T']) or 0) * 100, 2)} for m in meta]
+                surf = {'moneyness_pct': [round((math.exp(k) - 1) * 100, 1) for k in ks],
+                        'expiries': [{'expiry': m['expiry'], 'dte': round(m['T'] * 365),
+                                      'iv': [round(surface.vol(m['F'] * math.exp(k), m['T']) * 100, 2) for k in ks]}
+                                     for m in meta]}
+                return curve, surf
+        except Exception as e:
+            err = str(e)[:120]
+        time.sleep(4)
+    return [{'error': err}], {'moneyness_pct': [], 'expiries': []}
 
 
 def _print(summary, by_greek, result):

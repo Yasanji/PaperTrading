@@ -27,25 +27,38 @@ open viewer.html                         # standalone AG Grid app (any browser; 
 | `pnl_attribution.py` | Decomposes one day's option P&L into the greeks; reconciles to the full revaluation. |
 | `backtest.py` | Delta-hedged short-straddle backtest 2006-2026; greek attribution, trade blotter, current book; writes the JSON. |
 | `make_viewer.py` | Runs the backtest and builds the standalone `viewer.html`. |
-| `viewer_template.html` | The viewer UI (AG Grid); `__DATA__` is replaced with the backtest JSON. |
+| `viewer_template.html` | The viewer UI (AG Grid + Plotly); `__DATA__` is replaced with the backtest JSON. |
 | `viewer.html` | The generated standalone app (open in a browser). |
+| `update.sh`, `com.yasanji.vrp.plist` | Daily refresh: launchd runs `make_viewer.py` on weekday evenings. |
 
 ## The viewer
 
-Five tabs:
-- **Composition** — cumulative P&L by greek, performance by window (dev / hold-out / full), worst drawdowns.
-- **Book** — the current straddle legs with per-leg greeks, the net, and the delta hedge in S&P mini-futures.
-- **Blotter** — every trade: straddle rolls and the daily delta hedges, with quantities and prices, most recent first.
-- **Daily P&L** — the cumulative line and a row-per-day grid with the full greek breakdown, net delta and the hedge.
-- **Vol Curve** — the live S&P 500 surface term structure (ATM vol, 25-delta risk reversal and butterfly).
+A single consolidated page (open `viewer.html`), top to bottom:
+- **Cards** — Day / MTD / YTD P&L, full net, Sharpe, max drawdown.
+- **P&L chart** — cumulative net, year-to-date by default (dated axis), toggle to the full backtest.
+- **P&L by greek** + **Performance & drawdowns** — what drove it; dev / hold-out stats; worst peak-to-trough.
+- **Current book** — straddle legs (tickers, per-leg greeks), the net, and the delta hedge in S&P minis (ES).
+- **Volatility surface** — the full **3-D** implied-vol surface (moneyness × expiry × IV) and the term-structure table.
+- **Blotter** — every trade (Side, Ticker, qty, price), straddle rolls and daily delta hedges, most recent first.
+- **Daily P&L** — row-per-day greek attribution, net delta and the hedge.
+- **Glossary** — short, theta, gamma, vega, VRP, VIX, skew and the rest.
 
 ## How it updates
 
-The viewer is a **static end-of-day snapshot**: the data is embedded when `make_viewer.py` runs.
-To refresh, re-run it (a nightly batch after the US close, alongside the book's evening chain). It
-makes no live connection. Intraday marking would need the page to pull a JSON over HTTPS (polling)
-or subscribe to a WebSocket feed — see the note in the handover discussion; the paper book trades
-once a day, so end-of-day is the matching cadence.
+The viewer is a **static end-of-day snapshot**: the data is embedded when `make_viewer.py` runs; it
+makes no live connection (AG Grid and Plotly load from a CDN, so it needs internet the first time).
+
+To refresh it automatically each weekday evening (launchd, like the book's other jobs):
+
+```
+cp vol/vrp/com.yasanji.vrp.plist ~/Library/LaunchAgents/
+chmod +x vol/vrp/update.sh
+launchctl load ~/Library/LaunchAgents/com.yasanji.vrp.plist   # unload to stop
+```
+
+It runs at 23:30 on weekdays (after the US close), rebuilds the backtest and the live surface, and
+rewrites `viewer.html`. The Mac must be awake. Intraday marking would instead need an HTTPS pull or a
+WebSocket feed; the paper book trades once a day, so end-of-day is the matching cadence.
 
 ## Results (recorded with the code, per the pre-registration)
 
