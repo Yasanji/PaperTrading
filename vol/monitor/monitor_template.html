@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vol Monitor</title>
+<meta name="description" content="Skew and term-structure monitor: the live surface cross-section and where today's vol signals sit versus their history.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@31.3.4/styles/ag-grid.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@31.3.4/styles/ag-theme-quartz.css">
+<script src="https://cdn.jsdelivr.net/npm/ag-grid-community@31.3.4/dist/ag-grid-community.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.0/plotly.min.js"></script>
+<style>
+  :root{--bg:#0e1116;--panel:#161b22;--panel2:#1c2230;--border:#2a3139;--text:#e6edf3;
+    --muted:#8b949e;--accent:#58a6ff;--pos:#3fb950;--neg:#f85149;--warn:#d29922}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  header{padding:16px 22px 12px;border-bottom:1px solid var(--border)}
+  h1{margin:0;font-size:17px;font-weight:650}
+  .sub{color:var(--muted);font-size:12px;margin-top:3px}
+  .wrap{padding:16px 22px 60px;max-width:1500px;margin:0 auto}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:0 0 22px}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 15px}
+  .card .k{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.5px}
+  .card .v{font-size:22px;font-weight:650;margin-top:3px;font-variant-numeric:tabular-nums}
+  .card .r{font-size:12px;margin-top:3px}
+  .read-rich,.read-stress{color:var(--neg)}.read-cheap{color:var(--pos)}.read-normal{color:var(--muted)}
+  section{margin:0 0 26px}
+  .sh{display:flex;align-items:baseline;gap:12px;margin:0 0 6px}
+  .sh h2{margin:0;font-size:15px;font-weight:650}.sh .hint{color:var(--muted);font-size:12.5px}
+  .panel{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:10px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:900px){.two{grid-template-columns:1fr}}
+  .ag-theme-quartz{--ag-background-color:var(--panel);--ag-odd-row-background-color:#12171e;
+    --ag-header-background-color:var(--panel2);--ag-border-color:var(--border);--ag-foreground-color:var(--text);
+    --ag-secondary-foreground-color:var(--muted);--ag-row-hover-color:#1b2430;--ag-font-size:13px;--ag-header-foreground-color:var(--muted)}
+  .ag-theme-quartz .ag-cell{font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+<header>
+  <h1>Vol Monitor <span style="color:var(--muted);font-weight:400">· skew &amp; term structure vs history</span></h1>
+  <div class="sub" id="sub"></div>
+</header>
+<div class="wrap">
+  <div class="cards" id="cards"></div>
+
+  <section>
+    <div class="sh"><h2>Term structure</h2><span class="hint">ATM vol by tenor today (9d→6m); the slope VIX3M−VIX vs its history. Positive = contango (calm); negative = backwardation (stress).</span></div>
+    <div class="two">
+      <div class="panel"><div id="termCurve" style="height:300px"></div></div>
+      <div class="panel"><div id="slopeHist" style="height:300px"></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sh"><h2>Skew</h2><span class="hint">Live 25-delta risk reversal (put vol − call vol) and butterfly by expiry; the CBOE SKEW index vs its history.</span></div>
+    <div class="two">
+      <div id="surfaceGrid" class="ag-theme-quartz" style="height:300px"></div>
+      <div class="panel"><div id="skewHist" style="height:300px"></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sh"><h2>Signals</h2><span class="hint">Where each metric sits in its 1- and 5-year range — the relative-value read.</span></div>
+    <div id="signalsGrid" class="ag-theme-quartz" style="height:170px"></div>
+  </section>
+</div>
+
+<script>
+const DATA = __DATA__;
+const num=(n,d=2)=>(n==null||isNaN(n))?'':Number(n).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
+const R={type:'rightAligned'};
+const readClass=r=>({rich:'read-rich','backwardation/stress':'read-stress',cheap:'read-cheap',normal:'read-normal',high:'read-rich',low:'read-cheap','steep contango':'read-normal'}[r]||'read-normal');
+
+document.getElementById('sub').textContent =
+  `${DATA.meta.note}  ·  as of ${DATA.meta.as_of}  ·  updated ${DATA.meta.generated}Z — ${DATA.meta.update_mode}`;
+
+document.getElementById('cards').innerHTML = DATA.signals.map(s=>
+  `<div class="card"><div class="k">${s.name}</div>
+   <div class="v">${num(s.value, s.name.includes('SKEW')?1:2)}</div>
+   <div class="r"><span class="${readClass(s.read)}">${s.read}</span>
+   <span style="color:var(--muted)"> · ${s.pct_1y}%ile 1y · z ${num(s.z_1y,2)}</span></div></div>`).join('');
+
+const axis={color:'#8b949e',gridcolor:'#2a3139',zerolinecolor:'#2a3139'};
+const base={paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',font:{color:'#8b949e'},
+  margin:{l:48,r:14,t:10,b:36},showlegend:false};
+const cfg={responsive:true,displayModeBar:false};
+
+// term structure curve today (+ surface ATM overlay)
+(function(){
+  const t=DATA.term_now;
+  const traces=[{x:t.map(p=>p.tenor_days),y:t.map(p=>p.vol),mode:'lines+markers',
+    line:{color:'#58a6ff',width:2},marker:{size:7},name:'VIX complex'}];
+  if(DATA.surface_term&&DATA.surface_term.length)
+    traces.push({x:DATA.surface_term.map(e=>e.dte),y:DATA.surface_term.map(e=>e.atm_vol),
+      mode:'markers',marker:{size:5,color:'#3fb950'},name:'SPX surface ATM'});
+  Plotly.newPlot('termCurve',traces,{...base,showlegend:true,legend:{font:{color:'#8b949e'},orientation:'h',y:1.12},
+    xaxis:{...axis,title:'Tenor (days)'},yaxis:{...axis,title:'ATM implied vol'}},cfg);
+})();
+
+function histChart(el,key,bandKey,color){
+  const h=DATA.history, b=DATA.bands[bandKey], x=h.map(r=>r.date), y=h.map(r=>r[key]);
+  const hl=(v,c,dash)=>({x:[x[0],x[x.length-1]],y:[v,v],mode:'lines',line:{color:c,width:1,dash:dash},hoverinfo:'skip'});
+  const traces=[
+    hl(b.p75,'#2a3139','dot'),hl(b.p25,'#2a3139','dot'),hl(b.p50,'#4b5563','dash'),
+    {x,y,mode:'lines',line:{color:color,width:1.3}},
+    {x:[x[x.length-1]],y:[y[y.length-1]],mode:'markers',marker:{size:8,color:color}}];
+  Plotly.newPlot(el,traces,{...base,xaxis:{...axis},yaxis:{...axis,
+    title:key==='slope'?'VIX3M − VIX':'SKEW'}},cfg);
+}
+histChart('slopeHist','slope','slope','#d29922');
+histChart('skewHist','skew','skew','#bc8cff');
+
+agGrid.createGrid(document.getElementById('surfaceGrid'),{
+  rowData:DATA.surface_term,defaultColDef:{sortable:true,resizable:true,flex:1},
+  columnDefs:[{field:'expiry',headerName:'Expiry',width:120},
+    {field:'dte',headerName:'DTE',...R,width:80},
+    {field:'atm_vol',headerName:'ATM vol',valueFormatter:p=>num(p.value,2),...R,headerTooltip:'At-the-money implied vol'},
+    {field:'rr25',headerName:'25d RR',valueFormatter:p=>num(p.value,2),cellClass:p=>p.value<0?'read-cheap':'read-rich',...R,headerTooltip:'Risk reversal: put vol − call vol (skew)'},
+    {field:'bf25',headerName:'25d BF',valueFormatter:p=>num(p.value,2),...R,headerTooltip:'Butterfly: wing vol − ATM (curvature)'}],
+});
+agGrid.createGrid(document.getElementById('signalsGrid'),{
+  rowData:DATA.signals,defaultColDef:{sortable:true,resizable:true},
+  columnDefs:[{field:'name',headerName:'Signal',flex:1.4,minWidth:200},
+    {field:'value',headerName:'Value',valueFormatter:p=>num(p.value,2),...R,width:110},
+    {field:'pct_1y',headerName:'1y %ile',valueFormatter:p=>p.value==null?'':p.value+'%',...R,width:100},
+    {field:'pct_5y',headerName:'5y %ile',valueFormatter:p=>p.value==null?'':p.value+'%',...R,width:100},
+    {field:'z_1y',headerName:'z (1y)',valueFormatter:p=>num(p.value,2),...R,width:90},
+    {field:'read',headerName:'Read',width:180,cellClass:p=>readClass(p.value),cellStyle:{fontWeight:'600'}}],
+});
+</script>
+</body>
+</html>
