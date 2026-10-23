@@ -45,6 +45,12 @@ def black76_vega(F, K, T, sigma, D):
     return D * F * sqrt(T) * _n(d1)
 
 
+def european_spot(S, K, T, sigma, r, q, right):
+    """European option price in spot terms (via Black-76 with F = S*exp((r-q)T))."""
+    F, D = S * exp((r - q) * T), exp(-r * T)
+    return black76_price(F, K, T, sigma, D, right)
+
+
 # ---- Spot-form greeks (continuous dividend yield q) ----
 # r and q are recovered from the implied forward and discount:
 #   D = exp(-rT)          -> r = -ln(D)/T
