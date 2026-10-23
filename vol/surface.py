@@ -119,6 +119,18 @@ class Surface:
         w1, w2 = self.total_var(0.0, T1), self.total_var(0.0, T2)
         return sqrt(max(w2 - w1, 0.0) / (T2 - T1))
 
+    def summary(self, T=30 / 365.0):
+        """Constant-maturity snapshot (default 30 days) for storage and the stability check.
+        Constant maturity, so it is comparable day to day even as listed expiries roll off."""
+        rr, bf = self.risk_reversal(T), self.butterfly(T)
+        return {
+            'cm30_atm': self.atm_vol(T) * 100,
+            'cm30_varswap': self.var_swap_vol(T) * 100,
+            'cm30_rr25': rr * 100 if rr is not None else None,
+            'cm30_bf25': bf * 100 if bf is not None else None,
+            'spot': self.spot,
+        }
+
     def var_swap_vol(self, T, n=400):
         """Fair variance-swap vol at horizon T, by the VIX/variance-swap static replication:
         a strip of OTM option prices weighted 1/K^2. This is what VIX measures, so it is

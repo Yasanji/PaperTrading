@@ -38,13 +38,25 @@ the fitted parameters and the QA results point-in-time in `delta1.db`.
 ## Tables added to `delta1.db`
 
 `option_quotes` (raw chain), `vol_forwards` (implied F, D per expiry), `vol_surface_params`
-(fitted SVI parameters per expiry), `vol_surface_qa` (each run's checks). Raw and fitted are
-both stored, so any day's surface rebuilds exactly.
+(fitted SVI parameters per expiry), `vol_surface_qa` (each run's checks), `vol_clean_log`
+(how many quotes each cleaning rule removed, whole-chain and per expiry), `vol_surface_summary`
+(constant-maturity 30-day ATM, variance-swap, 25d RR and BF — for the stability check). Raw
+and fitted are both stored, so any day's surface rebuilds exactly.
 
 ## What a run tells you
 
 - Per expiry: forward, ATM vol, 25-delta risk reversal (skew) and butterfly (curvature), fit error, and whether the slice is arbitrage-free.
-- QA: arbitrage-free (hard gate), per-slice fit error, VIX cross-check (surface variance-swap vol vs VIX), and reprice error.
+- QA checks (stored in `vol_surface_qa`):
+  - `coverage` — enough expiries and clean quotes survived (hard gate).
+  - `arbitrage_free` — no butterfly or calendar violations (hard gate).
+  - `fit_rmse_volpts` — per-slice model-vs-market fit error (flag above 1.5 vol pts).
+  - `vix_cross_check` — surface variance-swap 30d vol vs VIX (flag above 3 vol pts).
+  - `reprice_vol_error` — surface vol vs market implied vol (flag above median 1.0 / p95 3.0 vol pts).
+  - `stability_dod` — day-over-day move in constant-maturity 30d vol (flag above 5 vol pts).
+
+A note on staleness: Yahoo gives no reliable per-quote timestamp, so there is no quote-age
+filter; the spread and arbitrage filters are the proxy for staleness on this feed. A vendor
+feed with timestamps would add a true age check in `clean.py`.
 
 ## Known limits (see the design note, section 12)
 

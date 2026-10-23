@@ -28,4 +28,15 @@ CREATE TABLE IF NOT EXISTS vol_surface_qa (
   as_of TEXT, underlying TEXT, check_name TEXT, result TEXT, detail TEXT, source TEXT,
   PRIMARY KEY (as_of, underlying, check_name, source));
 
+-- Cleaning diagnostics: how many quotes each rule removed. expiry='ALL' for whole-chain rules.
+CREATE TABLE IF NOT EXISTS vol_clean_log (
+  as_of TEXT, underlying TEXT, expiry TEXT, metric TEXT, value REAL, source TEXT,
+  PRIMARY KEY (as_of, underlying, expiry, metric, source));
+
+-- Constant-maturity 30-day summary, for the day-over-day stability check.
+CREATE TABLE IF NOT EXISTS vol_surface_summary (
+  as_of TEXT, underlying TEXT, cm30_atm REAL, cm30_varswap REAL,
+  cm30_rr25 REAL, cm30_bf25 REAL, spot REAL, source TEXT,
+  PRIMARY KEY (as_of, underlying, source));
+
 CREATE INDEX IF NOT EXISTS ix_option_quotes ON option_quotes(as_of, underlying, expiry);
